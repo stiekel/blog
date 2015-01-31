@@ -24,7 +24,10 @@ build/Release
 # https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 
+<<<<<<< HEAD
 sftp-config.json
 
+=======
+>>>>>>> cb76bc81a90d22dc15bca60a28606619b16ef562
 # Users Environment Variables
 .lock-wscript

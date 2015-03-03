@@ -1,7 +1,7 @@
 title: 使用过滤器filter在ngOptions和ngRepeat中筛选与排除
 date: 2015-03-03 13:11:12
 tags:
-  - Angularhtml
+  - AngularJS
   - JavaScript
 ---
 

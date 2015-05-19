@@ -1,0 +1,276 @@
+资料下载地址：
+http://chensd.com/2010-07/pm-resource.html
+真题及答案下载地址：
+http://chensd.com/2010-06/pm-test-paper-05-09.html
+
+
+My Documents\项目管理师>tree /f
+卷 TOOL 的文件夹 PATH 列表
+卷序列号为 427D-EF45
+D:.
+│  项目管理师论文考试准备总结.doc
+│  信息系统项目管理师应试建议.doc
+│  信息系统项目范围管理知识体系精编.pdf
+│  信息系统项目风险管理知识体系精编.pdf
+│  信息系统项目沟通管理知识体系精编.pdf
+│  信息系统项目管理师案例分析教程.pdf
+│  信息系统项目人力资源管理知识体系精编.pdf
+│  信息系统项目时间管理知识体系精编.pdf
+│  信息系统项目项目成本管理知识体系精编 .pdf
+│  信息系统项目项目项目质量管理知识体系精编.pdf
+│  信息系统项目整体管理知识体系精编.pdf
+│  信息系统项目管理师讲义.pdf
+│  信息系统项目管理师应考建议.pdf
+│  项目管理师论文写作指南.doc
+│  说明与下载.txt
+│  项目管理师复习资料.zip
+│
+├─信息系统项目管理师论文范例[八篇]
+│  │  4、论软件开发的风险管理.pdf
+│  │  5、利用CMM保证软件质量.pdf
+│  │  6、论企业级项目管理体系的建立.pdf
+│  │  7、论信息系统的需求管理和范围管理.pdf
+│  │  8、论项目的风险管理.pdf
+│  │  1、论软件项目的进度管理.pdf
+│  │  2、论软件项目计划的制定.pdf
+│  │  3、论软件开发成本管理.pdf
+│  │
+│  ├─ISPMP项目管理论文范文
+│  │      Establishing a Corporate Approach to Project Management at the United States Census Bureau.pdf
+│  │      IMPLEMENTATION OF A UNIVERSITY RELATED TECHNOLOGY PARK PROJECT –“THE TECHNOVATION PARK OF UNIVERSITI TEKNOLOGI MALAYSIA”.pdf
+│  │      Innovation, Optimizing and Integration Harmonization of Technology,Economy and Management.pdf
+│  │      Project Management System Application and Practice on the First Export Super-critical Boilers Project.pdf
+│  │      Strengthen Overseas Engineering Project Management andContinually Expand International Engineering Market.pdf
+│  │      Successful Story of Project Management in the Construction of the econd Steelworks of Baogang.pdf
+│  │      Three case studies：Legend Computer Regional Headquarters, China hants Bank Tower, and Citizen’s Center, Shenzhen buildings designed by chula Architects.pdf
+│  │      Tracking and Executing Project Plan.pdf
+│  │      “灵犀”怎样“点通”.pdf
+│  │      一切都将成为项目.pdf
+│  │      从“无底洞”脱身.pdf
+│  │      企业成长五步曲（附图表）（1）.pdf
+│  │      企业成长五步曲（附图表）（2）.pdf
+│  │      企业自主组织大型项目建设的可行性.pdf
+│  │      加强海外工程项目管理不断开拓国际工程市场.pdf
+│  │      包钢二炼钢工程建设项目管理的成功做法.pdf
+│  │      在美国人口调查局中建立项目管理制度的机构管理方法.pdf
+│  │      基于高速网络、广域分级协同工作的项目管理模式.pdf
+│  │      广州恒运电厂脱硫工程项目管理应用实践.pdf
+│  │      建立以目标管理为核心，以项目法人负责制为主体，严密规范的管理体制；精
+心选择，集成各家技术优势，构建具有自身特色的一流技术装备系统.pdf
+│  │      探秘技术项目管理（一）.pdf
+│  │      探秘技术项目管理（三）.pdf
+│  │      探秘技术项目管理（二）.pdf
+│  │      环境、方法、人——项目管理体系实施方法论.pdf
+│  │      采用不成熟工艺引起索赔的教训.pdf
+│  │      防患于未然.pdf
+│  │      鞍钢整体技术改造决策与实施.pdf
+│  │      项目的实施与控制.pdf
+│  │      项目管理在我国首台超临界锅炉出口项目中的应用与实践.pdf
+│  │      项目管理在电力工程中的成功实践.pdf
+│  │
+│  └─已经改好的论文---精简版本
+│          工商信息协同系统进度管理.doc
+│          工商信息协同项目成本管理.doc
+│          论工商信息协同系统整体管理.doc
+│          软件项目人力资源管理.doc
+│          软件项目沟通管理.doc
+│          软件项目的配置管理.doc
+│
+├─项目管理重点
+│      第04章 项目可行性研究与评估.pdf
+│      第05章 项目整体管理.pdf
+│      第06章 项目范围管理.pdf
+│      第07章 项目时间管理.pdf
+│      第08章 项目成本管理.pdf
+│      第09章 项目质量管理.pdf
+│      第10章 项目人力资源管理.pdf
+│      第11章 项目沟通管理.pdf
+│      第12章 项目的风险管理.pdf
+│      第13章 项目采购管理.pdf
+│      第15章 配置管理.pdf
+│      第16章 外包管理.pdf
+│      第17章 需求管理.pdf
+│      第19章 组织级项目管理与大型项目管理.pdf
+│      第20章 战略管理概念.pdf
+│      第21章 业务流程管理.pdf
+│      第22章 知识管理.pdf
+│      第23章 项目整体绩效评估.pdf
+│      第24章 信息系统安全和安全体系.pdf
+│      第25章 信息系统安全风险评估.pdf
+│      信息系统项目管理师考试大纲.pdf
+│
+├─希赛模拟题上午20套
+│  └─希赛模拟题上午20套
+│          01.pdf
+│          02.pdf
+│          03.pdf
+│          04.pdf
+│          05.pdf
+│          06.pdf
+│          07.pdf
+│          08.pdf
+│          09.pdf
+│          10.pdf
+│          11.pdf
+│          12.pdf
+│          13.pdf
+│          14.pdf
+│          15.pdf
+│          16.pdf
+│          17.pdf
+│          18.pdf
+│          19.pdf
+│          20.pdf
+│
+├─项目管理师复习资料
+│  │  第10章 项目人力资源管理.pdf
+│  │  第11章 项目沟通管理.pdf
+│  │  第12章 项目的风险管理.pdf
+│  │  第13章 项目采购管理.pdf
+│  │  第15章 配置管理.pdf
+│  │  第16章 外包管理.pdf
+│  │  第17章 需求管理.pdf
+│  │  第19章 组织级项目管理与大型项目管理.pdf
+│  │  第20章 战略管理概念.pdf
+│  │  第21章 业务流程管理.pdf
+│  │  第22章 知识管理.pdf
+│  │  第23章 项目整体绩效评估.pdf
+│  │  第24章 信息系统安全和安全体系.pdf
+│  │  第25章 信息系统安全风险评估.pdf
+│  │  项目管理师.doc
+│  │  信息系统项目管理师讲义.pdf
+│  │  2007年下半年信息系统项目管理师上午题.pdf
+│  │  2007年下半年信息系统项目管理师上午题I.pdf
+│  │  2007年下半年信息系统项目管理师上午题II.pdf
+│  │  20061106001_feng_pm_ana.pdf
+│  │  第04章 项目可行性研究与评估.pdf
+│  │  第05章 项目整体管理.pdf
+│  │  第06章 项目范围管理.pdf
+│  │  第07章 项目时间管理.pdf
+│  │  第08章 项目成本管理.pdf
+│  │  第09章 项目质量管理.pdf
+│  │  项目管理案例分析.doc
+│  │
+│  ├─项目管理考试资料
+│  │  │  2004年下半年系统分析师上午考试答案.txt
+│  │  │  2005年上半年信息系统项目管理师试题.pdf
+│  │  │  IT项目管理学习笔记希赛社区中国系统分析师中国系统分析员.htm
+│  │  │  应用体会.doc
+│  │  │  网络安全知识点总结希赛社区中国系统分析师中国系统分析员.htm
+│  │  │  项目管理师难点重点.pdf
+│  │  │
+│  │  ├─项目管理教案
+│  │  │      PM基本知识复习.pdf
+│  │  │      project2002.pdf
+│  │  │      上机要求.pdf
+│  │  │      时间管理总结.pdf
+│  │  │      案例模板.pdf
+│  │  │      案例模板2.pdf
+│  │  │      洗衣机案例模板.pdf
+│  │  │      项目的实施与收尾.pdf
+│  │  │      项目的沟通管理.pdf
+│  │  │      项目的范围管理.pdf
+│  │  │      项目的费用管理.pdf
+│  │  │      项目的进度管理.pdf
+│  │  │      项目的风险管理.pdf
+│  │  │      项目管理之时间参数的计算.pdf
+│  │  │      项目管理的一般原理.pdf
+│  │  │
+│  │  ├─网络安全知识点总结希赛社区中国系统分析师中国系统分析员.files
+│  │  │      1.gif
+│  │  │      2.gif
+│  │  │      css.css
+│  │  │      newwin.gif
+│  │  │      post.gif
+│  │  │      right.htm
+│  │  │      rightlist.htm
+│  │  │      shownew.gif
+│  │  │      title.htm
+│  │  │      vb_bullet.gif
+│  │  │
+│  │  └─IT项目管理学习笔记希赛社区中国系统分析师中国系统分析员.files
+│  │          1.gif
+│  │          css.css
+│  │          newwin.gif
+│  │          post.gif
+│  │          right.htm
+│  │          rightlist.htm
+│  │          shownew.gif
+│  │          title.htm
+│  │          vb_bullet.gif
+│  │
+│  └─PMP
+│      │  PMP_中文.doc
+│      │  PMP考试技巧.txt
+│      │
+│      ├─复习笔记
+│      │  └─项目管理考试资料
+│      │      └─项目管理教案
+│      │              PM基本知识复习.pdf
+│      │              project2002.pdf
+│      │              上机要求.pdf
+│      │              时间管理总结.pdf
+│      │              案例模板.pdf
+│      │
+│      ├─冲刺资料
+│      │      信息系统概论.ppt
+│      │      信息系统集成技术.pdf
+│      │      工程项目管理之WBS实例.doc
+│      │      案例.doc
+│      │
+│      ├─PMP项目管理论文
+│      │      Establishing a Corporate Approach to Project Management at the U
+nited States Census Bureau.pdf
+│      │      IMPLEMENTATION OF A UNIVERSITY RELATED TECHNOLOGY PARK PROJECT
+–“THE TECHNOVATION PARK OF UNIVERSITI TEKNOLOGI MALAYSIA”.pdf
+│      │      Innovation, Optimizing and Integration Harmonization of Technolo
+gy, Economy and Management.pdf
+│      │      Project Management System Application and Practice on the First
+Export Super-critical Boilers Project.pdf
+│      │      Strengthen Overseas Engineering Project Management andContinuall
+y Expand International Engineering Market.pdf
+│      │      Successful Story of Project Management in the Construction of th
+e econd Steelworks of Baogang.pdf
+│      │      Three case studies：Legend Computer Regional Headquarters, China
+ hants Bank Tower, and Citizen’s Center, Shenzhen buildings designed by chula A
+rchitects.pdf
+│      │      Tracking and Executing Project Plan.pdf
+│      │      “灵犀”怎样“点通”.pdf
+│      │      一切都将成为项目.pdf
+│      │      从“无底洞”脱身.pdf
+│      │      企业成长五步曲（附图表）（1）.pdf
+│      │      企业成长五步曲（附图表）（2）.pdf
+│      │      企业自主组织大型项目建设的可行性.pdf
+│      │      加强海外工程项目管理不断开拓国际工程市场.pdf
+│      │      包钢二炼钢工程建设项目管理的成功做法.pdf
+│      │      在美国人口调查局中建立项目管理制度的机构管理方法.pdf
+│      │      基于高速网络、广域分级协同工作的项目管理模式.pdf
+│      │      广州恒运电厂脱硫工程项目管理应用实践.pdf
+│      │      建立以目标管理为核心，以项目法人负责制为主体，严密规范的管理体制
+；精心选择，集成各家技术优势，构建具有自身特色的一流技术装备系统.pdf
+│      │      探秘技术项目管理（一）.pdf
+│      │      探秘技术项目管理（三）.pdf
+│      │      探秘技术项目管理（二）.pdf
+│      │      环境、方法、人——项目管理体系实施方法论.pdf
+│      │      采用不成熟工艺引起索赔的教训.pdf
+│      │      防患于未然.pdf
+│      │      项目的实施与控制.pdf
+│      │      项目管理在我国首台超临界锅炉出口项目中的应用与实践.pdf
+│      │      项目管理在电力工程中的成功实践.pdf
+│      │
+│      └─PMP模拟试题
+│              pmp练习题(220道推荐).doc
+│              pmp练习题(240道).doc
+│              pmp练习题(240道答案).doc
+│              pmp练习题(28道).txt
+│              pmp练习题(600道).xls
+│              PMP考试模拟题(20个）.doc
+│              PMP考试模拟题(683个)  .xls
+│              PMP考试模拟题（28个）.doc
+│              PMP考试经验.doc
+│
+├─项目管理师历年考试真题
+│  │  项目管理师参考答案05-09.pdf
+│  │
+│  └─项管历年考试真题05-09全
+

@@ -1,4 +1,4 @@
-title: 一种权重算法
+title: 一种权重算法及其实现
 date: 2015-05-15 09:25:24
 tags:
   - 编程杂记
@@ -52,13 +52,14 @@ gnaTempAdv.forEach(function(gnata){
 
 gnaTempAdv.forEach(function(gnata2){
   //加随机数
-  gnata2.weight += Math.random()*totalWeight;
+  gnata2.newWeight = 0;
+  gnata2.newWeight = gnata2.weight + Math.random()*totalWeight;
   
   //取新的weight最大的值
   if(!gnaTarget) {
     gnaTarget = gnata2;
-  } else if(gnata3.weight > gnaTargetAdv.weight) {
-    gnaTargetAdv = gnata3;
+  } else if(gnata2.newWeight > gnaTargetAdv.newWeight) {
+    gnaTargetAdv = gnata2;
   }
 });
 

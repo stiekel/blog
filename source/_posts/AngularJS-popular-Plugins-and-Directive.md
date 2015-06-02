@@ -13,12 +13,6 @@ tags:
 *   [ngImgCrop](https://github.com/alexk111/ngImgCrop) 图片剪裁工具
 *   [ngVideo](https://github.com/Wildhoney/ngVideo) 播放器，直接播放指定地址的mp4，控制按钮美观度远甩朝内99.99%的视频站
 
-### 其它工具类
-*   [angular-translate](https://angular-translate.github.io/) AngularJS的i18n扩展
-*   [Satellizer](https://satellizer.herokuapp.com/) 可以方便的在AngularJS中集成第三方账号登陆，支持国际主流社交网站账号，支持协议有OAuth 1.0/2.0
-*   [ngStorage](https://github.com/gsklee/ngStorage) 本在存储插件，用于处理localStorage和sessionStorage
-*   [ng-csv](https://github.com/asafdav/ng-csv) 导出csv的扩展
-
 ### 输入控件类
 *   [ngDraggable](https://github.com/fatlinesofcode/ngDraggable) 控制元素拖动的控件，[Demo](http://htmlpreview.github.io/?https://github.com/fatlinesofcode/ngDraggable/blob/master/example.html)
 *   [angular-umeditor](https://github.com/YinChangSheng/angular-umeditor) 百度umeditor的AngularJS扩展，umeditor从界面上讲并不够现代化，但却总有人喜欢它
@@ -45,3 +39,9 @@ tags:
 *   [Angular Treeview](https://github.com/eu81273/angular.treeview) 树状目录组织扩展，使用相当方便，而且不依赖于jQuery
 *   [angular-growl](https://github.com/Marcorinck/angular-growl) 用于在页面上显示警告框，可以设置显示时间，还可以直接显示$http中收到的警告
 *   [angular-truncate](http://sparkalow.github.io/angular-truncate/) 当文字过多过长时，显示部分文字的插件，可以按文字总长度来控制，也可以按单词数量来控制
+
+### 其它工具类
+*   [angular-translate](https://angular-translate.github.io/) AngularJS的i18n扩展
+*   [Satellizer](https://satellizer.herokuapp.com/) 可以方便的在AngularJS中集成第三方账号登陆，支持国际主流社交网站账号，支持协议有OAuth 1.0/2.0
+*   [ngStorage](https://github.com/gsklee/ngStorage) 本在存储插件，用于处理localStorage和sessionStorage
+*   [ng-csv](https://github.com/asafdav/ng-csv) 导出csv的扩展

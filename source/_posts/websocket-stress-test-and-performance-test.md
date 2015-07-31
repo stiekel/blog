@@ -1,4 +1,4 @@
-title: WebSocket的压力测试
+title: WebSocket的性能与压力测试
 date: 2015-07-30 17:22:09
 tags:
   - JavaScript
@@ -22,6 +22,12 @@ npm install -g websocket-bench --registry=http://registry.npm.taobao.org
 ```
 
 ### 基本使用
+
+这里以在 CentOS 6.5 上进行测试为便进行说明。首先要修改一下文件打开数，默认是1024，修改为一个比较大的值就行，总共65535个端口，我们测试也不会用太大的并发，websocket-bench 推荐设置的是 60000 ，命令如下：
+
+```sh
+ulimit -n 60000
+```
 
 websocket-bench 的参数与 ab 基本一致，像这样
 

@@ -8,7 +8,7 @@ subtitle: A Node.js Developer
 description: 不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。
 author: Sid
 email: histkc@gmail.com
-language: zh-CN
+language: zh-Hans
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -80,7 +80,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: modernist
+theme: next
 exclude_generator:
 
 # Deployment
@@ -90,3 +90,21 @@ deploy:
   #repository: https://gitcafe.com/Sid/Sid.git
   repository: git@gitcafe.com:Sid/Sid.git
   branch: gitcafe-pages
+
+duoshuo_shortname: sidcn
+
+social:
+  GitHub: https://github.com/stiekel
+  Twitter: https://twitter.com/SidCN
+  Weibo: http://weibo.com/sidcn
+  DouBan: http://www.douban.com/people/Stiekel/
+
+creative_commons: by-nc-sa
+google_analytics: UA-3804589-6
+baidu_analytics: 6ab46e09bc8d0da169baff9f975ecaf8
+since: 2010
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20

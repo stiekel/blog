@@ -108,3 +108,8 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+
+archive_generator:
+  per_page: 20
+  yearly: true
+  monthly: true

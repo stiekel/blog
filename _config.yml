@@ -111,8 +111,17 @@ since: 2010
 feed:
   type: atom
   path: atom.xml
+<<<<<<< HEAD
 
 archive_generator:
   per_page: 1000
   yearly: true
   monthly: false
+=======
+  limit: 20
+
+archive_generator:
+  per_page: 20
+  yearly: true
+  monthly: true
+>>>>>>> 53bc5d7f4df81d5660bf81065799ea92c1082f81

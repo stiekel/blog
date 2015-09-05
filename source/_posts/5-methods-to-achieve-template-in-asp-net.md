@@ -30,82 +30,55 @@ date: 2011-02-23 14:48:08
 母版页就像是在一个完成的页面中挖空，然后在具体页面设计时再填空。空的个数可以在母版页中进行定义。
 
 在Visual Studio 2005中新建一个网站，为了方便，我们将对各部分的样式独立一到个样式表中，在解决方案管理器中添加一个新项，模板中选择样式表，命名为style.css，内容如下：
-> body
-> 
-> {
-> 
-> background-color:#bbb;
-> 
-> }
-> 
-> #header
-> 
-> {
-> 
-> background-color:#aaa;
-> 
-> text-align:center;
-> 
-> }
-> 
-> 
-> #footer
-> 
-> {
-> 
-> background-color:#aaa;
-> 
-> text-align:left;
-> 
-> }
-再在解决方案管理器中添加一个新项，模板选择“母版页”，命名为TestMasterPage.master，切换到“源视图”，在&lt;head&gt;和&lt;/head&gt;中添加如下一行，以引用样式表：
+```css
+body {
+background-color:#bbb;
+}
 
-&lt;link href = "style.css" rel = "stylesheet" type = "text/css" /&gt;
+#header {
+  background-color:#aaa;
+  text-align:center;
+}
 
-然后在&lt;form&gt;和&lt;/form&gt;之间添加如下代码：
-> &lt;div&gt;
-> 
-> &lt;div id = "header"&gt;
-> 
-> &lt;h2&gt;Template Test ASP.NET Site&lt;/h2&gt;
-> 
-> &lt;hr /&gt;
-> 
-> &lt;/div&gt;
-> 
-> &lt;asp:contentplaceholder id="testContentPlaceHolder" runat="server"&gt;
-> 
-> &lt;/asp:contentplaceholder&gt;
-> 
-> &lt;/div&gt;
-> 
-> &lt;div id = "footer" &gt;
-> 
-> &lt;hr /&gt;
-> 
-> &lt;a href = "javascript:history.go('-1')"&gt;Back&lt;/a&gt; |
-> 
-> &lt;a href = "default.aspx" &gt;HomePage&lt;/a&gt; |
-> 
-> &lt;a href = "javascript:history.go('1')"&gt;Next&lt;/a&gt;
-> 
-> 
-> &lt;/div&gt;
-其中&lt;asp:contentplaceholder...&gt;就是在引用母版页的其它页中可以指定内容的位置。
+#footer {
+  background-color:#aaa;
+  text-align:left;
+}
+```
+再在解决方案管理器中添加一个新项，模板选择“母版页”，命名为TestMasterPage.master，切换到“源视图”，在<head>和</head>中添加如下一行，以引用样式表：
+
+```html
+<link href = "style.css" rel = "stylesheet" type = "text/css" />
+```
+
+然后在<form>和</form>之间添加如下代码：
+```html
+<div>
+  <div id="header">
+    <h2>Template Test ASP.NET Site</h2>
+    <hr />
+  </div>
+  <asp:contentplaceholder id="testContentPlaceHolder" runat="server">
+  </asp:contentplaceholder>
+</div>
+<div id="footer">
+  <hr />
+  <a href="javascript:history.go('-1')">Back</a|
+  <a href = "default.aspx" >HomePage</a|
+  <a href = "javascript:history.go('1')">Next</a>
+</div>
+```
+其中<asp:contentplaceholder...>就是在引用母版页的其它页中可以指定内容的位置。
 
 再在解决方案管理器中添加一个新项，模板中选择“Web窗体”，文件名为“TemplateByMasterPage.aspx”，并勾选“选择母版页”，点击“添加”后选择刚刚新建的母版页TestMasterPage.master。切换到源视图，添加如下代码：
-> &lt;asp:Content ID="Content1" ContentPlaceHolderID="testContentPlaceHolder" Runat="Server"&gt;
-> 
-> &lt;p&gt;
-> 
-> This page achiveve by masterpage.&lt;br /&gt;
-> 
-> MasterPage: &lt;strong&gt;TestMasterPage.master&lt;/strong&gt;
-> 
-> &lt;/p&gt;
-> 
-> 
-> &lt;/asp:Content&gt;
+```aspnet
+<asp:Content ID="Content1" ContentPlaceHolderID="testContentPlaceHolder" Runat="Server">
+  <p>
+    This page achiveve by masterpage.
+    <br /> MasterPage: <strong>TestMasterPage.master</strong>
+  </p>
+</asp:Content>
+```
 这便在母版页的指定位置实现了区别化的部分。
 
 #### 2、使用用户控件实现
@@ -117,46 +90,41 @@ date: 2011-02-23 14:48:08
 由于我们要实现的页面具有三个部分，有两个部分需要模板化，那就需要新建两个用户控件。
 
 在解决方案管理器中添加一个新项，模板选择“Web用户控件”，命名为TemplateByUserControl_header.ascx，然后在源视图中添加如下代码：
-> &lt;div id = "header"&gt;
-> 
-> &lt;h2&gt;Template Test ASP.NET Site&lt;/h2&gt;
-> 
-> &lt;hr /&gt;
-> 
-> &lt;/div&gt;
+
+```html
+<div id="header">
+  <h2>Template Test ASP.NET Site</h2>
+  <hr />
+</div>
+```
+
 再添加另外一个用户控件，命名为TemplateByUserControl_footer.ascx，添加如下代码：
-> &lt;div id = "footer" &gt;
-> 
-> &lt;hr /&gt;
-> 
-> &lt;a href = "javascript:history.go('-1')"&gt;Back&lt;/a&gt; |
-> 
-> &lt;a href = "default.aspx" &gt;HomePage&lt;/a&gt; |
-> 
-> &lt;a href = "javascript:history.go('1')"&gt;Next&lt;/a&gt;
-> 
-> &lt;/div&gt;
-两个用户控件便添加完成了。在解决方案管理器中添加一个Web窗体新项，命名为TemplateByUserControl.aspx，在&lt;%@ Page ...%&gt;行后添加如下两行，用以注册刚刚建立的两个用户控件：
-> &lt;%@ Register Src="TemplateByUserControl_footer.ascx" TagName="TemplateByUserControl_footer"
-> 
-> TagPrefix="uc_footer" %&gt;
-> 
-> 
-> &lt;%@ Register Src="TemplateByUserControl_header.ascx" TagName="TemplateByUserControl_header"
-> 
-> TagPrefix="uc_header" %&gt;
-这便完成了用户控件的引用，然后在页面的&lt;head&gt;部分中添加对样式表的引用。再在&lt;form&gt;中添加如下的代码：
-> &lt;uc_header:TemplateByUserControl_header ID="id_uc_header" runat="server" /&gt;
-> 
-> &lt;p&gt;
-> 
-> This Page Achieve by UserControls.&lt;br /&gt;
-> 
-> UserControls: &lt;strong&gt;TemplateByUserControl_header.ascx&lt;/strong&gt; and &lt;strong&gt;TemplateByUserControl_footer.ascx&lt;/strong&gt;
-> 
-> &lt;/p&gt;
-> 
-> &lt;uc_footer:TemplateByUserControl_footer ID="id_uc_footer" runat="server" /&gt;
+```html
+<div id = "footer" >
+  <hr />
+  <a href = "javascript:history.go('-1')">Back</a|
+  <a href = "default.aspx" >HomePage</a|
+  <a href = "javascript:history.go('1')">Next</a>
+</div>
+```
+两个用户控件便添加完成了。在解决方案管理器中添加一个Web窗体新项，命名为TemplateByUserControl.aspx，在<%@ Page ...%>行后添加如下两行，用以注册刚刚建立的两个用户控件：
+
+```asp
+<%@ Register Src="TemplateByUserControl_footer.ascx" TagName="TemplateByUserControl_footer" TagPrefix="uc_footer" %>
+<%@ Register Src="TemplateByUserControl_header.ascx" TagName="TemplateByUserControl_header" TagPrefix="uc_header" %>
+```
+
+这便完成了用户控件的引用，然后在页面的<head>部分中添加对样式表的引用。再在<form>中添加如下的代码：
+
+```asp
+<uc_header:TemplateByUserControl_header ID="id_uc_header" runat="server" />
+<p>
+This Page Achieve by UserControls.<br />
+UserControls: <strong>TemplateByUserControl_header.ascx</strongand <strong>TemplateByUserControl_footer.ascx</strong>
+</p>
+<uc_footer:TemplateByUserControl_footer ID="id_uc_footer" runat="server" />
+```
+
 这便并两个用户控件安放到了页面中指定的位置。
 
 #### 3、利用Response.WriteFile来直接输出html文件
@@ -165,54 +133,60 @@ Response.WriteFile方法可以直接将某个文件输出到发给浏览器的HT
 
 和用户控件一样，这两部分需要两个Response.WriteFile语句来分别输出，而它们又来处于两个不同的HTML页。
 在解决方案管理器中添加一个新项，在模板中选择“文本文件”，命名为header.inc，输入如下代码：
-> &lt;div id = "header"&gt;
-> 
-> &lt;h2&gt;Template Test ASP.NET Site&lt;/h2&gt;
-> 
-> &lt;hr /&gt;
-> 
-> &lt;/div&gt;
+
+```html
+<div id = "header">
+<h2>Template Test ASP.NET Site</h2>
+<hr />
+</div>
+```
+
 再新建另外一个文本文件，命名为footer.inc，代码内容如下：
-> &lt;div id = "footer" &gt;
-> 
-> &lt;hr /&gt;
-> 
-> &lt;a href = "javascript:history.go('-1')"&gt;Back&lt;/a&gt; |
-> 
-> &lt;a href = "default.aspx" &gt;HomePage&lt;/a&gt; |
-> 
-> &lt;a href = "javascript:history.go('1')"&gt;Next&lt;/a&gt;
-> 
-> &lt;/div&gt;
-再在解决方案管理器中添加一个新项，在模板中选择“Web窗体”，命名为TemplateByWriteFile.aspx。再在&lt;form&gt;中添加如下代码：
-> &lt;% Response.WriteFile("header.inc"); %&gt;
-> 
-> &lt;p&gt;
-> 
-> This page achieve by Response.WriteFile Method.&lt;br /&gt;
-> 
-> INC file: &lt;strong&gt;header.inc&lt;/strong&gt;  and &lt;strong&gt;footer.inc&lt;/strong&gt;
-> 
-> &lt;/p&gt;
-> 
-> &lt;% Response.WriteFile("footer.inc"); %&gt;
-注意在页的&lt;head&gt;中添加对样式表的引用，即可实现。
+
+```html
+<div id = "footer" >
+<hr />
+<a href = "javascript:history.go('-1')">Back</a|
+<a href = "default.aspx" >HomePage</a|
+<a href = "javascript:history.go('1')">Next</a>
+</div>
+```
+
+再在解决方案管理器中添加一个新项，在模板中选择“Web窗体”，命名为TemplateByWriteFile.aspx。再在<form>中添加如下代码：
+
+```asp
+<% Response.WriteFile("header.inc"); %>
+<p>
+This page achieve by Response.WriteFile Method.<br />
+INC file: <strong>header.inc</strong>  and <strong>footer.inc</strong>
+</p>
+<% Response.WriteFile("footer.inc"); %>
+```
+
+注意在页的<head>中添加对样式表的引用，即可实现。
 
 #### 4、通过使用Include添加ASPX文件的方法实现
 
 利用Response.WriteFile是直接输出HTML代码，而通过include方法则可以向ASPX页中添加ASPX代码，这是从ASP中继承来的方法。
-需要注意的是，使用这个方法相当于把一个ASPX文件的所有代码添加到另外一个ASPX文件中的指定位置，而很多东西在一个ASPX文件中只有能一个，比如&lt;$@ Page ...$&gt;行，还有比如带有runat="server"属于的&lt;form&gt;，因此要特别注意，插入的文件中最好不要出现这些内容。
+需要注意的是，使用这个方法相当于把一个ASPX文件的所有代码添加到另外一个ASPX文件中的指定位置，而很多东西在一个ASPX文件中只有能一个，比如<$@ Page ...$>行，还有比如带有runat="server"属于的<form>，因此要特别注意，插入的文件中最好不要出现这些内容。
 
 使用下面的代码可以插入ASPX代码到文件中：
-> &lt;!--#include file = "TemplateByIncludeASPXfile_header.aspx" --&gt;
+
+```asp
+<!--#include file = "TemplateByIncludeASPXfile_header.aspx" -->
+```
+
 具体的实现方法与Response.WriteFile类似。
 
 #### 5、通过iframe方法实现
 
-iframe使得可以在一个ASPX页中插入另外一个ASPX页，但这并不是相当于把多个页的ASPX代码直接组合，只有在被请求时，被组合的页各自独立的运行并生成HTML代码，然后再把HTML代码进行组合。因此，各个ASPX页中都可以有各自的&lt;%@ Page... %&gt;和带有runat = "server"的form。
+iframe使得可以在一个ASPX页中插入另外一个ASPX页，但这并不是相当于把多个页的ASPX代码直接组合，只有在被请求时，被组合的页各自独立的运行并生成HTML代码，然后再把HTML代码进行组合。因此，各个ASPX页中都可以有各自的<%@ Page... %>和带有runat = "server"的form。
 
 具体的实现方法也比较简单，只要有HTML基础即可，例如，如下的代码可以进行ASPX页的iframe插入：
-> &lt;iframe id="header"  frameborder ="0" style = "width:100%; height:100px" src = "TemplateByIframe_header.aspx"&gt;&lt;/iframe&gt;
+
+```html
+<iframe id="header"  frameborder ="0" style = "width:100%; height:100px" src = "TemplateByIframe_header.aspx"></iframe>
+```
 
 ### 三、各方法的优点
 

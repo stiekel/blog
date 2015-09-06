@@ -20,8 +20,10 @@ a {
   padding: 15px;
   color: #fff;
 }
-.intro dd a {
+.intro dd .links {
   margin-right: 15px;
+}
+.intro dd a {
   color: #6BB9F0;
 }
 .intro dl {

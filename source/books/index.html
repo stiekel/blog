@@ -29,19 +29,20 @@
                 <dt ng-if="book.publisher">出版方</dt>
                 <dd ng-if="book.publisher">
                   <span ng-repeat="lnk in book.publisher">
-                    <a href="{{lnk.website}}" target="_publisher">{{lnk.name}}</a>
+                    <a class="links" href="{{lnk.website}}" target="_publisher">{{lnk.name}}</a>
                   </span>
                 </dd>
                 <dt ng-if="book.author">作者</dt>
                 <dd ng-if="book.author">
                   <span ng-repeat="lnk in book.author">
-                    <a href="{{lnk.website}}" target="_publisher">{{lnk.name}}</a>
+                    <a ng-show="lnk.website" class="links" href="{{lnk.website}}" target="_publisher">{{lnk.name}}</a>
+                    <span ng-hide="lnk.website" class="links" ng-bind="lnk.name"></span>
                   </span>
                 </dd>
                 <dt ng-if="book.translator">译者</dt>
                 <dd ng-if="book.translator">
                   <span ng-repeat="lnk in book.translator">
-                    <a href="{{lnk.website}}" target="_publisher">{{lnk.name}}</a>
+                    <a class="links" href="{{lnk.website}}" target="_publisher">{{lnk.name}}</a>
                   </span>
                 </dd>
                 <dt ng-if="book.desc">简介</dt>
@@ -49,7 +50,7 @@
                 <dt ng-if="book.links">链接</dt>
                 <dd ng-if="book.links">
                   <span ng-repeat="lnk in book.links">
-                    <a href="{{lnk.website}}" target="_links">{{lnk.name}}</a>
+                    <a class="links" href="{{lnk.website}}" target="_links">{{lnk.name}}</a>
                   </span>
                 </dd>
               </dl>

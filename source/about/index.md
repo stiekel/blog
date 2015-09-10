@@ -11,3 +11,4 @@ date: 2015-01-16 22:12:33
 *   My Twitter: [不可能不确定 - Twitter](http://twitter.com/SidCN)
 *   微博：[不可能不确定 - 微博](http://weibo.com/sidcn)
 *   饭否（已停止更新）: [不可能不确定 - 饭否](http://fanfou.com/ncbcy)
+*   我的出版物：[http://chensd.com/books/](http://chensd.com/books/)

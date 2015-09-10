@@ -21,6 +21,7 @@ function MainController($scope){
       author: [{name: 'Amos Q. Haviv', website: 'http://www.amoshaviv.com/'}],
       translator: [{name: '陈世帝', website: 'http://chensd.com'}],
       bigCover: 'http://7te9fe.com1.z0.glb.clouddn.com/books_mean_bigcover.jpg',
+      bigCover: './imgs/mean_bigcover.jpg',
       desc: '介绍如何利用 MongoDB / Express / AngularJS / Node.js 来进行 JavaScript Web全栈开发，包括构建普通的Web应用，进行实时通信，以及 JavaScript 应用的测试等。',
       links: [{name: "京东", website: "http://search.jd.com/search?keyword=%B3%C2%CA%C0%B5%DB&ev=&psort=2&book=y"}, {name: "当当网", website: "http://product.dangdang.com/23746907.html"}, {name: "电子书", website: "http://www.ituring.com.cn/book/1536"}]
     },

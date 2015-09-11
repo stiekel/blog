@@ -3,7 +3,6 @@ date: 2015-01-05 14:49:09
 tags:
   - JavaScript
 categories:
-  - 编程杂记
   - 翻译
 ---
 

@@ -4,7 +4,6 @@ tags:
   - 选项文件
 id: 1248
 categories:
-  - 编程杂记
   - 翻译
 date: 2011-02-12 00:42:46
 ---
@@ -31,55 +30,88 @@ date: 2011-02-12 00:42:46
 ## 为MySQL监视器配置选项
 
 在本书中经常可以看到在启动监视器时为其指定用户名和密码，诸如：
-> sid@sid-ubuntu-laptop:~$ mysql --user=root --password=db> 
-> Welcome to the MySQL monitor.  Commands end with ; or \g.> 
-> Your MySQL connection id is 50> 
-> Server version: 5.1.49-1ubuntu8.1 (Ubuntu)> 
-> Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.> 
-> This software comes with ABSOLUTELY NO WARRANTY. This is free software,> 
-> and you are welcome to modify and redistribute it under the GPL v2 license> 
-> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.> 
+> sid@sid-ubuntu-laptop:~$ mysql --user=root --password=db
+> 
+> Welcome to the MySQL monitor.  Commands end with ; or \g.
+> 
+> Your MySQL connection id is 50
+> 
+> Server version: 5.1.49-1ubuntu8.1 (Ubuntu)
+> 
+> Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
+> 
+> This software comes with ABSOLUTELY NO WARRANTY. This is free software,
+> 
+> and you are welcome to modify and redistribute it under the GPL v2 license
+> 
+> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+> 
 > mysql&gt;
 为了让你的指头少敲几次键盘，你可以将你的用户名和密码保存在一个选项文件里，并将选项文件放在一个监视器在启动时会去检索的位置，之后监视器在启动时，将会从选项文件中自动读取相应的用户名和密码。
 
 在这个选项文件里，首先要指定目标程序－－在这里将是MySQL监视器程序mysql－－再将各个选项一一列在它的后面：
-> [mysql]> 
-> user=root> 
+> [mysql]
+> 
+> user=root
+> 
 > password=db
 如果你使用的是Linux或者Mac OS X，在一个文本编辑器中输入如上的内容后，将其命名为.my.cnf并保存在用户目录中（~/.my.cnf），如果是Windows，将其命名为my.cnf并保存在 C盘的根目录中（ c:\my.cnf），然后，你将可以不用指定用户名和密码而启动MySQL监视器－－相应的值MySQL监视器会自动从选项文件中读取：
-> sid@sid-ubuntu-laptop:~$ mysql> 
-> Welcome to the MySQL monitor.  Commands end with ; or \g.> 
-> Your MySQL connection id is 47> 
-> Server version: 5.1.49-1ubuntu8.1 (Ubuntu)> 
-> Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.> 
-> This software comes with ABSOLUTELY NO WARRANTY. This is free software,> 
-> and you are welcome to modify and redistribute it under the GPL v2 license> 
-> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.> 
+> sid@sid-ubuntu-laptop:~$ mysql
+> 
+> Welcome to the MySQL monitor.  Commands end with ; or \g.
+> 
+> Your MySQL connection id is 47
+> 
+> Server version: 5.1.49-1ubuntu8.1 (Ubuntu)
+> 
+> Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
+> 
+> This software comes with ABSOLUTELY NO WARRANTY. This is free software,
+> 
+> and you are welcome to modify and redistribute it under the GPL v2 license
+> 
+> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+> 
 > mysql&gt;
 这实在是太方便了！不幸的是，现在要给你浇一盆冷水了，要提醒的是，将密码使用非加密的方式（纯文本）来存储绝对不是个好主意。至少你要保证只有你能够读写这个文件，在Linux和Mac OS X系统中，可以使用chrom命令来实现：
 > chmod u=rw,g=,o= ~/.my.cnf
 在本书的第二章中我们讨论了权限的设定，在便利和安全中进行权衡是系统和数据安全中一个永恒不变的话题。你需要确保每个程序的需求。
 
 让我们来看看另外一个例子，如果你想用MySQL监视器连接一个使用端口57777和地址mysql.chensd.com的mysql服务器，并准备使用该服务器上的music数据库，连接这个数据库的用户名为allmusic，密码为the_password，那启动MySQL监视器则需要使用如下的命令
-> $ mysql \> 
-> --host=mysql.chensd.com \> 
-> --port=57777 \> 
-> --user=allmusic \> 
-> --password=the_password \> 
+> $ mysql \
+> 
+> --host=mysql.chensd.com \
+> 
+> --port=57777 \
+> 
+> --user=allmusic \
+> 
+> --password=the_password \
+> 
 > --database=music
 输入这条命令将是一个恼人的过程，当然，你可以将这些值存储在如下的选项文件中
-> [mysql]> 
-> host=mysql.chensd.com> 
-> port=57777> 
-> user=allmusic> 
-> password=the_password> 
+> [mysql]
+> 
+> host=mysql.chensd.com
+> 
+> port=57777
+> 
+> user=allmusic
+> 
+> password=the_password
+> 
 > database=music
 考虑到安全问题，你可以不在选项文件中指定密码，并使用password来取代之，如下：
-> [mysql]> 
-> host=mysql.chensd.com> 
-> port=57777> 
-> user=allmusic> 
-> password> 
+> [mysql]
+> 
+> host=mysql.chensd.com
+> 
+> port=57777
+> 
+> user=allmusic
+> 
+> password
+> 
 > database=music
 这样，MySQL监视器就知道你需要指定密码，在进行连接之前，将会提示你输入密码。
 
@@ -90,40 +122,62 @@ date: 2011-02-12 00:42:46
 如果某个选项是针对所有客户端程序的，则可将其整理到[client]部分，同样的，[server]部分中所列出的选项将适用于所有的服务端程序。
 
 需要注意的是，不要将只有某些程序才有的选项加入到通用选项中。例如，mysql是一个客户端程序，且有database这个选项，但是，像mysqladmin和mysqlshow虽然也是客户端程序，但并没有database这个选项，如果将database这个选项放到[client]部分中，如下：
-> [client]> 
+> [client]
+> 
 > database=music
 那么这些程序就会出错并退出，像这样：
-> sid@sid-ubuntu-laptop:~$ mysqladmin status --user=root --password=db> 
+> sid@sid-ubuntu-laptop:~$ mysqladmin status --user=root --password=db
+> 
 > mysqladmin: unknown variable 'database=music'
 像database这样的选项，必须包含在[mysql]中，而不是放在[client]中。
 
 让我们来看看一个更有意思的选项文件：
-> [server]> 
-> user=mysql> 
-> port=67777> 
-> basedir=/usr/local/mysql-standard-5.0.22-linux-i686> 
-> socket=/home/mysql/servert.sock> 
-> datadir=/home/mysql/data> 
-> tmpdir=/home/sql/tmp> 
-> pid_file=/home/mysql/logs/server.pid> 
+> [server]
 > 
-> #log server message to:> 
-> log=/home/mysql/logs/servert.main.log> 
+> user=mysql
 > 
-> #log errors message to:> 
-> log_error=/home/mysql/logs/servert.errors.log> 
+> port=67777
 > 
-> #log update to this binary logfile> 
-> log_bir=/home/mysql/logs/servert.update.log> 
+> basedir=/usr/local/mysql-standard-5.0.22-linux-i686
 > 
-> [client]> 
-> socket=/home/mysql/servert.sock> 
+> socket=/home/mysql/servert.sock
 > 
-> [mysql]> 
-> database=mysql> 
+> datadir=/home/mysql/data
 > 
-> [mysqldump]> 
-> all-databases> 
+> tmpdir=/home/sql/tmp
+> 
+> pid_file=/home/mysql/logs/server.pid
+> 
+> 
+> #log server message to:
+> 
+> log=/home/mysql/logs/servert.main.log
+> 
+> 
+> #log errors message to:
+> 
+> log_error=/home/mysql/logs/servert.errors.log
+> 
+> 
+> #log update to this binary logfile
+> 
+> log_bir=/home/mysql/logs/servert.update.log
+> 
+> 
+> [client]
+> 
+> socket=/home/mysql/servert.sock
+> 
+> 
+> [mysql]
+> 
+> database=mysql
+> 
+> 
+> [mysqldump]
+> 
+> all-databases
+> 
 > result=/tmp/dump.sql
 这包括四部分，一个提供给所有的服务端程序，一个提供给所有的客户端程序，一个提供给mysql，一个提供给mysqldump，最后两个都是提供给客户端程序的，但我们列在上面的几个选项并不是所有的客户端程序都能够读取的，所以把它们分开列。
 如果一个选项出现在了两个都适用的部分（比如[client]和[mysql]）中，那么越具有针对性的选项会被优先应用（在这里将是[mysql]中的选项）。
@@ -178,23 +232,38 @@ default-file选项可以让MySQL程序忽略默认的选项文件，并从其指
 ## 判断选项是否有效
 
 有时候我们并不清楚运行某个程序时哪些个选项起到了作用，特别是当在多个文件夹中读取多个选项文件时。大多数MySQL程序都支持print-defaults选项，通过这个选项，可以知道运行程序时有哪些选项起到了作用。例如，想知道mysqldump程序运行是有哪些选项是起到了作用，可以使用如下的命令：
-> $ mysqldump --print-defaults> 
+> $ mysqldump --print-defaults
 > 
-> mysqldump would have been started with the following arguments:> 
-> --socket=/home/mysql/servert.sock> 
-> --all-databases> 
-> --result_file=/tmp/dump.sql> 
-> --host=localhost> 
-> --port=3306> 
-> --databases=Music> 
+> 
+> mysqldump would have been started with the following arguments:
+> 
+> --socket=/home/mysql/servert.sock
+> 
+> --all-databases
+> 
+> --result_file=/tmp/dump.sql
+> 
+> --host=localhost
+> 
+> --port=3306
+> 
+> --databases=Music
+> 
 > --result_file=/home/saied/dump.sql
 运行my_print_defaults命令并指定要查看的程序可以达到同样的效果，例如，要查看所有客户端程序和mysqldump的设置，可以使用如下的命令：
-> $ my_print_defaults client mysqldump> 
+> $ my_print_defaults client mysqldump
 > 
-> --socket=/home/mysql/servert.sock> 
-> --all-databases> 
-> --result_file=/tmp/dump.sql> 
-> --host=localhost> 
-> --port=3306> 
-> --databases=Music> 
+> 
+> --socket=/home/mysql/servert.sock
+> 
+> --all-databases
+> 
+> --result_file=/tmp/dump.sql
+> 
+> --host=localhost
+> 
+> --port=3306
+> 
+> --databases=Music
+> 
 > --result_file=/home/saied/dump.sql

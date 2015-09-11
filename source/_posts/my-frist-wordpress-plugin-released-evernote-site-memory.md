@@ -5,7 +5,6 @@ tags:
   - wordpress
 id: 1112
 categories:
-  - Wordpress
   - 建站相关
 date: 2010-11-16 00:06:39
 ---

@@ -3,7 +3,6 @@ tags:
   - php
 id: 1560
 categories:
-  - 编程杂记
   - 翻译
 date: 2012-12-02 08:35:09
 ---

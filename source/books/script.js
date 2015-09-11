@@ -29,7 +29,7 @@ function MainController($scope){
       name: 'Windows CE 嵌入式系统开发从基础到实践',
       nameEn: 'MEAN Web Development',
       cover: './imgs/wince-cover.jpg',
-      publishTime: '2015-8',
+      publishTime: '2008-3',
       backgroundColor: "#F39C12",
       publisher: [{name: '电子工业出版社', website: 'http://www.phei.com.cn/'}, {name: '博文视点', website: 'http://www.broadview.com.cn/#book/bookdetail/bookDetailAll.jsp?book_id=c8255f09-41dd-4614-89de-1c388dce4c62&isbn=978-7-121-05971-1'}],
       author: [{name: '薛大龙'}, {name: '陈世帝', website: 'http://chensd.com'}, {name: "王韵"}],

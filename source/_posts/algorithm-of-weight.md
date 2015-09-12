@@ -1,8 +1,9 @@
 title: 一种权重算法及其实现
 date: 2015-05-15 09:25:24
 tags:
-  - 编程杂记
   - JavaScript
+categories:
+  - 编程杂记
 ---
 
 一大早在[V2EX上看到有人讨论](https://v2ex.com/t/191209)一个关于权重的算法，源于题主的面试，他还发了[博文](http://www.cnblogs.com/javanerd/p/4504482.html)，果然，面试他的人夸奖了他的态度。这的确是难得的。

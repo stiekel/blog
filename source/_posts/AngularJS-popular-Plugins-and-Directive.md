@@ -3,6 +3,8 @@ date: 2015-06-01 18:21:23
 tags:
   - AngularJS
   - JavaScript
+categories:
+  - 编程杂记
 ---
 
 使用AngularJS有差不多一年时间了，前前后后也用了不少库和指令，整理了一下，分成四大类列出。有demo地址的，就直接连接到demo地址，其它的直接链到github托管库中。

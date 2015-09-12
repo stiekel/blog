@@ -2,6 +2,11 @@ title: 译作《 MEAN Web 开发》中文版发行
 date: 2015-09-11 05:31:50
 tags:
   - 翻译
+  - Node.js
+  - JavaScript
+categories:
+  - 翻译
+
 photos:
 - http://7te9fe.com1.z0.glb.clouddn.com/books_mean_bigcover.jpg
 ---

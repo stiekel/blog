@@ -18,10 +18,10 @@
       <div class="section" ng-repeat="book in bookInfo">
         <div class="slide" style="background-image: url({{book.bigCover}}); background-color: {{book.backgroundColor}}">
           <div class="intro container">
-            <div class="col-sm-4" class="cover">
+            <div id='cover-container' class="col-sm-4 col-xs-4 col-md-4 col-lg-4" class="cover">
               <img class="imgCover" ng-if="book.cover" ng-src="{{book.cover}}" />
             </div>
-            <div class="col-sm-8" class="content">
+            <div id="detail-container" class="col-sm-8 col-xs-8 col-md-8 col-lg-8" class="content">
               <h1>{{book.name}}</h1>
               <dl class="dl-horizontal">
                 <dt>出版时间</dt>

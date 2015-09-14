@@ -53,3 +53,24 @@ a {
     position: relative;
   }
 }
+
+@media (max-width: 600px) {
+#cover-container {
+  display: none;
+}
+#detail-container {
+  width: 100%;
+}
+.dl-horizontal dt {
+  display: block;
+}
+
+.dl-horizontal dd {
+  margin-left: 10px;
+}
+
+#menu {
+  display: none;
+}
+
+}

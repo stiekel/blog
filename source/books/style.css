@@ -54,12 +54,21 @@ a {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
+body {
+  font-size: 14px;
+}
 #cover-container {
   display: none;
 }
 #detail-container {
   width: 100%;
+}
+#detail-container h1 {
+  font-size: 20px;
+}
+.intro dl {
+  margin-top: 10px;
 }
 .dl-horizontal dt {
   display: block;

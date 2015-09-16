@@ -23,6 +23,7 @@ categories:
 *   [ngTagsInput](http://mbenford.github.io/ngTagsInput/) 以标签的方式来组织输入
 *   [Angular-slider](http://prajwalkman.github.io/angular-slider/) 以拖动方式输入值的控件
 *   [Angular Slidezilla](http://itslenny.github.io/angular-slidezilla/) 与Angular-slider功能一样，只不过设计风格不一样
+*   [Checklist-model](https://vitalets.github.io/checklist-model/) AngularJS 多选框输入的值处理得并不好，通过这个指令，可以方便的将多选框的值直接组织成数组（更新于2015-9-16）
 
 ### 界面类
 *   [ui-bootstrap](https://angular-ui.github.io/bootstrap/) 官方扩展，在AngularJS中方便的以指令的方式使用[Bootstrap](http://getbootstrap.com/)

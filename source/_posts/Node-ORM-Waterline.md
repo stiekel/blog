@@ -1,7 +1,6 @@
 title: Node.js ORM 数据操作中间件 Waterline
 date: 2015-10-25 16:31:51
 tags:
-tags:
   - Node.js
   - Waterline
 categories:
@@ -151,3 +150,5 @@ Mongoose 可以通过[中间件](http://mongoosejs.com/docs/middleware.html)，�
 当然，Waterline 还支持[自定义数据类型](https://github.com/balderdashy/waterline#custom-types)、[索引](https://github.com/balderdashy/waterline-docs/blob/1b17fbd12ce59b80bb4e53f197bacf0ca86a51d1/models/data-types-attributes.md#index)和[集合间的关联](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)。
 
 下篇文章，我将使用一个例子来展示如何在实际的项目中使用 Waterline。
+
+@2015-10-27 update，新文章[在 Express 项目中使用 Waterline ](http://chensd.com/2015-10/Use-Waterline-in-Express-project.html)已经完成。

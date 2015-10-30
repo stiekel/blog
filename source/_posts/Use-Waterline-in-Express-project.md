@@ -44,6 +44,7 @@ categories:
 所有的数据集合，全部组织在 `app/models` 目录中，直接使用 `module.exports` 来将 `Waterline.Collections` 实例导出，以便在 Waterline 的配置文件中调用。
 
 ```js
+// app/models/post.server.model.js
 var Waterline = require('waterline');
 
 module.exports = Waterline.Collection.extend({
@@ -74,9 +75,10 @@ module.exports = Waterline.Collection.extend({
 
 ### 配置
 
-配置里主要是生成 Waterline 的实例，并加载上面的数据集合配置文件。
+配置里主要是生成 Waterline 的实例，并加载上面的数据集合配置文件。下面是 Waterline 的配置文件，导出了配置所需要的代码，但并没有执行初始化。
 
 ```js
+// config/waterline.js
 var Waterline = require('waterline');
 var mongoAdapter = require('sails-mongo');
 var config = require('./config');
@@ -103,13 +105,14 @@ exports.orm = orm;
 exports.config = wlconfig;
 ```
 
-这里使用的是 `exports` 来导出，因为我们有两个值需要导出，一个是 Waterline 的实例，另外一个是 Waterline 的初始化配置。这在初始化的时候会用到。
+这里使用的是 `exports` 来导出，因为我们有两个值需要导出，一个是 Waterline 的实例，另外一个是 Waterline 的初始化配置。这在 Waterline 初始化的时候会用到。
 
 ### 初始化
 
 初始化是在 `bin/www` 里完成的，原因是保证 Express 启动监听，必须在 Waterline 的成功初始化之后进行。
 
 ```js
+// bin/www
 var app = require('../app');
 var config = require('../config/config');
 var waterline = require('../config/waterline');
@@ -135,9 +138,10 @@ waterline.orm.initialize(waterline.config, function(err, models){
 
 由于 Waterline 的初始化过程是异步的，所以我们没有办法直接使用 `module.exports` 或 `exports` 方法来导出它的实例，也就无法直接以 JavaScript 模块化的方式调用它实例中的数据集合。这里将借助 Express 的实例，来在控制器代码中使用它。
 
-但实际上，在控制器代码中，也是没有办法直接访问 Express 的实例的，所以这里我们在 Express 的配置里，增加一个中间件，将附加在 Express 实例上的数据集合，再加入到 Express 请求对象中，这样便可以在控制器代码中通过请求对象来访问 Waterline 实例的数据集合了。当然，加到响应对象也可以。
+但实际上，在控制器代码中，也是没有办法直接访问 Express 的实例的，所以这里我们在 Express 的配置里，增加一个中间件，将附加在 Express 实例上的数据集合，再加入到 Express 请求对象中，这样便可以在控制器代码中通过请求对象来访问 Waterline 实例的数据集合了。当然，加到响应对象也可以。下面的代码展示了如何在控制器中使用 Waterline 的数据集合。
 
 ```js
+// config/express.js
 var express = require('express');
 var waterline = require('./waterline');
 
@@ -159,10 +163,11 @@ module.exports = function(){
 在控制器里，便可以通过请求对象的 `models` 成员来调用了。
 
 ```js
+// app/controllers/post.server.controller.js
 module.exports = {
   list: function(req, res, next){
-    var page = parseInt(req.query.page, 1) ? parseInt(req.query.page, 1) : 1;
-    var limit = parseInt(req.query.limit, 1) ? parseInt(req.query.limit, 1) : 1;
+    var page = parseInt(req.query.page, 10) ? parseInt(req.query.page, 10) : 1;
+    var limit = parseInt(req.query.limit, 10) ? parseInt(req.query.limit, 10) : 1;
     req.models.post.find().paginate({page: page, limit: limit}).exec(function(err, docs){
       res.json(docs);
     });

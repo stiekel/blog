@@ -1,0 +1,85 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td,.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Microsoft YaHei",arial,sans-serif;
+  font-size: 18px;
+}
+a {
+  text-decoration:none;
+  cursor: pointer;
+}
+#menu { margin: 0; padding: 0; position: fixed; left: 10px; top: 10px; list-style-type: none; z-index: 70;}
+#menu li { float: left; margin:  0 10px 0 0; font-size: 14px;}
+#menu a { float: left; padding: 10px 20px; background-color: #fff; color: #333; text-decoration: none;}
+#menu .active a { color: #fff; background-color: #333;}
+.intro {
+  background-color: rgba(0,0,0,0.5);
+  padding: 15px;
+  color: #fff;
+}
+.intro dd .links {
+  margin-right: 15px;
+}
+.intro dd a {
+  color: #6BB9F0;
+}
+.intro dl {
+  margin-top: 30px;
+}
+.imgCover {
+  margin-top: -70px;
+}
+
+.dl-horizontal dt {
+  width: 80px;
+}
+
+.dl-horizontal dd {
+  margin-left: 100px;
+}
+
+@media \0screen\,screen\9 {
+  .intro {
+    background-color: #000; 
+    filter: alpha(opacity=20);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    *zoom: 1;
+  }
+  .intro h1 {
+    position: relative;
+  }
+}
+
+@media (max-width: 720px) {
+body {
+  font-size: 14px;
+}
+#cover-container {
+  display: none;
+}
+#detail-container {
+  width: 100%;
+}
+#detail-container h1 {
+  font-size: 20px;
+}
+.intro dl {
+  margin-top: 10px;
+}
+.dl-horizontal dt {
+  display: block;
+}
+
+.dl-horizontal dd {
+  margin-left: 10px;
+}
+
+#menu {
+  display: none;
+}
+
+}

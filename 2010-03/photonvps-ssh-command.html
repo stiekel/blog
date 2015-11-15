@@ -1,0 +1,694 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
+
+
+
+  <meta name="keywords" content="Linux,PhotonVPS,VPS,ssh,命令," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="可能像我一样对Linux并不怎么了解的人大有人在，所以也为了方便像我这样的人，特立此文。不求最全，只列所需。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PhotonVPS系列之四：SSH终端基本命令">
+<meta property="og:url" content="http://chensd.com/2010-03/photonvps-ssh-command.html">
+<meta property="og:site_name" content="不可能不确定">
+<meta property="og:description" content="可能像我一样对Linux并不怎么了解的人大有人在，所以也为了方便像我这样的人，特立此文。不求最全，只列所需。">
+<meta property="og:image" content="http://chensd.com/upfile/2010/03/photonvps-linux-ssh.jpg">
+<meta property="og:updated_time" content="2014-12-30T01:22:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PhotonVPS系列之四：SSH终端基本命令">
+<meta name="twitter:description" content="可能像我一样对Linux并不怎么了解的人大有人在，所以也为了方便像我这样的人，特立此文。不求最全，只列所需。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> PhotonVPS系列之四：SSH终端基本命令 | 不可能不确定 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">不可能不确定</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              PhotonVPS系列之四：SSH终端基本命令
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2010-03-15T20:31:30-04:00" content="Mar 15 2010">
+            Mar 15 2010
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/建站相关/" itemprop="url" rel="index">
+                  <span itemprop="name">建站相关</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2010-03/photonvps-ssh-command.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2010-03/photonvps-ssh-command.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><div id="_mcePaste">可能像我一样对Linux并不怎么了解的人大有人在，所以也为了方便像我这样的人，特立此文。不求最全，只列所需。</div><br><div id="_mcePaste"><a id="more"></a></div><br><div>首先，对Webmin还不了解的同学，请移步<a href="http://chensd.com/2010-03/photonvps-webmin-control-panel.html">这里</a>。</div>
+
+<h2 id="一、使用SSH连接VPS">一、使用SSH连接VPS</h2><div>PhotonVPS在交费后大约四个小时左右，会向你的注册email发送一个开通通知，通知中包括VPS的IP地址以及root密码，这便是你通过SSH登陆的所有信息。对于Win用户，可以在<a href="http://www.vpser.net/uncategorized/putty-ssh-linux-vps.html" target="_blank" rel="external">这里</a>查看详细连接方法，对于Linux用户，可以直接打开终端，然后输入如下命令：</div><br><div>ssh root@173.224.209.19</div><br><div>然后会提示一个RSA确认，输入yes，再输入密码即可，默认的密码是没有规律的，最好是<a href="http://chensd.com/2010-03/photonvps-webmin-control-panel.html">通过Webmin来修改一个易记而复杂的密码</a>。</div><br><div><a href="/upfile/2010/03/photonvps-linux-ssh.jpg"><img src="/upfile/2010/03/photonvps-linux-ssh.jpg" alt="" title="photonvps-linux-ssh"></a></div>
+
+<h2 id="二、文件和文件夹操作类">二、文件和文件夹操作类</h2><div id="_mcePaste">切换目录：cd</div><br><div id="_mcePaste">例：要打开PhotonVPS上所安装的Apache2的默认根目录，可以使用以下命令：</div><br><div id="_mcePaste">cd /var/www</div><br><div id="_mcePaste">当前目录是/var/www/，如果想回到/var目录，则可以使用</div><br><div id="_mcePaste">cd ..</div><br><div id="_mcePaste">注意两个英文句号与cd之间，有个空格。</div><br><div id="_mcePaste">当前目录是/var/www/，如果想回到根目录，则可以使用</div><br><div id="_mcePaste">cd</div><br><div id="_mcePaste">不带任何参数，可以直接从任意目录回到根目录。</div><br><div id="_mcePaste">任意位置查看根目录下的文件列表情况：</div><br><div id="_mcePaste">ls /</div><br><div id="_mcePaste">查看/var/www目录中的文件列表</div><br><div id="_mcePaste">ls /var/www</div><br><div id="_mcePaste">查看当前目录下的文件列表</div><br><div id="_mcePaste">Ls</div><br><div id="_mcePaste">需要注意的是，在根目录下如果要查看根目录文件列表，必须用ls /。</div><br><div id="_mcePaste">若要建立文件夹blog，可使用如下命令：</div><br><div id="_mcePaste">mkdir blog</div><br><div id="_mcePaste">删除blog文件夹，可使用如下命令：</div><br><div id="_mcePaste">rm –rf blog</div><br><div id="_mcePaste">删除文件index.php，可使用如下命令：</div><br><div id="_mcePaste">rm index.php</div><br><div id="_mcePaste">将目录wordpress重命名为www，可使用如下命令：</div><br><div id="_mcePaste">mv wordpress www</div>
+
+<h2 id="三、文件下载与解压类">三、文件下载与解压类</h2><div id="_mcePaste">例如，要从wordpress官方网站下载最新版的wp，则可以使用以下命令：</div><br><div id="_mcePaste">wget <a href="http://wordpress.org/latest.tar.gz" target="_blank" rel="external">http://wordpress.org/latest.tar.gz</a></div><br><div id="_mcePaste">再将latest.tar.gz解压为latest.tar，可用以下命令：</div><br><div id="_mcePaste">gzip –d latest.tar.gz</div><br><div id="_mcePaste">将latest.tar解压，可使用以下命令</div><br><div id="_mcePaste">tar xvf latest.tar</div><br><div id="_mcePaste">即可看到wordpress目录。</div>
+
+<h2 id="四、权限分配类">四、权限分配类</h2><div id="_mcePaste">有时候，需要给目录分配一定的权限，例如，要正常的运行wordpress（存储在/var/www），则需要对相应的目录使用以下命令：</div><br><div id="_mcePaste">chmod 755 /var/www</div><br><div id="_mcePaste">将wordpress目录设置为www-data用户的目录</div><br><div id="_mcePaste">chown www-data /var/www/</div>
+
+<h2 id="五、下载解压wordpress实例">五、下载解压wordpress实例</h2><div id="_mcePaste">下面将以从网上下载wordpress，并解压到/var/www/为例进行演示：</div><br><div id="_mcePaste">cd /var/                                                                     //打开/var目录，即/var/www的上层目录</div><br><div id="_mcePaste">wget <a href="http://wordpress.org/latest.tar.gz" target="_blank" rel="external">http://wordpress.org/latest.tar.gz</a>     //下载wordpress最新版</div><br><div id="_mcePaste">gzip -d latest.tar.gz                                                //解压gz文件</div><br><div id="_mcePaste">tar xvf latest.tar                                                     //解压tar包</div><br><div id="_mcePaste">rm –rf www                                                               //删除www目录</div><br><div id="_mcePaste">mv wordprss www                                                 //将wordpress目录直接命令为www</div>
+
+<h2 id="六、SSH命令大全">六、SSH命令大全</h2><div id="_mcePaste">一个比你现在看到的这个要全的说明在<a href="http://www.vpser.net/build/linux-vps-ssh-command.html" target="_blank" rel="external">这里</a>，如果你还想更全，参照各Linux命令文章即可</div></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+            <a href="/tags/PhotonVPS/" rel="tag">#PhotonVPS</a>
+          
+            <a href="/tags/VPS/" rel="tag">#VPS</a>
+          
+            <a href="/tags/ssh/" rel="tag">#ssh</a>
+          
+            <a href="/tags/命令/" rel="tag">#命令</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2010-03/photonvps-frist-offline.html" rel="prev">经历PhotonVPS的第一次倒掉</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2010-03/photonvps-webmin-control-panel.html" rel="next">PhotonVPS系列之三：Webmin控制面板</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2010-03/photonvps-ssh-command.html"
+                   data-title="PhotonVPS系列之四：SSH终端基本命令" data-url="http://chensd.com/2010-03/photonvps-ssh-command.html">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Sid</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、使用SSH连接VPS"><span class="nav-number">1.</span> <span class="nav-text">一、使用SSH连接VPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、文件和文件夹操作类"><span class="nav-number">2.</span> <span class="nav-text">二、文件和文件夹操作类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、文件下载与解压类"><span class="nav-number">3.</span> <span class="nav-text">三、文件下载与解压类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、权限分配类"><span class="nav-number">4.</span> <span class="nav-text">四、权限分配类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、下载解压wordpress实例"><span class="nav-number">5.</span> <span class="nav-text">五、下载解压wordpress实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、SSH命令大全"><span class="nav-number">6.</span> <span class="nav-text">六、SSH命令大全</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2010 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sid</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sidcn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

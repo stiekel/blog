@@ -1,0 +1,708 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
+
+
+
+  <meta name="keywords" content="Gulp,JavaScript," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 public 中，Bower 也配置为将依赖包直接安装到 public/lib 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。
+上周在做一个 App 项目的商">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Gulp 构建 AngularJS / Jade 项目">
+<meta property="og:url" content="http://chensd.com/2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html">
+<meta property="og:site_name" content="不可能不确定">
+<meta property="og:description" content="我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 public 中，Bower 也配置为将依赖包直接安装到 public/lib 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。
+上周在做一个 App 项目的商">
+<meta property="og:updated_time" content="2015-11-15T05:44:22.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Gulp 构建 AngularJS / Jade 项目">
+<meta name="twitter:description" content="我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 public 中，Bower 也配置为将依赖包直接安装到 public/lib 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。
+上周在做一个 App 项目的商">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 使用 Gulp 构建 AngularJS / Jade 项目 | 不可能不确定 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">不可能不确定</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              使用 Gulp 构建 AngularJS / Jade 项目
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-08T07:22:45-05:00" content="Nov 8 2015">
+            Nov 8 2015
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/编程杂记/" itemprop="url" rel="index">
+                  <span itemprop="name">编程杂记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 <code>public</code> 中，Bower 也配置为将依赖包直接安装到 <code>public/lib</code> 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。</p>
+<p>上周在做一个 App 项目的商户端，对应的 API 已经完成，只是用 AngularJS 来实现一个前端 Web 页面，其中的 HTML 使用了 Jade 来完成。由于是一个完全的前端项目，终于决定尝试用 Gulp 来进行构建。整体的需求如下：</p>
+<ul>
+<li>使用 Bower 管理前端依赖</li>
+<li>需要将 Jade 文件编码成 HTML，并按照 Angular New Router 中的 Components 来组织目录结构</li>
+<li>将 CSS / JavaScript 文件组装为单个文件</li>
+<li>图片和字体等静态资源存放到对应目录</li>
+<li>使用 Gulp 创建一个调试用的服务器，并能够修改文件后自动重载浏览器页面</li>
+</ul>
+<a id="more"></a>
+<h3 id="项目的目录与文件结构">项目的目录与文件结构</h3><p>整体文件夹结构如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">├── app</span><br><span class="line">│   ├── controllers // AngularJS 控制器</span><br><span class="line">│   │   └── home.js</span><br><span class="line">│   ├── modules // AngularJS 模块</span><br><span class="line">│   │   └── app.js</span><br><span class="line">│   ├── services // AngularJS 服务</span><br><span class="line">│   │   └── city.client.service.js</span><br><span class="line">│   └── views // Jade 文件</span><br><span class="line">│       ├── index.jade</span><br><span class="line">│       └── _partial</span><br><span class="line">│           └── home.jade</span><br><span class="line">├── bower.json</span><br><span class="line">├── config.js</span><br><span class="line">├── gulpfile.js</span><br><span class="line">├── package.json</span><br><span class="line">├── README.md</span><br><span class="line">└── static</span><br><span class="line">    ├── css</span><br><span class="line">    │   └── style.css</span><br><span class="line">    └── images</span><br><span class="line">        ├── avatar.png</span><br><span class="line">        └── logo.gif</span><br></pre></td></tr></table></figure>
+<p>另外还有个 <code>public</code> 目录，作为发布目录，提供给 Web 服务器对外发布。所有需要在浏览器使用的文件，最后使用都要生成或者复制到 <code>public</code> 中。</p>
+<h3 id="使用_Bower_管理前端依赖">使用 Bower 管理前端依赖</h3><p>悲剧，在我定这篇文章的大纲的时候， Bower 还在更新，结果没两天就宣布不再开发了。</p>
+<p>Bower 之所以在以前统治着前端包管理领域，原因在于它的扁平化包管理， NPM 中每个模块都有独立的属于各自的目录，来存储对应的依赖包，虽然会占用比较多的磁盘，但却可以防止模块版本不同而造成的依赖问题。 Bower 本身并不直接决定应用的包依赖，它将模块的依赖同模块本身一样安装。</p>
+<p>自从 NPM 成立专门的公司来运营以后，已经致力于将自己从 <code>Node Package Manager</code> 提升为 <code>JavaScript Package Manager</code>。所以也开始像 Bower 来组织模块的依赖—— Bower 存在的理由又少了一个。</p>
+<p>这两天，网上正在嘲笑 <code>bower --save</code> 并不会把当前已经安装的依赖存储到 <code>bower.json</code> ，不过我怀疑他们没有看到过 NPM 3.3.x 是怎么处理依赖的， <code>npm --save</code> 后的 <code>package.json</code> 估计会相当的不堪入目吧。</p>
+<h3 id="Jade_模板文件转换为_HTML_文件">Jade 模板文件转换为 HTML 文件</h3><p>以前 Jade 文件是使用 Express 的 <code>view engine</code> 来转译，在专门的路由文件中，一一按照 Angular New Router 的 Components 标准来进行解析。使用 Gulp 转换也是类似，借助 <code>gulp-jade</code> 模块，设置 <code>gulp.src</code> 为 jade 文件路径，<code>gulp.dest</code> 为转换后的 HTML 文件路径，为了方便，将需要转换的 jade 文件和对应的路径组成一个数组，再在 <code>gulp.task</code> 中对数据进行遍历，并执行转换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'gulp-jade'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jadeFiles = [</span><br><span class="line">  &#123;src: <span class="string">'./app/views/index.jade'</span>, dest: <span class="string">'./public/'</span>&#125;,</span><br><span class="line">  &#123;src: <span class="string">'./app/views/_partial/home.jade'</span>, dest: <span class="string">'./public/components/home/'</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'jade'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  jadeFiles.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">jf</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!jf.src || !jf.dest) <span class="keyword">return</span>;</span><br><span class="line">    gulp.src(jf.src)</span><br><span class="line">      .pipe(jade(&#123;petty: <span class="literal">true</span>&#125;))</span><br><span class="line">      .pipe(gulp.dest(jf.dest));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="将_JavaScript_/_CSS_文件组装为单个文件">将 JavaScript / CSS 文件组装为单个文件</h3><p>对于遵循 AngularJS 模块化设计的前端应用， JavaScript 文件那必然是相当多，再加上使用一些扩展，就算是中小型项目，超过 70 个以上那也是相当常见，看 Chrome 开发工具中的 Network 页那可以部是相当精彩，</p>
+<p>如果只是将多个 JavaScript 和 CSS 文件合为一个，使用 <code>gulp-concat</code> 模块即可，压缩 JavaScript 文件，可以再加一个 <code>gulp-uglify</code> 模块，压缩 CSS 文件，可以使用 <code>gulp-minify-css</code> 模块。<code>gulp.src</code> 支持使用数组的方式来指定要处理的文件列表。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> minifyCss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>);</span><br><span class="line"><span class="keyword">var</span> jsFiles = [</span><br><span class="line">    <span class="string">'./bower_components/jquery/dist/jquery.js'</span>, </span><br><span class="line">    <span class="string">'./bower_components/bootstrap/dist/js/bootstrap.min.js'</span>, </span><br><span class="line">    <span class="string">',/bower_components/PACE/pace.min.js'</span>, </span><br><span class="line">    <span class="string">'./bower_components/angular/angular.js'</span>, </span><br><span class="line">    <span class="string">'./bower_components/angular-new-router/dist/router.es5.js'</span>, </span><br><span class="line">    <span class="string">'./bower_components/at-table/dist/angular-table.js'</span>, </span><br><span class="line">    <span class="string">'./app/modules/businessApp.js'</span>, </span><br><span class="line">    <span class="string">'./app/controllers/home.js'</span></span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> cssFiles = [</span><br><span class="line">    <span class="string">'./bower_components/bootstrap/dist/css/bootstrap.min.css'</span>, </span><br><span class="line">    <span class="string">'./bower_components/font-awesome/css/font-awesome.min.css'</span>, </span><br><span class="line">    <span class="string">'./bower_components/PACE/themes/blue/pace-theme-loading-bar.css'</span>, </span><br><span class="line">    <span class="string">'./static/css/start.css'</span></span><br><span class="line">];</span><br><span class="line"><span class="comment">// 在这两个 `min` 任务之外，还有两个不带 `min` 的任务，区别在于不对文件压缩</span></span><br><span class="line">gulp.task(<span class="string">'scripts_min'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(jsFiles)</span><br><span class="line">    .pipe(concat(<span class="string">'all.js'</span>)) <span class="comment">// 合并 JavaScript ，并设置合并后的文件名</span></span><br><span class="line">    .pipe(uglify()) <span class="comment">// 执行 JavaScript 压缩</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./public/js'</span>));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'stylesheets_min'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(cssFiles)</span><br><span class="line">    .pipe(concat(<span class="string">'all.css'</span>)) <span class="comment">// 合并 CSS ，并设置合并后的文件名</span></span><br><span class="line">    .pipe(minifyCss()) <span class="comment">// 执行 CSS 压缩</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./public/stylesheet'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="管理图片字体等静态资源">管理图片字体等静态资源</h3><p>对于图片、字体等文件，只是需要使用 Gulp 自带的 <code>gulp.src</code> 和 <code>gulp.dest</code> 来复制到 Web 目录即可。除了这些静态文件，有些文件可能也需要单独处理，比如 JavaScript 中的一些配置项文件，另外，如果使用加载状态提示模块，这个也是需要优秀加载的。顺便安利一下 <a href="http://github.hubspot.com/pace/docs/welcome/" target="_blank" rel="external">PACE</a> ，它是个使用相当方便的加载提示模块。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'pace'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// copy pace.js to js folder</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./bower_components/PACE/pace.min.js'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./public/js'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其它需要直接复制的文件，也都是类似方法处理。</p>
+<h3 id="使用_Gulp_来创建文件修改后浏览器自动刷新的_Web_服务器">使用 Gulp 来创建文件修改后浏览器自动刷新的 Web 服务器</h3><p>如果想要文件修改后，浏览器自动刷新，需要做两方面的工作：</p>
+<ul>
+<li>监控 JavaScript / Jade / CSS 文件，修改后重新转换或者压缩</li>
+<li>监控 JavaScript / Jade / CSS 文件，修改后刷新浏览器</li>
+</ul>
+<p>对于第一个，使用 <code>gulp-watch</code> 模块来监视文件，并执行对应的 Task ，对于第二个，可以使用 <code>gulp-webserver</code> 模块，它可以创建一个 Web 服务器，并且在浏览器和服务器之间创建 Socket.IO 长链接，一旦有文件修改，便通过长链接通知浏览器刷新页面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> webserver = <span class="built_in">require</span>(<span class="string">'gulp-webserver'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 不同的文件个性，需要执行不同的任务来处理</span></span><br><span class="line">  gulp.watch([<span class="string">'app/views/*'</span>, <span class="string">'app/views/_partial/*'</span>], [<span class="string">'jade'</span>]);</span><br><span class="line">  gulp.watch([<span class="string">'bower_components/*'</span>], [<span class="string">'scripts'</span>, <span class="string">'stylesheets'</span>]);</span><br><span class="line">  gulp.watch([<span class="string">'static/css/*'</span>], [<span class="string">'stylesheets'</span>]);</span><br><span class="line">  gulp.watch([<span class="string">'app/controllers/*'</span>, <span class="string">'app/modules/*'</span>, <span class="string">'app/services/*'</span>], [<span class="string">'scripts'</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'webserver'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  gulp.src(<span class="string">'./public/'</span>)</span><br><span class="line">    .pipe(webserver(&#123;</span><br><span class="line">      host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">      livereload: <span class="literal">true</span>,</span><br><span class="line">      fallback: <span class="string">'index.html'</span></span><br><span class="line">    &#125;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gulp/" rel="tag">#Gulp</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015-10/Use-Waterline-in-Express-project.html" rel="next">在 Express 项目中使用 Waterline</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html"
+                   data-title="使用 Gulp 构建 AngularJS / Jade 项目" data-url="http://chensd.com/2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Sid</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目的目录与文件结构"><span class="nav-number">1.</span> <span class="nav-text">项目的目录与文件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用_Bower_管理前端依赖"><span class="nav-number">2.</span> <span class="nav-text">使用 Bower 管理前端依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jade_模板文件转换为_HTML_文件"><span class="nav-number">3.</span> <span class="nav-text">Jade 模板文件转换为 HTML 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将_JavaScript_/_CSS_文件组装为单个文件"><span class="nav-number">4.</span> <span class="nav-text">将 JavaScript / CSS 文件组装为单个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理图片字体等静态资源"><span class="nav-number">5.</span> <span class="nav-text">管理图片字体等静态资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用_Gulp_来创建文件修改后浏览器自动刷新的_Web_服务器"><span class="nav-number">6.</span> <span class="nav-text">使用 Gulp 来创建文件修改后浏览器自动刷新的 Web 服务器</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2010 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sid</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sidcn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

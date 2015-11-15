@@ -1,0 +1,711 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
+
+
+
+  <meta name="keywords" content="ajax,php," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="最近与xiaofeng在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。
+AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在浏览器中每次点击都要刷新页面才能获取新数据的缺点，用户在浏览器的行为将被AJAX的JavaScript脚本捕">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用PHP和AJAX实现“顶”贴功能">
+<meta property="og:url" content="http://chensd.com/2011-05/implement-dig-with-php-and-ajax.html">
+<meta property="og:site_name" content="不可能不确定">
+<meta property="og:description" content="最近与xiaofeng在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。
+AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在浏览器中每次点击都要刷新页面才能获取新数据的缺点，用户在浏览器的行为将被AJAX的JavaScript脚本捕">
+<meta property="og:image" content="http://chensd.com/upfile/2011/05/dig.png">
+<meta property="og:updated_time" content="2014-12-30T01:22:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用PHP和AJAX实现“顶”贴功能">
+<meta name="twitter:description" content="最近与xiaofeng在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。
+AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在浏览器中每次点击都要刷新页面才能获取新数据的缺点，用户在浏览器的行为将被AJAX的JavaScript脚本捕">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 利用PHP和AJAX实现“顶”贴功能 | 不可能不确定 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">不可能不确定</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              利用PHP和AJAX实现“顶”贴功能
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2011-05-15T20:16:54-04:00" content="May 15 2011">
+            May 15 2011
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/编程杂记/" itemprop="url" rel="index">
+                  <span itemprop="name">编程杂记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011-05/implement-dig-with-php-and-ajax.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011-05/implement-dig-with-php-and-ajax.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>最近与<a href="http://shenxf.com" target="_blank" rel="external">xiaofeng</a>在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。</p>
+<p>AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在浏览器中每次点击都要刷新页面才能获取新数据的缺点，用户在浏览器的行为将被AJAX的JavaScript脚本捕获，并适时的向服务器获取数据，再在浏览器中进行显示。</p>
+<h3 id="1、实现功能与结构">1、实现功能与结构</h3><p>最终的结果，是实现一个由一个超连接和一个span，点击超连接后，将数据库中该文章被顶次数加1，另外将span中显示的被顶数加1。具体演示可以参考<a href="Digg.com">Digg.com</a>主页中的Digg按钮。这一功能分别有以下两个文件来实现：</p>
+<ul>
+<li><p>index.php：文章列表，有多篇文章，每篇文章标题的左侧显示有该文章的被顶数及“顶”按钮；<br><a href="/upfile/2011/05/dig.png"><img src="/upfile/2011/05/dig.png" alt="" title="dig"></a></p>
+</li>
+<li><p>dig.php：接受一个get参数，名称为postid，值为文章的id，实现的功能是将这篇文章存储在数据库中的被顶次数加1；</p>
+</li>
+<li>dig.js：存储超链接的单击事件，在超链接单击后，一方面将文章id传给dig.php，另外将index.php页面中的被顶数加1；<a id="more"></a>
+</li>
+</ul>
+<h3 id="2、index-php中“顶”及被顶次数">2、index.php中“顶”及被顶次数</h3><p>在一个文章列表中，拥有多个文章，而为了控制每篇文章的次数，需要对显示被顶次数的span指定一个唯一的id。例如，下面的代码可以实现这一功能（$row为从数据库中取出的一行，其中id为文章id，dig为该文章被顶次数）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">span</span> <span class="attribute">id</span> = "<span class="attribute">numDig-</span><span class="php"><span class="preprocessor">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">"id"</span>]<span class="preprocessor">?&gt;</span></span>"&gt;</span><span class="php"><span class="preprocessor">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">'dig'</span>];<span class="preprocessor">?&gt;</span></span><span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>利用文章在数据库中的id和一个固定的字符串就为span指定了唯一的id，如numDig-474等。</p>
+<p>在其下方还有一个供点击的超连接，超连接的单击事件将调用javascript中自定义的dig函数，并向其传送一个参数，参数内容为被顶文章的id，实现如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">onclick</span> = "<span class="attribute">dig</span>(<span class="php"><span class="preprocessor">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">'id'</span>];<span class="preprocessor">?&gt;</span></span>)" <span class="attribute">id</span> = "<span class="attribute">btnDig-</span><span class="php"><span class="preprocessor">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">'id'</span>]<span class="preprocessor">?&gt;</span></span>"&gt;</span>顶<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>文章列表中显示被顶次数的顶贴连接就完成了。</p>
+<h3 id="2、dig-js中AJAX的实现">2、dig.js中AJAX的实现</h3><p>对于这个脚本来讲，它要实现以下两个方面的功能</p>
+<ul>
+<li>改变index.php中由id为numDig-postid的span中显示的被顶次数，使其加1；</li>
+<li>向dig.php提交被顶文章的id，以便其更新数据库中的数据；<br>先看改变index.php中被顶次数显示的实现，这里用一个自定义函数实现，函数名changeNumDig，需要传送一个参数，即被改变被顶次数文章的id。调用函数后，先检查参数是否为一个数字，若是则选构造显示被顶次数的span的id，其结构为numDig-postid，再获取其中存储的被顶次数值，并递增1。代码如下：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeNumDig</span>(<span class="params">postid</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(postid)) &#123;</span><br><span class="line">        spanNumDigName = &amp;quot;numDig-&amp;quot; + postid;</span><br><span class="line">        numDig = <span class="built_in">document</span>.getElementById(spanNumDigName).innerHTML;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(numDig)) &#123;</span><br><span class="line">            numDig ++;</span><br><span class="line">            <span class="built_in">document</span>.getElementById(spanNumDigName).innerHTML = numDig;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外就是更改数据库中的被顶次数，即向dig.php提交被顶文章的id，构造一个URL，再将其提交即可。这一过程需要使用AJAX中最重要的对象XmlHttpRequest，这一对象的创建不同的浏览器不一样，具体创建的方法可以参考<a href="http://www.w3school.com.cn/php/php_ajax_xmlhttprequest.asp" title="AJAX XMLHttpRequest" target="_blank" rel="external">W3CSchool中的介绍</a>。代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetXmlHttpRequest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xmlHttpReq = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">    xmlHttpReq = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">        xmlHttpReq = <span class="keyword">new</span> ActiveXObject(&amp;quot;Msxml2.XMLHTTP&amp;quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        xmlHttpReq = <span class="keyword">new</span> ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> xmlHttpReq;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体实现过程是使用XmlHttpRequest对象的open方法，实现代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dig</span>(<span class="params">postid</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(postid)) &#123;</span><br><span class="line">        <span class="keyword">var</span> url = &amp;quot;dig.php?postid=&amp;quot; + postid;</span><br><span class="line">        xmlHttpReq = GetXmlHttpRequest();</span><br><span class="line">        xmlHttpReq.open(&amp;quot;GET&amp;quot;, url, <span class="literal">true</span>);</span><br><span class="line">        xmlHttpReq.send(<span class="literal">null</span>);</span><br><span class="line">        changeNumDig(postid);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、dig.php修改数据库中的被顶次数</p>
+<p>dig.php接受一个需要改变被顶次数的文章id，然后在数据库中查询其所在行，将其dig属性自增1即可。</p>
+<p>考虑到安全问题，也需要先检查传进来的文章id是否为数字，然后连接数据库，构造查询字符串，执行检查并关闭即可。具体实现代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="variable">$_GET</span>[<span class="string">'postid'</span>]) <span class="keyword">and</span> (ctype_digit(<span class="variable">$_GET</span>[<span class="string">'postid'</span>]))) &#123;</span><br><span class="line">    <span class="keyword">require_once</span>(<span class="string">'config.php'</span>);</span><br><span class="line">    <span class="variable">$db</span> = <span class="keyword">new</span> mysqli(<span class="variable">$dbhost</span>, <span class="variable">$dbuser</span>, <span class="variable">$dbpwd</span>, <span class="variable">$dbname</span>) <span class="keyword">or</span> <span class="keyword">die</span>();</span><br><span class="line">    <span class="variable">$query_string</span> = &amp;quot;UPDATE top10_posts SET dig = dig + <span class="number">1</span> WHERE id =&#123;<span class="variable">$_GET</span>[<span class="string">'postid'</span>]&#125;&amp;quot;;</span><br><span class="line">    <span class="variable">$db</span>-&gt;query(<span class="string">'SET character_set_client = utf8'</span>);</span><br><span class="line">    <span class="variable">$db</span>-&gt;query(<span class="string">'SET character_set_connection = utf8'</span>);</span><br><span class="line">    <span class="variable">$db</span>-&gt;query(<span class="string">'SET character_set_results = utf8'</span>);</span><br><span class="line">    <span class="variable">$db</span>-&gt;query(<span class="variable">$query_string</span>);</span><br><span class="line">    <span class="variable">$db</span>-&gt;close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上三部分即可实现顶贴功能，这可以在很多Web2.0和聚合网站中看到，只不过可能要相对复杂，但实现的逻辑大都如此。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax/" rel="tag">#ajax</a>
+          
+            <a href="/tags/php/" rel="tag">#php</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011-06/excuse-to-sidchen.html" rel="prev">给SidChen@Gmail.com主人的一封信！另：Google Accounts的安全性问题</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011-03/cisco-srp532w.html" rel="next">坑爹的思科精睿</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2011-05/implement-dig-with-php-and-ajax.html"
+                   data-title="利用PHP和AJAX实现“顶”贴功能" data-url="http://chensd.com/2011-05/implement-dig-with-php-and-ajax.html">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Sid</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、实现功能与结构"><span class="nav-number">1.</span> <span class="nav-text">1、实现功能与结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、index-php中“顶”及被顶次数"><span class="nav-number">2.</span> <span class="nav-text">2、index.php中“顶”及被顶次数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、dig-js中AJAX的实现"><span class="nav-number">3.</span> <span class="nav-text">2、dig.js中AJAX的实现</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2010 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sid</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sidcn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

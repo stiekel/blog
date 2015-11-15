@@ -1,0 +1,828 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
+
+
+
+  <meta name="keywords" content="MySQL,选项文件," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="译　　　文：在MySQL中使用选项文件（Options File）
+原　文　名：Chapter 11 Using an Options File
+原　书　名：Learning MySQL
+原书出版社：O’REILLY Media
+影印出版社：东南大学出版社（影印版连接）
+原　作　者：Seyed M.M. Tahaghoghi, Hugh E. Williams
+译　作　者：不可能不确定（@SidC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="译文：在MySQL中使用选项文件（Options File）">
+<meta property="og:url" content="http://chensd.com/2011-02/translattion-chapter-11-using-an-options-file.html">
+<meta property="og:site_name" content="不可能不确定">
+<meta property="og:description" content="译　　　文：在MySQL中使用选项文件（Options File）
+原　文　名：Chapter 11 Using an Options File
+原　书　名：Learning MySQL
+原书出版社：O’REILLY Media
+影印出版社：东南大学出版社（影印版连接）
+原　作　者：Seyed M.M. Tahaghoghi, Hugh E. Williams
+译　作　者：不可能不确定（@SidC">
+<meta property="og:updated_time" content="2015-11-15T03:58:07.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="译文：在MySQL中使用选项文件（Options File）">
+<meta name="twitter:description" content="译　　　文：在MySQL中使用选项文件（Options File）
+原　文　名：Chapter 11 Using an Options File
+原　书　名：Learning MySQL
+原书出版社：O’REILLY Media
+影印出版社：东南大学出版社（影印版连接）
+原　作　者：Seyed M.M. Tahaghoghi, Hugh E. Williams
+译　作　者：不可能不确定（@SidC">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 译文：在MySQL中使用选项文件（Options File） | 不可能不确定 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">不可能不确定</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              译文：在MySQL中使用选项文件（Options File）
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2011-02-12T00:42:46-05:00" content="Feb 12 2011">
+            Feb 12 2011
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/翻译/" itemprop="url" rel="index">
+                  <span itemprop="name">翻译</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011-02/translattion-chapter-11-using-an-options-file.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011-02/translattion-chapter-11-using-an-options-file.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><ul>
+<li>译　　　文：<a href="http://chensd.com/2011-02/translattion-chapter-11-using-an-options-file.html">在MySQL中使用选项文件（Options File）</a></li>
+<li>原　文　名：Chapter 11 Using an Options File</li>
+<li>原　书　名：<a href="http://oreilly.com/catalog/9780596008642" target="_blank" rel="external">Learning MySQL</a></li>
+<li>原书出版社：O’REILLY Media</li>
+<li>影印出版社：东南大学出版社（<a href="http://www.china-pub.com/34828" target="_blank" rel="external">影印版连接</a>）</li>
+<li>原　作　者：<a href="http://tahaghoghi.com/" target="_blank" rel="external">Seyed M.M. Tahaghoghi</a>, <a href="http://hughwilliams.com/" target="_blank" rel="external">Hugh E. Williams</a></li>
+<li>译　作　者：<a href="http://chensd.com">不可能不确定</a>（@SidCN）<br><a href="http://chensd.com/2011-01//translattion-chapter-11-using-an-options-file.html"></a></li>
+</ul>
+<p><a href="http://oreilly.com/catalog/9780596008642" target="_blank" rel="external"></a></p>
+<p><a href="http://hughwilliams.com/" target="_blank" rel="external"></a></p>
+<p>在阅读本书的过程中，你会发现可以往很多MySQL的程序和脚本传送各种选项或者参数，比如，可以向MySQL监视器传送数据库的用户名和密码。当没有为某个选项指定值的时候，就会使用选项的默认值，再比如，大多数的客户端程序都会使用localhost和3306作为数据库地址和端口的默认值。</p>
+<p>如果你不想使用默认值，那么就要在每次运行时进行指定，这不仅麻烦，还有可能引发一些错误。幸好MySQL支持将需要指定的参数或者选项值存储在一个选项文件（options file）里，有时称之为配置文件（configuration file），大多数MySQL程序都能从选项文件中读取选项或者脚本，这些程序包括：myisamchk、myisampack、mysql、mysqladmin、mysqlbinlog、mysqlcc、mysqlcheck、mysqld、mysqld_safe、mysqldump、mysqlhotcopy、mysqlinport、mysql.server和mysqlshow。</p>
+<p>下面，将以MySQL监视器为例进行选项文件的介绍。<a id="more"></a></p>
+<h2 id="为MySQL监视器配置选项">为MySQL监视器配置选项</h2><p>在本书中经常可以看到在启动监视器时为其指定用户名和密码，诸如：</p>
+<blockquote>
+<p>sid@sid-ubuntu-laptop:~$ mysql –user=root –password=db</p>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
+<p>Your MySQL connection id is 50</p>
+<p>Server version: 5.1.49-1ubuntu8.1 (Ubuntu)</p>
+<p>Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.</p>
+<p>This software comes with ABSOLUTELY NO WARRANTY. This is free software,</p>
+<p>and you are welcome to modify and redistribute it under the GPL v2 license</p>
+<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<p>mysql&gt;<br>为了让你的指头少敲几次键盘，你可以将你的用户名和密码保存在一个选项文件里，并将选项文件放在一个监视器在启动时会去检索的位置，之后监视器在启动时，将会从选项文件中自动读取相应的用户名和密码。</p>
+</blockquote>
+<p>在这个选项文件里，首先要指定目标程序－－在这里将是MySQL监视器程序mysql－－再将各个选项一一列在它的后面：</p>
+<blockquote>
+<p>[mysql]</p>
+<p>user=root</p>
+<p>password=db<br>如果你使用的是Linux或者Mac OS X，在一个文本编辑器中输入如上的内容后，将其命名为.my.cnf并保存在用户目录中（~/.my.cnf），如果是Windows，将其命名为my.cnf并保存在 C盘的根目录中（ c:\my.cnf），然后，你将可以不用指定用户名和密码而启动MySQL监视器－－相应的值MySQL监视器会自动从选项文件中读取：<br>sid@sid-ubuntu-laptop:~$ mysql</p>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
+<p>Your MySQL connection id is 47</p>
+<p>Server version: 5.1.49-1ubuntu8.1 (Ubuntu)</p>
+<p>Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.</p>
+<p>This software comes with ABSOLUTELY NO WARRANTY. This is free software,</p>
+<p>and you are welcome to modify and redistribute it under the GPL v2 license</p>
+<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<p>mysql&gt;<br>这实在是太方便了！不幸的是，现在要给你浇一盆冷水了，要提醒的是，将密码使用非加密的方式（纯文本）来存储绝对不是个好主意。至少你要保证只有你能够读写这个文件，在Linux和Mac OS X系统中，可以使用chrom命令来实现：<br>chmod u=rw,g=,o= ~/.my.cnf<br>在本书的第二章中我们讨论了权限的设定，在便利和安全中进行权衡是系统和数据安全中一个永恒不变的话题。你需要确保每个程序的需求。</p>
+</blockquote>
+<p>让我们来看看另外一个例子，如果你想用MySQL监视器连接一个使用端口57777和地址mysql.chensd.com的mysql服务器，并准备使用该服务器上的music数据库，连接这个数据库的用户名为allmusic，密码为the_password，那启动MySQL监视器则需要使用如下的命令</p>
+<blockquote>
+<p>$ mysql \</p>
+<p>–host=mysql.chensd.com \</p>
+<p>–port=57777 \</p>
+<p>–user=allmusic \</p>
+<p>–password=the_password \</p>
+<p>–database=music<br>输入这条命令将是一个恼人的过程，当然，你可以将这些值存储在如下的选项文件中<br>[mysql]</p>
+<p>host=mysql.chensd.com</p>
+<p>port=57777</p>
+<p>user=allmusic</p>
+<p>password=the_password</p>
+<p>database=music<br>考虑到安全问题，你可以不在选项文件中指定密码，并使用password来取代之，如下：<br>[mysql]</p>
+<p>host=mysql.chensd.com</p>
+<p>port=57777</p>
+<p>user=allmusic</p>
+<p>password</p>
+<p>database=music<br>这样，MySQL监视器就知道你需要指定密码，在进行连接之前，将会提示你输入密码。</p>
+</blockquote>
+<h2 id="选项文件的结构">选项文件的结构</h2><p>在上一节我们知道如何为MySQL监视器指定选项值，选项文件可以为每个使用它的程序创建对应的一部分（section），比如，可以为mysql程序指定[mysql]部分，为mysqldump程序指定[mysqldump]部分，同样的，可以使用[mysqld]为、mysqld、mysqld_safe和mysql_nt指定某些个选项。</p>
+<p>如果某个选项是针对所有客户端程序的，则可将其整理到[client]部分，同样的，[server]部分中所列出的选项将适用于所有的服务端程序。</p>
+<p>需要注意的是，不要将只有某些程序才有的选项加入到通用选项中。例如，mysql是一个客户端程序，且有database这个选项，但是，像mysqladmin和mysqlshow虽然也是客户端程序，但并没有database这个选项，如果将database这个选项放到[client]部分中，如下：</p>
+<blockquote>
+<p>[client]</p>
+<p>database=music<br>那么这些程序就会出错并退出，像这样：<br>sid@sid-ubuntu-laptop:~$ mysqladmin status –user=root –password=db</p>
+<p>mysqladmin: unknown variable ‘database=music’<br>像database这样的选项，必须包含在[mysql]中，而不是放在[client]中。</p>
+</blockquote>
+<p>让我们来看看一个更有意思的选项文件：</p>
+<blockquote>
+<p>[server]</p>
+<p>user=mysql</p>
+<p>port=67777</p>
+<p>basedir=/usr/local/mysql-standard-5.0.22-linux-i686</p>
+<p>socket=/home/mysql/servert.sock</p>
+<p>datadir=/home/mysql/data</p>
+<p>tmpdir=/home/sql/tmp</p>
+<p>pid_file=/home/mysql/logs/server.pid</p>
+<p>#log server message to:</p>
+<p>log=/home/mysql/logs/servert.main.log</p>
+<p>#log errors message to:</p>
+<p>log_error=/home/mysql/logs/servert.errors.log</p>
+<p>#log update to this binary logfile</p>
+<p>log_bir=/home/mysql/logs/servert.update.log</p>
+<p>[client]</p>
+<p>socket=/home/mysql/servert.sock</p>
+<p>[mysql]</p>
+<p>database=mysql</p>
+<p>[mysqldump]</p>
+<p>all-databases</p>
+<p>result=/tmp/dump.sql<br>这包括四部分，一个提供给所有的服务端程序，一个提供给所有的客户端程序，一个提供给mysql，一个提供给mysqldump，最后两个都是提供给客户端程序的，但我们列在上面的几个选项并不是所有的客户端程序都能够读取的，所以把它们分开列。<br>如果一个选项出现在了两个都适用的部分（比如[client]和[mysql]）中，那么越具有针对性的选项会被优先应用（在这里将是[mysql]中的选项）。</p>
+</blockquote>
+<p>以#开始的行在选项文件被读取时是忽略的，这使得可以在选项文件中添加注释，或者将某些值忽略掉。</p>
+<h2 id="选项的作用范围">选项的作用范围</h2><p>选项文件所在的位置决定了这些选项的作用范围。这些范围包括：</p>
+<ul>
+<li><strong>全局范围（System-wide）</strong><br>选项文件中的设置将会应用到系统中所有的MySQL程序。</li>
+</ul>
+<p>在Linux和Mac OS X系统中，全局范围的选项文件需要存储在/etc/my.cnf中，所有的MySQL客户端程序和服务端程序都会自动的读取这个位置的选项文件。</p>
+<p>在Windows系统中，选项文件可以存放在&lt;Windows_Directory&gt;\my.ini、&lt;Windows_Directory&gt;\my.cnf、c:\my.ini和c:\my.cnf，&lt;Windows_Directory&gt;是指windows的安装文件夹，通常情况下是c:\windows。目前所有的MySQL Windows版本（４.1.5以上）服务端程序默认情况下不再读取选项文件，因此，如果要为服务端程序指定选项，则需要在服务端程序特有范围（server-specific）选项中指定。但客户端程序不受此影响，仍然会读取这些选项文件。</p>
+<ul>
+<li><strong>服务端程序特有范围（server-specific）</strong><br>这个范围内的设置只被应用到某个特定的MySQL安装实例中。</li>
+</ul>
+<p>这个范围内的选项文件Linux和Mac OS X中存储在&lt;MySQL_Directory&gt;/my.cnf，Windows存储在MySQL_Directory&gt;\my.ini。</p>
+<p>这个选项文件有时候也存储在数据文件夹中，但这并不是个好主意，首先，如果不使用默认的数据文件夹，则在安装完MySQL后，还需要指定相应的数据文件夹，否则选项文件是不会起作用的。其次，数据文件夹必须能够被其它需要读取选项文件的客户端程序（包括系统中的其它用户）访问，但数据文件夹最好只限于服务器内部的访问，因此最好将选项文件夹放在其它位置。</p>
+<p>Windows中，MySQL在安装过程中会将一个my.ini文件存放在安装文件夹中，当MySQL被安装为系统服务时，会指定选项文件的位置，下面是一个典型的服务：</p>
+<blockquote>
+<p>“C:\Program Files\MySQL\MySQL Server 5.0\bin\mysql-nt” –defaults-file=”C:\Program Files\MySQL\MySQL Server 5.0\my.ini”<br>如果你想将选项文件存放在其它位置，你可以改变它，比如，你可以让服务端从c:\my.ini读取选项文件：<br>“C:\Program Files\MySQL\MySQL Server 5.0\bin\mysql-nt” –defaults-file=”C:\my.ini”<br>如果你想通过命令行而不是系统服务的方式启动服务端，你也需要对选项文件进行指定，可以使用同一个文件，也可以重新建立一个，比如，你可以通过下面的命令来使服务端从c:\my.ini读取相应的配置：<br>C:\&gt; mysql-nt –defaults-file=”c:\my.ini”</p>
+</blockquote>
+<ul>
+<li><strong>用户特有范围（User-Specific）</strong><br>这个范围的设置只在到某些特定用户运行MySQL程序时有效。</li>
+</ul>
+<p>在Linux和Mac OS X中，用户特有范围选项文件的默认存储位置是用户目录下的.my.cnf文件，即~/.my.cnf目录，Windows系统中还不支持用户特有范围的选项文件。</p>
+<h2 id="选项文件的检索顺序">选项文件的检索顺序</h2><p>MySQL的客户端和服务端程序按照特定的顺序从指定的位置读取选项文件；从后读取文件中得到的值将会取代先前文件中的值；命令行中指定的值会取代从选项文件中读取的值。</p>
+<p>default-file选项可以让MySQL程序忽略默认的选项文件，并从其指定的位置读取选项文件，例如：</p>
+<blockquote>
+<p>$ mysql –defaults-file=~/mysql/.my.cnf<br>如果除了默认的选项文件，你还想读取另外的选项文件，可以通过defauls-extra-file选项来进行指定：<br>$ mysql –defaults-extra-file=~/mysql/own.cnf<br>如果你不想程序读取任何选项文件，则可以使用no-defaults选项：<br>$ mysql –no-defaults<br>在Linux和Mac OS X系统中，检索的顺序是：/etc/my.cnf、&lt;MySQL_Directory&gt;/my.cnf、defaults-extra-file，最后是~/.my.cnf，需要注意的是，对于全局可写的选项文件是要被忽略的。通常情况下适当的权限设置应该是：文件所有者对文件具有读写权限，而所在组及其它用户只具有读的权限。这个权限的设置可以使用如下的命令：<br>$ chmod u=rw,g=,o= ~/.my.cnf<br>运行这个命令的时候，需要具有系统的root权限，可以在使用root登录后运行，也可以在这条命令之前加一个sudo。<br>在Windows系统中，检索的顺序是：&lt;Windows_Directory&gt;\my.ini、&lt;Windows_Directory&gt;\my.cnf、C:\my.ini、C:\my.cnf、&lt;MySQL_Directory&gt;\my.ini、&lt;MySQL_Directory&gt;\my.cnf，最后是defaults-extra-file，重复一遍，Windows中服务端程序不会主动读取选项文件，需要使用defaults-file选项进行指定。</p>
+</blockquote>
+<h2 id="判断选项是否有效">判断选项是否有效</h2><p>有时候我们并不清楚运行某个程序时哪些个选项起到了作用，特别是当在多个文件夹中读取多个选项文件时。大多数MySQL程序都支持print-defaults选项，通过这个选项，可以知道运行程序时有哪些选项起到了作用。例如，想知道mysqldump程序运行是有哪些选项是起到了作用，可以使用如下的命令：</p>
+<blockquote>
+<p>$ mysqldump –print-defaults</p>
+<p>mysqldump would have been started with the following arguments:</p>
+<p>–socket=/home/mysql/servert.sock</p>
+<p>–all-databases</p>
+<p>–result_file=/tmp/dump.sql</p>
+<p>–host=localhost</p>
+<p>–port=3306</p>
+<p>–databases=Music</p>
+<p>–result_file=/home/saied/dump.sql<br>运行my_print_defaults命令并指定要查看的程序可以达到同样的效果，例如，要查看所有客户端程序和mysqldump的设置，可以使用如下的命令：<br>$ my_print_defaults client mysqldump</p>
+<p>–socket=/home/mysql/servert.sock</p>
+<p>–all-databases</p>
+<p>–result_file=/tmp/dump.sql</p>
+<p>–host=localhost</p>
+<p>–port=3306</p>
+<p>–databases=Music</p>
+<p>–result_file=/home/saied/dump.sql</p>
+</blockquote>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag">#MySQL</a>
+          
+            <a href="/tags/选项文件/" rel="tag">#选项文件</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011-02/5-methods-to-achieve-template-in-asp-net.html" rel="prev">ASP.NET中五种实现模板功能的方法</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011-01/2010-my-e-pet-list.html" rel="next">2010年我的新购电子产品列表</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2011-02/translattion-chapter-11-using-an-options-file.html"
+                   data-title="译文：在MySQL中使用选项文件（Options File）" data-url="http://chensd.com/2011-02/translattion-chapter-11-using-an-options-file.html">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Sid</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为MySQL监视器配置选项"><span class="nav-number">1.</span> <span class="nav-text">为MySQL监视器配置选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项文件的结构"><span class="nav-number">2.</span> <span class="nav-text">选项文件的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项的作用范围"><span class="nav-number">3.</span> <span class="nav-text">选项的作用范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选项文件的检索顺序"><span class="nav-number">4.</span> <span class="nav-text">选项文件的检索顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断选项是否有效"><span class="nav-number">5.</span> <span class="nav-text">判断选项是否有效</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2010 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sid</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sidcn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

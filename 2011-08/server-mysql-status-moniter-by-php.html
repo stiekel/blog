@@ -1,0 +1,728 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
+
+
+
+  <meta name="keywords" content="MySQL,php," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="最近由于工作上的原因，需要开发一套服务器性能的监控工具，主要是一些同架构同软件配置的服务器。考虑到最近用php比较多，随即决定使用php来实现。主要需要实现的部分功能如下：
+
+1、系统状态，如cpu / 内存 / swap等数据；
+2、MySQL的性能与运行状态；其它主要是配合性的数据存储以及可视化。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用PHP实现对服务器性能与状态的监控">
+<meta property="og:url" content="http://chensd.com/2011-08/server-mysql-status-moniter-by-php.html">
+<meta property="og:site_name" content="不可能不确定">
+<meta property="og:description" content="最近由于工作上的原因，需要开发一套服务器性能的监控工具，主要是一些同架构同软件配置的服务器。考虑到最近用php比较多，随即决定使用php来实现。主要需要实现的部分功能如下：
+
+1、系统状态，如cpu / 内存 / swap等数据；
+2、MySQL的性能与运行状态；其它主要是配合性的数据存储以及可视化。">
+<meta property="og:updated_time" content="2014-12-28T21:13:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用PHP实现对服务器性能与状态的监控">
+<meta name="twitter:description" content="最近由于工作上的原因，需要开发一套服务器性能的监控工具，主要是一些同架构同软件配置的服务器。考虑到最近用php比较多，随即决定使用php来实现。主要需要实现的部分功能如下：
+
+1、系统状态，如cpu / 内存 / swap等数据；
+2、MySQL的性能与运行状态；其它主要是配合性的数据存储以及可视化。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 利用PHP实现对服务器性能与状态的监控 | 不可能不确定 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">不可能不确定</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              利用PHP实现对服务器性能与状态的监控
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2011-08-31T03:34:10-04:00" content="Aug 31 2011">
+            Aug 31 2011
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/编程杂记/" itemprop="url" rel="index">
+                  <span itemprop="name">编程杂记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011-08/server-mysql-status-moniter-by-php.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011-08/server-mysql-status-moniter-by-php.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>最近由于工作上的原因，需要开发一套服务器性能的监控工具，主要是一些同架构同软件配置的服务器。考虑到最近用php比较多，随即决定使用php来实现。主要需要实现的部分功能如下：</p>
+<ul>
+<li>1、系统状态，如cpu / 内存 / swap等数据；</li>
+<li>2、MySQL的性能与运行状态；<br>其它主要是配合性的数据存储以及可视化。<a id="more"></a></li>
+</ul>
+<h3 id="1、使用SNMP实现对系统状态的抓取">1、使用SNMP实现对系统状态的抓取</h3><p>SNMP的确是一个很方便的协议，用它可以获取网络设备几乎所有的信息，Linux和Win都可以很好的支持。MIB是一个纷杂的数据库，通过筛选可以获取我们所需要的信息。</p>
+<p>PHP5对snmp协议v2有较好的支持。为了方便，可以获取一大组数据，将其存储到一个数组中，再从数组中挑选需要的数据。snmp2_real_walk便可以满足这个需求。它的用法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$status</span> = @snmp2_real_walk(<span class="variable">$host</span>, <span class="variable">$community</span>, &amp;quot;<span class="number">.1</span><span class="number">.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2021</span>&amp;quot;,<span class="number">10</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>$host是目标主机</li>
+<li>$community是其相应的SNMP community code</li>
+<li>“1.3.6.1.4.1.2021”是我们要获取的数据树</li>
+<li>10是超时时间（秒）</li>
+<li>5是失败后的重试次数<br>为了防止出错后报错，使用@强行关闭报错。</li>
+</ul>
+<p>获取的结果存储在$status里，之后便可以从$status中定位我们所需要的数据了。MIB可能是用数字组织的，也有可能是一堆名字，具体可以在<a href="http://net-snmp.sourceforge.net/docs/mibs/ucdavis.html" target="_blank" rel="external">这里</a>进行查询。需要注意，获取的结果中，值和结果是混合在一起的，需要对字符串进行一定的截取。下面是几个比较常用的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$host_status</span>[<span class="string">'uptime_1min'</span>]         = (float)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::laLoad.1'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'uptime_5min'</span>]         = (float)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::laLoad.2'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'uptime_15min'</span>]        = (float)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::laLoad.3'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'user_cpu'</span>]            = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::ssCpuUser.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'system_cpu'</span>]          = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::ssCpuSystem.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'idle_cpu'</span>]            = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::ssCpuIdle.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'total_swap'</span>]          = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::memTotalSwap.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'available_swap'</span>]      = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::memAvailSwap.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'total_ram'</span>]           = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::memTotalReal.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'used_ram'</span>]            = <span class="variable">$host_status</span>[<span class="string">'total_ram'</span>] - (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::memAvailReal.0'</span>], <span class="number">9</span>);</span><br><span class="line"><span class="variable">$host_status</span>[<span class="string">'cached_memory'</span>]       = (int)@substr(<span class="variable">$status</span>[<span class="string">'UCD-SNMP-MIB::memCached.0'</span>], <span class="number">9</span>);</span><br></pre></td></tr></table></figure>
+<p>SNMP采用的是<strong>UDP协议</strong>，因此数据获取可能会失败，可以考虑在失败之后重试几次。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$i</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$status</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="variable">$i</span> ++;</span><br><span class="line">    <span class="variable">$status</span> = @snmp2_real_walk(<span class="variable">$host</span>, <span class="variable">$community</span>, &amp;quot;<span class="number">.1</span><span class="number">.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2021</span>&amp;quot;,<span class="number">10</span>,<span class="number">5</span>);</span><br><span class="line">&#125; <span class="keyword">while</span>(!(count(<span class="variable">$status</span>) != <span class="number">0</span> <span class="keyword">OR</span> <span class="variable">$i</span> &amp;gt;= <span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="2、获取MySQL数据库的状态数据">2、获取MySQL数据库的状态数据</h3><p>获取MySQL的状态较简单，只需要运行下面这个查询即可：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">GLOBAL</span> <span class="keyword">STATUS</span></span></span><br></pre></td></tr></table></figure>
+<p>这个查询的结果也非常丰富，只需要从中挑选需要的即可。例如下面的例子获取了若干查询的数量：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$db</span> = @<span class="keyword">new</span> mysqli(<span class="variable">$host</span>, <span class="variable">$mysql_user</span>, <span class="variable">$mysql_pwd</span>);</span><br><span class="line"><span class="variable">$result</span> = @<span class="variable">$db</span>-&amp;gt;query(&amp;quot;SHOW <span class="keyword">GLOBAL</span> STATUS&amp;quot;);</span><br><span class="line"><span class="variable">$status</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$result</span>) &#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="variable">$temp</span> = <span class="variable">$result</span>-&amp;gt;fetch_assoc()) &#123;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$temp</span>[<span class="string">'Variable_name'</span>]) &#123;</span><br><span class="line">            <span class="keyword">case</span> &amp;quot;Com_select&amp;quot;:</span><br><span class="line">            <span class="keyword">case</span> &amp;quot;Com_insert&amp;quot;:</span><br><span class="line">            <span class="keyword">case</span> &amp;quot;Com_delete&amp;quot;:</span><br><span class="line">            <span class="keyword">case</span> &amp;quot;Com_update&amp;quot;:</span><br><span class="line">            <span class="keyword">case</span> &amp;quot;Com_change_db&amp;quot;:</span><br><span class="line">                <span class="variable">$status</span>[<span class="variable">$temp</span>[<span class="string">'Variable_name'</span>]] = <span class="variable">$temp</span>[<span class="string">'Value'</span>];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$db</span>-&amp;gt;close();</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$status</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+<p>唯一需要注意的是，上述值是MySQL服务启动之后的<strong>累加值</strong>，所以说只要MySQL不重启，这些值是递增的。而在实际分析或者显示时，一般是需要某个时间段内的值，有如下两个思路来应对：</p>
+<ul>
+<li>1、获取最新一次的数据时，从数据库中查询到上次获取的值，二者相减，即可得到两次查询内的数据值，这个实现时还需要保存一个额外的临时值以用于作为减数，否则会失去“坐标”；</li>
+<li>2、将最新获取的值存储在数据库中，在显示或者读取时，再进行相应的减法操作；<br>个人比较推荐采用第二种方法，即在使用时再对数据进行处理，这至少遵循了“保存原始数据”这一原则，而且需求是有可能变化的。</li>
+</ul>
+<h3 id="3、定期执行PHP脚本获取状态值">3、定期执行PHP脚本获取状态值</h3><p>PHP本身无法实现定时运行这一功能，因此只有借助其它手段，比如，Linux中的crontab，按设定的规则和时间在后台执行，只需要将定时执行的内容换成命令行下的PHP脚本即可。</p>
+<p>下面的这一段PHP可以实现从命令行或URL接受参数并执行相关操作的功能</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$action</span> = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">'action'</span>]))</span><br><span class="line">    <span class="variable">$action</span> = <span class="variable">$_GET</span>[<span class="string">'action'</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$argv</span>[<span class="number">1</span>]))</span><br><span class="line">    <span class="variable">$action</span> = <span class="variable">$argv</span>[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">switch</span>(<span class="variable">$action</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> &amp;quot;snmp&amp;quot;:</span><br><span class="line">        refresh_host_status_by_snmp();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> get_option(&amp;quot;refresh_frequency&amp;quot;) . &amp;quot;min&amp;quot;:</span><br><span class="line">        refresh_order_count();</span><br><span class="line">        refresh_service_status();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> &amp;quot;<span class="number">1</span>day&amp;quot;:</span><br><span class="line">        refresh_uptime_yesterday_in_service_list();</span><br><span class="line">        save_all_tasks_one_day_details();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">echo</span> &amp;quot;help content here.\n&amp;quot;;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将上述脚本保存为cli.php，则可以通过下面两种方法来运行：</p>
+<ul>
+<li>1、<a href="http://chensd.com/cli.php?action=5min">http://chensd.com/cli.php?action=5min</a></li>
+<li>2、/usr/bin/php cli.php 5min<br>php执行文件的位置可能会因编译或安装的情况而不一样。</li>
+</ul>
+<p>在crontab中添加如下的一行可以每隔五分钟运行一次：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5,10,15,20,25,30,35,40,45,50,55,0 * * * * /usr/bin/php /home/xxx/cli.php 5min</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/5 * * * * /usr/bin/php /home/xxx/cli.php 5min</span><br></pre></td></tr></table></figure>
+<h3 id="4、数据的可视化">4、数据的可视化</h3><p>无论是什么样的人，总是更容易接受图表一些——这个与智商关系不大。</p>
+<p>现在的数据可视化技术实在是太丰富了，除了以前比较常见的flash和图片，现在的js可视化技术也进入了实用化阶段，而且将图表的生成工作量转给了客户端浏览器，也没有了插件的依赖，要命的是iOS也没问题……</p>
+<p><a href="http://highcharts.com/demo" target="_blank" rel="external">Highcharts</a>和<a href="http://code.google.com/p/flot/" target="_blank" rel="external">flot</a>都很不错，前者相对更成熟，后者是开源项目，Highcharts母公司新推出了<a href="http://highcharts.com/stock/demo" target="_blank" rel="external">Highstocks</a>也很不错，但是现在还在测试阶段，净highstocks.js都有300多KB。</p>
+<p>性能上讲，据称，flot表现1000个点时仍然轻松自如。从我实现的情况来看，highstocks一个图中同时显示3000余个点依然很流畅，单图15000个数据仍然可以灵活拉动highstocks的时间轴。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag">#MySQL</a>
+          
+            <a href="/tags/php/" rel="tag">#php</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011-09/php-source-convert-gbk-big5-to-utf8.html" rel="prev">PHP源码编码与转换：搞定首行为空和“锘匡豢”</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011-07/js-css-support-in-webbrowser-of-sliverlight-for-windows-phone.html" rel="next">Sliverlight for WP7 中WebBrowser控件对js和css的支持性总结</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2011-08/server-mysql-status-moniter-by-php.html"
+                   data-title="利用PHP实现对服务器性能与状态的监控" data-url="http://chensd.com/2011-08/server-mysql-status-moniter-by-php.html">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Sid</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、使用SNMP实现对系统状态的抓取"><span class="nav-number">1.</span> <span class="nav-text">1、使用SNMP实现对系统状态的抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、获取MySQL数据库的状态数据"><span class="nav-number">2.</span> <span class="nav-text">2、获取MySQL数据库的状态数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、定期执行PHP脚本获取状态值"><span class="nav-number">3.</span> <span class="nav-text">3、定期执行PHP脚本获取状态值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、数据的可视化"><span class="nav-number">4.</span> <span class="nav-text">4、数据的可视化</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2010 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sid</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sidcn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

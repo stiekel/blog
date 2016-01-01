@@ -4,7 +4,8 @@ menu:
   categories: /categories
   #about: /about
   archives: /archives
-  tags: /tags
+  # tags: /tags
+  works: /works
   #commonweal: /404.html
 
 # Place your favicon.ico to /source directory.

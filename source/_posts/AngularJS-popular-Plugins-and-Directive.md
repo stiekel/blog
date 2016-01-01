@@ -17,13 +17,18 @@ categories:
 
 ### 输入控件类
 *   [ngDraggable](https://github.com/fatlinesofcode/ngDraggable) 控制元素拖动的控件，[Demo](http://htmlpreview.github.io/?https://github.com/fatlinesofcode/ngDraggable/blob/master/example.html)
-*   [angular-umeditor](https://github.com/YinChangSheng/angular-umeditor) 百度umeditor的AngularJS扩展，umeditor从界面上讲并不够现代化，但却总有人喜欢它
 *   [ngAutocomplete](https://github.com/wpalahnuk/ngAutocomplete) 喜闻乐见的自动补完
 *   [textAngular](http://textangular.com/) 文本编辑器，更简洁，更漂亮
 *   [ngTagsInput](http://mbenford.github.io/ngTagsInput/) 以标签的方式来组织输入
 *   [Angular-slider](http://prajwalkman.github.io/angular-slider/) 以拖动方式输入值的控件
 *   [Angular Slidezilla](http://itslenny.github.io/angular-slidezilla/) 与Angular-slider功能一样，只不过设计风格不一样
-*   [Checklist-model](https://vitalets.github.io/checklist-model/) AngularJS 多选框输入的值处理得并不好，通过这个指令，可以方便的将多选框的值直接组织成数组（更新于2015-9-16）
+*   [Checklist-model](https://vitalets.github.io/checklist-model/) AngularJS 多选框输入的值处理得并不好，通过这个指令，可以方便的将多选框的值直接组织成数组
+
+### 文本编辑器
+
+*   [textAngular](https://github.com/fraywing/textAngular) 在 Github 中排名第一的 HTML 编辑器， [Demo](http://textangular.com/)（需翻墙）
+*   [Angular Froala](https://www.froala.com/wysiwyg-editor) 非常好用的另外一个 HTML 编辑器，而且支持 inline 编辑，比 textAngular 漂亮，[Github](https://github.com/froala/angular-froala)
+*   [angular-umeditor](https://github.com/YinChangSheng/angular-umeditor) 百度umeditor的AngularJS扩展，umeditor从界面上讲并不够现代化，但却总有人喜欢它
 
 ### 界面类
 *   [ui-bootstrap](https://angular-ui.github.io/bootstrap/) 官方扩展，在AngularJS中方便的以指令的方式使用[Bootstrap](http://getbootstrap.com/)
@@ -42,10 +47,17 @@ categories:
 *   [Angular Treeview](https://github.com/eu81273/angular.treeview) 树状目录组织扩展，使用相当方便，而且不依赖于jQuery
 *   [angular-growl](https://github.com/Marcorinck/angular-growl) 用于在页面上显示警告框，可以设置显示时间，还可以直接显示$http中收到的警告
 *   [angular-truncate](http://sparkalow.github.io/angular-truncate/) 当文字过多过长时，显示部分文字的插件，可以按文字总长度来控制，也可以按单词数量来控制
+*   [angular-fallback-image](https://github.com/sebasrodriguez/angular-fallback-image) 当你的图片地址返回的是 404 的时候，使用这个插件可以将其替换为另外的占位图
 
 ### 其它工具类
 *   [angular-translate](https://angular-translate.github.io/) AngularJS的i18n扩展
 *   [Satellizer](https://satellizer.herokuapp.com/) 可以方便的在AngularJS中集成第三方账号登陆，支持国际主流社交网站账号，支持协议有OAuth 1.0/2.0
 *   [ngStorage](https://github.com/gsklee/ngStorage) 本在存储插件，用于处理localStorage和sessionStorage
 *   [ng-csv](https://github.com/asafdav/ng-csv) 导出csv的扩展
-*   [angular-once](https://github.com/tadeuszwojcik/angular-once) 双向绑定虽然方便，但如果数据太多，会造成一些性能问题。`angular-once`的解决方案是，对于不涉及到修改的数据，不要使用双向绑定，而是使用`angular-once`提供的`once-text`、`once-src`等等。（网页[蔡斯杰](http://t.qq.com/sijie_cai)提供，更新于2018-8-3）
+*   [angular-once](https://github.com/tadeuszwojcik/angular-once) 双向绑定虽然方便，但如果数据太多，会造成一些性能问题。`angular-once`的解决方案是，对于不涉及到修改的数据，不要使用双向绑定，而是使用`angular-once`提供的`once-text`、`once-src`等等。
+
+### 更新
+
+@2015-8-3 `angular-once` 网友[蔡斯杰](http://t.qq.com/sijie_cai)提供
+@2015-9-16 `Checklist-model`
+@2015-11-21 `angular-fallback-imaage`、`textAngular`、`angular-froala`

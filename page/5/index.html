@@ -150,10 +150,10 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
+        <li class="menu-item menu-item-works">
+          <a href="/works" rel="section">
+            <i class="menu-item-icon icon-next-works"></i> <br />
+            作品
           </a>
         </li>
       
@@ -185,6 +185,99 @@
           
           
             
+              <a class="post-title-link" href="/2013-08/active-tabbable-in-bootstrap-with-url.html" itemprop="url">
+                使用URL直接激活Bootstrap中的tabbable
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-08-05T02:41:14+08:00" content="Aug 5 2013">
+            Aug 5 2013
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/编程杂记/" itemprop="url" rel="index">
+                  <span itemprop="name">编程杂记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013-08/active-tabbable-in-bootstrap-with-url.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013-08/active-tabbable-in-bootstrap-with-url.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://getbootstrap.com/2.3.2/index.html" title="Bootstrap 2.3.2" target="_blank" rel="external">Bootstrap</a>中的<a href="http://getbootstrap.com/2.3.2/components.html#navs" title="Tabbable" target="_blank" rel="external">tabbable</a>的确很好用，但是，tab-content不能直接使用url来定位，只能通过鼠标点击来激活。这成了一个限制，不过通过jquery可以轻松的来使用URL直接定位到tabbable中某个tab-content。</p>
+<p>如果要实现通过URL来定位相应的tabbable的内容，那需要改变如下几个内容：</p>
+<ul>
+<li>删除现有导航和tab-content中class的active值</li>
+<li>为相应的导航控制添加一个active的class值</li>
+<li>为相应的tab-content添加一个active的class值<br>下面的这个js函数可以实现如上的几个操作：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function navigateToTab() &#123;</span><br><span class="line">    var TabId = window.location.hash.replace('#', '');</span><br><span class="line">    var isTabExists = ($(&amp;quot;.tabbable li:contains('&amp;quot; + $(&amp;quot;a[href=#&amp;quot; + TabId + &amp;quot;]&amp;quot;).html() + &amp;quot;')&amp;quot;).html());</span><br><span class="line">    if(TabId &amp;amp;&amp;amp; undefined != isTabExists) &#123;</span><br><span class="line">        //高亮相关连接</span><br><span class="line">        $(&amp;quot;.tabbable ul li&amp;quot;).removeClass('active');</span><br><span class="line">        $(&amp;quot;.tabbable li:contains('&amp;quot; + $(&amp;quot;a[href=#&amp;quot; + TabId + &amp;quot;]&amp;quot;).html() + &amp;quot;')&amp;quot;).addClass('active');</span><br><span class="line">        //呈现相关内容（tab-content）</span><br><span class="line">        $(&amp;quot;.tab-content .tab-pane&amp;quot;).removeClass('active');</span><br><span class="line">        $(&amp;quot;#&amp;quot; + TabId).addClass('active');</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将上面的函数，放到通用的js文件中，即可在URL后加#和相应的tab-content id来实现定位了。</p>
+<p>更新：代码中增加了判断，只有#后面跟的tab-content id存在的时候，才进行相应的激活操作。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2012-12/seven-habits-for-writing-secure-php-applications.html" itemprop="url">
                 七个习惯助你编写更安全的PHP程序
               </a>
@@ -196,7 +289,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2012-12-02T08:35:09-05:00" content="Dec 2 2012">
+          <time itemprop="dateCreated" datetime="2012-12-02T08:35:09+08:00" content="Dec 2 2012">
             Dec 2 2012
           </time>
         </span>
@@ -298,7 +391,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2012-09-29T12:47:29-04:00" content="Sep 29 2012">
+          <time itemprop="dateCreated" datetime="2012-09-29T12:47:29+08:00" content="Sep 29 2012">
             Sep 29 2012
           </time>
         </span>
@@ -387,7 +480,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2012-01-15T08:27:17-05:00" content="Jan 15 2012">
+          <time itemprop="dateCreated" datetime="2012-01-15T08:27:17+08:00" content="Jan 15 2012">
             Jan 15 2012
           </time>
         </span>
@@ -478,7 +571,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2011-11-29T15:28:31-05:00" content="Nov 29 2011">
+          <time itemprop="dateCreated" datetime="2011-11-29T15:28:31+08:00" content="Nov 29 2011">
             Nov 29 2011
           </time>
         </span>
@@ -547,103 +640,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011-10/eclipse-3-7-1-on-ubuntu-11-10-adt-install-need-wst-sse-2.html" itemprop="url">
-                Ubuntu 11.10中 Eclipse 3.7.1 安装ADT提示缺少org.eclipse.wst.sse.core
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-10-04T03:06:37-04:00" content="Oct 4 2011">
-            Oct 4 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/随手记/" itemprop="url" rel="index">
-                  <span itemprop="name">随手记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-10/eclipse-3-7-1-on-ubuntu-11-10-adt-install-need-wst-sse-2.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-10/eclipse-3-7-1-on-ubuntu-11-10-adt-install-need-wst-sse-2.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>前段时间新装了Ubuntu 11.10 beta2，又使用Ubuntu Software Center下载了eclipse，版本是3.7.1，今天试着配置一下ADT，第一步就卡住了。 安装时无法进行下一步，详细信息中提示：</p>
-<blockquote>
-<p>Cannot complete the install because one or more required items could not be found. Software being installed: Android Development Tools 12.0.0.v201106281929-138431 (com.android.ide.eclipse.adt.feature.group 12.0.0.v201106281929-138431) Missing requirement: Android Development Tools 12.0.0.v201106281929-138431 (com.android.ide.eclipse.adt.feature.group 12.0.0.v201106281929-138431) requires ‘org.eclipse.wst.sse.core 0.0.0’ but it could not be found</p>
-</blockquote>
-<p>网上搜索，<a href="http://stackoverflow.com/questions/4249695/org-eclipse-wst-sse-core-0-0-0-but-it-could-not-be-found" title="org.eclipse.wst.sse.core 0.0.0" target="_blank" rel="external">StackOverFlow</a>有人给出了详细答案，3.4 / 3.5 / 3.6均可解决，只需要添加org.eclipse.wst.sse.core的依赖库即可。按照3.4等的升级url构造了一下3.7的如下：</p>
-<blockquote>
-<p><a href="http://download.eclipse.org/releases/ganymede/" target="_blank" rel="external">http://download.eclipse.org/releases/ganymede/</a></p>
-</blockquote>
-<p>点击Install New Software中的Add按钮，将这个添加到依赖库中，再安装ADT即可顺利进行。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
   </nav>
 
  </div>
@@ -670,14 +671,14 @@
 
       <section class="site-overview">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Sid</p>
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Stiekel</p>
         </div>
         <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-count">126</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -690,10 +691,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            <a href="/tags">
+            
               <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">标签</span>
-              </a>
+              
           </div>
 
         </nav>
@@ -756,11 +757,11 @@
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2015</span>
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Sid</span>
+  <span class="author" itemprop="copyrightHolder">Stiekel</span>
 </div>
 
 <div class="powered-by">

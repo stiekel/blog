@@ -150,10 +150,10 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
+        <li class="menu-item menu-item-works">
+          <a href="/works" rel="section">
+            <i class="menu-item-icon icon-next-works"></i> <br />
+            作品
           </a>
         </li>
       
@@ -185,6 +185,98 @@
           
           
             
+              <a class="post-title-link" href="/2011-10/eclipse-3-7-1-on-ubuntu-11-10-adt-install-need-wst-sse-2.html" itemprop="url">
+                Ubuntu 11.10中 Eclipse 3.7.1 安装ADT提示缺少org.eclipse.wst.sse.core
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2011-10-04T03:06:37+08:00" content="Oct 4 2011">
+            Oct 4 2011
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/随手记/" itemprop="url" rel="index">
+                  <span itemprop="name">随手记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011-10/eclipse-3-7-1-on-ubuntu-11-10-adt-install-need-wst-sse-2.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011-10/eclipse-3-7-1-on-ubuntu-11-10-adt-install-need-wst-sse-2.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>前段时间新装了Ubuntu 11.10 beta2，又使用Ubuntu Software Center下载了eclipse，版本是3.7.1，今天试着配置一下ADT，第一步就卡住了。 安装时无法进行下一步，详细信息中提示：</p>
+<blockquote>
+<p>Cannot complete the install because one or more required items could not be found. Software being installed: Android Development Tools 12.0.0.v201106281929-138431 (com.android.ide.eclipse.adt.feature.group 12.0.0.v201106281929-138431) Missing requirement: Android Development Tools 12.0.0.v201106281929-138431 (com.android.ide.eclipse.adt.feature.group 12.0.0.v201106281929-138431) requires ‘org.eclipse.wst.sse.core 0.0.0’ but it could not be found</p>
+</blockquote>
+<p>网上搜索，<a href="http://stackoverflow.com/questions/4249695/org-eclipse-wst-sse-core-0-0-0-but-it-could-not-be-found" title="org.eclipse.wst.sse.core 0.0.0" target="_blank" rel="external">StackOverFlow</a>有人给出了详细答案，3.4 / 3.5 / 3.6均可解决，只需要添加org.eclipse.wst.sse.core的依赖库即可。按照3.4等的升级url构造了一下3.7的如下：</p>
+<blockquote>
+<p><a href="http://download.eclipse.org/releases/ganymede/" target="_blank" rel="external">http://download.eclipse.org/releases/ganymede/</a></p>
+</blockquote>
+<p>点击Install New Software中的Add按钮，将这个添加到依赖库中，再安装ADT即可顺利进行。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011-09/a-wordpress-trojan-analyst.html" itemprop="url">
                 一个 Wordpress 木马样本分析
               </a>
@@ -196,7 +288,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2011-09-18T03:41:08-04:00" content="Sep 18 2011">
+          <time itemprop="dateCreated" datetime="2011-09-18T03:41:08+08:00" content="Sep 18 2011">
             Sep 18 2011
           </time>
         </span>
@@ -285,7 +377,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2011-09-08T10:54:33-04:00" content="Sep 8 2011">
+          <time itemprop="dateCreated" datetime="2011-09-08T10:54:33+08:00" content="Sep 8 2011">
             Sep 8 2011
           </time>
         </span>
@@ -378,7 +470,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2011-08-31T15:34:10-04:00" content="Aug 31 2011">
+          <time itemprop="dateCreated" datetime="2011-08-31T15:34:10+08:00" content="Aug 31 2011">
             Aug 31 2011
           </time>
         </span>
@@ -469,7 +561,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2011-07-06T09:09:18-04:00" content="Jul 6 2011">
+          <time itemprop="dateCreated" datetime="2011-07-06T09:09:18+08:00" content="Jul 6 2011">
             Jul 6 2011
           </time>
         </span>
@@ -537,100 +629,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011-06/excuse-to-sidchen.html" itemprop="url">
-                给SidChen@Gmail.com主人的一封信！另：Google Accounts的安全性问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-06-11T09:19:16-04:00" content="Jun 11 2011">
-            Jun 11 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/生活杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">生活杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-06/excuse-to-sidchen.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-06/excuse-to-sidchen.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>前天的时候，想注册一下SidChen@Gmail.com这个账号，不出意外，也的确被人注册了，处于试一试的想法，点击了“Can’t Access you Account?”的连接，并使用安全问题的方式来找回密码，而没想到问题的答案是如此的简单，以至我一次就试出了密码。然后我非常不负责任的更改了密码和安全邮件地址。由于当时的疏忽，并没有记下安全邮件地址。</p>
-<p>可以知道并且能够发布到这里的信息仅为：</p>
-<p>一位姓陈的来自台湾的朋友，他拥有的另外一个邮件地址大致为b<em>**</em>4@ntu.edu.tw</p>
-<p>先向这位朋友表示歉意，由于我的鲁莽给您带来了巨大的麻烦，如果您就是这位朋友，请您留下任何联系方式，或者邮件至ncbcyOK@Gmail.com，我将以最快的速度与您取得联系。您所有的邮件都仍然完好的保存在邮箱里，并且我没有打开任何邮件，这点您可以放心！为了安全，我修改了这个账号的安全提问。</p>
-<p>另外的提醒是，如果您也是Google Accounts的用户，请您一定注意安全问题的设置，否则将可能给您带来同样的麻烦。虽然<a href="http://chensd.com/2011-03/why-2-step-verification-is-safe.html" title="Google两步登陆的安全性分析与保护措施">Google提供的二步登陆</a>的确是超级安全，但可能绝大多数人不会去<a href="http://chensd.com/2011-03/google-2-steps-verification.html" title="Google两步登陆使用方法">开启这个功能</a>。单从账号的安全性和找回方式来讲，QQ可能是绝对的世界领先了。</p>
-<p>再一次向这位朋友报以歉意！</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
   </nav>
 
  </div>
@@ -657,14 +660,14 @@
 
       <section class="site-overview">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Sid" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Sid</p>
+          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Stiekel</p>
         </div>
         <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-count">126</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -677,10 +680,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            <a href="/tags">
+            
               <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">标签</span>
-              </a>
+              
           </div>
 
         </nav>
@@ -743,11 +746,11 @@
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2015</span>
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Sid</span>
+  <span class="author" itemprop="copyrightHolder">Stiekel</span>
 </div>
 
 <div class="powered-by">

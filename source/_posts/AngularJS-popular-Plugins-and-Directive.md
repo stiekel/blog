@@ -14,6 +14,7 @@ categories:
 *   [angular-deckgrid](http://andrekoenig.info/angular-deckgrid/#/) 另一个照片瀑布流解决方案
 *   [ngImgCrop](https://github.com/alexk111/ngImgCrop) 图片剪裁工具
 *   [ngVideo](https://github.com/Wildhoney/ngVideo) 播放器，直接播放指定地址的mp4，控制按钮美观度远甩朝内99.99%的视频站
+*   [angular-image-404](https://github.com/stiekel/angular-image-404) 当 `img` 元素的图片无法正常获取时，使用这个指令可以显示占位图片，可以自定义占位图，也可以使用默认的占位图
 
 ### 输入控件类
 *   [ngDraggable](https://github.com/fatlinesofcode/ngDraggable) 控制元素拖动的控件，[Demo](http://htmlpreview.github.io/?https://github.com/fatlinesofcode/ngDraggable/blob/master/example.html)
@@ -61,3 +62,4 @@ categories:
 @2015-8-3 `angular-once` 网友[蔡斯杰](http://t.qq.com/sijie_cai)提供
 @2015-9-16 `Checklist-model`
 @2015-11-21 `angular-fallback-imaage`、`textAngular`、`angular-froala`
+@2016-1-2 `angular-image-404`

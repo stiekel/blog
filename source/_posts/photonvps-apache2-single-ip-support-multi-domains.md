@@ -30,15 +30,21 @@ VPS的费用中，购买单独的IP是一个不少的开支，例如PhotonVPS的
 
 使用windows下的PuTTY，或者Ubuntu中的ssh工具，[登录到PhotonVPS的VPS上](http://chensd.com/2010-03/photonvps-ssh-control-panel.html)。首先是新建/home/wwwsaywiki目录，输入以下命令即可完成：
 
-> mkdir /home/wwwsaywiki/
+```sh
+mkdir /home/wwwsaywiki/
+```
 
 目录即新建完成，再新建index.htm文件，输入如下命令
 
-> vi /home/wwwsaywiki/index.htm
+```sh
+vi /home/wwwsaywiki/index.htm
+```
 
 然后即进入vi，按下i，进入vi的编辑模式，输入如下的内容：
 
-> &lt;h1&gt;this is t.saywiki.com&lt;/h1&gt;
+```html
+<h1>this is t.saywiki.com</h1>
+```
 
 然后按esc键退出vi的编辑模式，输入&ldquo;:&rdquo;，再输入wp，保存退出。
 
@@ -51,40 +57,32 @@ VPS的费用中，购买单独的IP是一个不少的开支，例如PhotonVPS的
 
 现在，需要将t.saywiki.com绑定到173.224.209.20这个IP上。这个需要通过设置Apache2来完成，主要是通过一个相关的配置文件来完成，输入如下文件，开始编辑相关的配置文件：
 
-> sudo vi /etc/apache2/sites-available/default
+```sh
+sudo vi /etc/apache2/sites-available/default
+```
 
 开始编辑这个文件，在文件中，输入以下内容：
 
-> NameVirtualHost 173.224.209.20:80
-> 
-> 		&nbsp;&lt;VirtualHost 173.224.209.20:80&gt;
-> 
-> 		&nbsp;&nbsp;&nbsp; ServerName t.saywiki.com
-> 
-> 		&nbsp;&nbsp;&nbsp; DocumentRoot /home/wwwsaywiki
-> 
-> 		&lt;/VirtualHost&gt;
-> 
-> 		&nbsp;&lt;VirtualHost 173.224.209.20:80&gt;
-> 
-> 		&nbsp;&nbsp;&nbsp; ServerName chensd.com
-> 
-> 		&nbsp;&nbsp;&nbsp; DocumentRoot /home/wwwcsd/
-> 
-> 		&lt;/VirtualHost&gt;
-> 
-> 		NameVirtualHost 173.224.209.19:80
-> 
-> 		&nbsp;&lt;VirtualHost 173.224.209.19:80&gt;
-> 
-> 		&nbsp;&nbsp;&nbsp; ServerName shenxf.com
-> 
-> 		&nbsp;&nbsp; &nbsp;DocumentRoot /home/wwwsxf/
-> 
-> 		&lt;/VirtualHost&gt;
+```
+NameVirtualHost 173.224.209.20:80
+  <VirtualHost 173.224.209.20:80>
+    ServerName t.saywiki.com
+    DocumentRoot /home/wwwsaywiki
+  </VirtualHost>
+  <VirtualHost 173.224.209.20:80>
+    ServerName chensd.com
+    DocumentRoot /home/wwwcsd/
+  </VirtualHost>
+
+NameVirtualHost 173.224.209.19:80
+  <VirtualHost 173.224.209.19:80>
+    ServerName shenxf.com
+    DocumentRoot /home/wwwsxf/
+  </VirtualHost>
+```
 
 OK，在浏览器中输入[t.saywiki.com](http://saywiki.com)，成功显示&ldquo;this is t.saywiki.com&rdquo;，设置成功。
 
 [![t.saywiki.com设置成功](/upfile/2010/05/t_saywik.png "t_saywik")](/upfile/2010/05/t_saywik.png)
 
-[PhotonVPS系列](http://chensd.com/tag/photonvps)
+[PhotonVPS系列](http://chensd.com/tags/photonvps)

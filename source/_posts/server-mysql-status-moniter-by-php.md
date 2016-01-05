@@ -55,7 +55,7 @@ SNMP采用的是**UDP协议**，因此数据获取可能会失败，可以考虑
     do {
         $i ++;
         $status = @snmp2_real_walk($host, $community, &quot;.1.3.6.1.4.1.2021&quot;,10,5);
-    } while(!(count($status) != 0 OR $i &gt;= 3));
+    } while(!(count($status) != 0 OR $i >= 3));
 ```
 
 ### 2、获取MySQL数据库的状态数据
@@ -70,10 +70,10 @@ SHOW GLOBAL STATUS
 
 ```php
     $db = @new mysqli($host, $mysql_user, $mysql_pwd);
-    $result = @$db-&gt;query(&quot;SHOW GLOBAL STATUS&quot;);
+    $result = @$db->query(&quot;SHOW GLOBAL STATUS&quot;);
     $status = array();
     if($result) {
-        while($temp = $result-&gt;fetch_assoc()) {
+        while($temp = $result->fetch_assoc()) {
             switch($temp['Variable_name']) {
                 case &quot;Com_select&quot;:
                 case &quot;Com_insert&quot;:
@@ -86,7 +86,7 @@ SHOW GLOBAL STATUS
                     break;
             }
         }
-        $db-&gt;close();
+        $db->close();
         return $status;
     } else
         return false;

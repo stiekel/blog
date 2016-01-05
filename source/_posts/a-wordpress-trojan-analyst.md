@@ -18,20 +18,20 @@ error_reporting(0);
 $bot = FALSE ;
 $user_agent_to_filter = array('bot','spider','spyder'... ...'mybloglog api');
 $stop_ips_masks = array(
-array(&quot;216.239.32.0&quot;,&quot;216.239.63.255&quot;),
-array(&quot;64.68.80.0&quot;  ,&quot;64.68.87.255&quot;  ),
+array('216.239.32.0','216.239.63.255'),
+array('64.68.80.0'  ,'64.68.87.255'  ),
 ... ... ...
 ... ... ...
-array(&quot;72.30.0.0&quot;,&quot;72.30.255.255&quot;),
-array(&quot;38.0.0.0&quot;,&quot;38.255.255.255&quot;)
+array('72.30.0.0','72.30.255.255'),
+array('38.0.0.0','38.255.255.255')
 );
 
-$my_ip2long = sprintf(&quot;%u&quot;,ip2long($_SERVER['REMOTE_ADDR']));
+$my_ip2long = sprintf('%u',ip2long($_SERVER['REMOTE_ADDR']));
 
 foreach ( $stop_ips_masks as $IPs ) {
-    $first_d=sprintf(&quot;%u&quot;,ip2long($IPs[0]));
-    $second_d=sprintf(&quot;%u&quot;,ip2long($IPs[1]));
-    if ($my_ip2long &gt;= $first_d &amp;&amp; $my_ip2long &lt;= $second_d) {
+    $first_d=sprintf('%u',ip2long($IPs[0]));
+    $second_d=sprintf('%u',ip2long($IPs[1]));
+    if ($my_ip2long >= $first_d &amp;&amp; $my_ip2long <= $second_d) {
         $bot = TRUE;
         break;
     }
@@ -45,7 +45,7 @@ foreach ($user_agent_to_filter as $bot_sign){
 }
 
 if (!$bot) {
-    echo '&lt;iframe src=&quot;http://whsej........o=1&quot; width=&quot;3&quot; height=&quot;3&quot;&gt;&lt;/iframe&gt;'
+    echo '<iframe src='http://whsej........o=1' width='3' height='3'></iframe>'
 }
 ```
 
@@ -62,12 +62,12 @@ $user_agent_to_filter和$stop_ips_masks，前者是一维数据，存储了一�
 接下来，是通过ip地址和浏览器user agent来进行用户是否是普通浏览器的判断。
 
 ```php
-$my_ip2long = sprintf(&quot;%u&quot;,ip2long($_SERVER['REMOTE_ADDR']));
+$my_ip2long = sprintf('%u',ip2long($_SERVER['REMOTE_ADDR']));
 
 foreach ( $stop_ips_masks as $IPs ) {
-    $first_d=sprintf(&quot;%u&quot;,ip2long($IPs[0]));
-    $second_d=sprintf(&quot;%u&quot;,ip2long($IPs[1]));
-    if ($my_ip2long &gt;= $first_d &amp;&amp; $my_ip2long &lt;= $second_d) {
+    $first_d=sprintf('%u',ip2long($IPs[0]));
+    $second_d=sprintf('%u',ip2long($IPs[1]));
+    if ($my_ip2long >= $first_d &amp;&amp; $my_ip2long <= $second_d) {
         $bot = TRUE;
         break;
     }

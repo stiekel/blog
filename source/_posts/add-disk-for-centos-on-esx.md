@@ -19,7 +19,7 @@ date: 2012-09-29 12:47:29
 
 使用如下的命令，可以在虚拟机中发现这块新增加的硬盘：
 ```sh
-echo "scsi add-single-device 0 0 1 0" &gt; /proc/scsi/scsi
+echo "scsi add-single-device 0 0 1 0" > /proc/scsi/scsi
 ```
 
 之后，可以通过fdisk -l看到新增加的硬盘，类似如下：

@@ -27,12 +27,14 @@ date: 2010-09-11 02:38:13
 [![](/upfile/2010/09/get-evernote-site-memory-button-code.png "get-evernote-site-memory-button-code")](/upfile/2010/09/get-evernote-site-memory-button-code.png)
 
 填完后复制相应的代码即可，例如如下的代码：
-> <div id="_mcePaste">&lt;script type="text/javascript" src="http://static.evernote.com/noteit.js"&gt;&lt;/script&gt;</div>
-> 
-> <div id="_mcePaste">&lt;a href="#" onclick="Evernote.doClip({styling:'full',providerName:'不可能不确定',suggestTags:'技巧'}); return false;"&gt;&lt;img src="http://static.evernote.com/article-clipper.png" alt="Clip to Evernote" /&gt;&lt;/a&gt;</div>
+
+```html
+<script type="text/javascript" src="http://static.evernote.com/noteit.js"></script>
+<a href="#" onclick="Evernote.doClip({styling:'full',providerName:'不可能不确定',suggestTags:'技巧'}); return false;"><img src="http://static.evernote.com/article-clipper.png" alt="Clip to Evernote" /></a>
+```
 
 ### 二、配置wordpress博客
 
-然后是博客的配置工作。简单的讲，就是修改主题中的single.php即可。打开博客管理后台，仿效点击“外观”》“编辑”，然后选择编辑single.php页面，在&lt;/div&gt;&lt;!-- END entry --&gt;代码之前，粘贴你的代码即可。
+然后是博客的配置工作。简单的讲，就是修改主题中的single.php即可。打开博客管理后台，仿效点击“外观”》“编辑”，然后选择编辑single.php页面，在</div><!-- END entry -->代码之前，粘贴你的代码即可。
 
 然后即可完成配置。

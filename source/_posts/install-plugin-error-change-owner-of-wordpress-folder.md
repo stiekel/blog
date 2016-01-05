@@ -17,23 +17,39 @@ date: 2010-05-29 00:24:17
 ### 一、得到运行Apache的用户名
 
 先简单，php本身提供一个功能，可以得到当前目录的归属。在[SSH终端中输入](http://chensd.com/2010-03/photonvps-ssh-control-panel.html)以下命令，以先进入Wordpress所在的目录：
-> cd /home/www/
+
+```sh
+cd /home/www/
+```
+
 再输入命令，新建一个who.php文件：
-> vi who.php
+
+```sh
+vi who.php
+```
+
 即进入vi编辑器，按下“i”键，进入编辑模式，再输入如下内容：
-> <div id="_mcePaste">&lt;?php</div>
-> 
-> <div id="_mcePaste">echo(exec(“whoami”));</div>
-> 
-> <div id="_mcePaste">?&gt;</div>
+
+```php
+<?php
+echo(exec(“whoami”));
+```
 完成后，按下ESC键退出编辑模式，输入“:”，再键入“wq”，保存退出vi。完成后，在浏览器中打开这个文件：
-> http://ChenSD.com/who.php
+
+```
+http://ChenSD.com/who.php
+```
+
 即可在浏览器中看到当前运行Apache2的用户，记下这个用户名，比如，这里是user。
 
 ### 二、改变目录的归属权限
 
 再到SSH终端中，进入Wordpress所在目录，输入如下的命令，以改变目录的归属：
-> chown -R user *
+
+```sh
+chown -R user *
+```
+
 注意字母的大小写。
 
 再返回Wordpress后台，添加新插件，OK，成功了！

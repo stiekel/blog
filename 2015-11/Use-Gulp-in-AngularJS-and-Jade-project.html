@@ -47,7 +47,7 @@
 <meta property="og:site_name" content="不可能不确定">
 <meta property="og:description" content="我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 public 中，Bower 也配置为将依赖包直接安装到 public/lib 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。
 上周在做一个 App 项目的商">
-<meta property="og:updated_time" content="2015-11-15T05:44:22.030Z">
+<meta property="og:updated_time" content="2016-01-05T12:47:58.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Gulp 构建 AngularJS / Jade 项目">
 <meta name="twitter:description" content="我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 public 中，Bower 也配置为将依赖包直接安装到 public/lib 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。
@@ -152,10 +152,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -360,7 +368,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -373,10 +381,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

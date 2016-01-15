@@ -39,16 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description">
+<meta name="description" content="用Wordpress搭建的博客，所有页面默认的RSS订阅地址为：http://chensd.com/feed但为了方便RSS的管理控制和发布统计，一般会用第三个RSS烧制工具，比如国内的Feedsky，通过这些网站提供的服务，可以把RSS地址转换成：http://feed.feedsky.com/chensd但这个订阅地址依赖feedsky，所以很多时候我们可能并不放心，幸好feedsky提供个性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修改Wordpress页面中的默认RSS地址">
 <meta property="og:url" content="http://chensd.com/2010-05/alter-wordpress-rss-address.html">
 <meta property="og:site_name" content="不可能不确定">
-<meta property="og:description">
-<meta property="og:updated_time" content="2015-11-15T03:57:52.443Z">
+<meta property="og:description" content="用Wordpress搭建的博客，所有页面默认的RSS订阅地址为：http://chensd.com/feed但为了方便RSS的管理控制和发布统计，一般会用第三个RSS烧制工具，比如国内的Feedsky，通过这些网站提供的服务，可以把RSS地址转换成：http://feed.feedsky.com/chensd但这个订阅地址依赖feedsky，所以很多时候我们可能并不放心，幸好feedsky提供个性">
+<meta property="og:updated_time" content="2016-01-05T12:47:59.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修改Wordpress页面中的默认RSS地址">
-<meta name="twitter:description">
+<meta name="twitter:description" content="用Wordpress搭建的博客，所有页面默认的RSS订阅地址为：http://chensd.com/feed但为了方便RSS的管理控制和发布统计，一般会用第三个RSS烧制工具，比如国内的Feedsky，通过这些网站提供的服务，可以把RSS地址转换成：http://feed.feedsky.com/chensd但这个订阅地址依赖feedsky，所以很多时候我们可能并不放心，幸好feedsky提供个性">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -149,10 +149,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -234,28 +242,9 @@
       
 
       
-        <span itemprop="articleBody"><p><a id="more"></a>用Wordpress搭建的博客，所有页面默认的RSS订阅地址为：</p>
-<blockquote>
-<p><a href="http://chensd.com">http://chensd.com/feed</a></p>
-</blockquote>
-<p>但为了方便RSS的管理控制和发布统计，一般会用第三个RSS烧制工具，比如国内的Feedsky，通过这些网站提供的服务，可以把RSS地址转换成：</p>
-<blockquote>
-<p><a href="http://feed.feedsky.com/chensd" target="_blank" rel="external">http://feed.feedsky.com/chensd</a></p>
-</blockquote>
-<p>但这个订阅地址依赖feedsky，所以很多时候我们可能并不放心，幸好feedsky提供<a href="http://www.williamlong.info/archives/1186.html" target="_blank" rel="external">个性化域名</a>的支持，因此，你可以把自己的域名作为RSS订阅地址，即，可以在&ldquo;Feed优化&rdquo;&rArr;&ldquo;域名绑定&rdquo;中修改成：</p>
-<blockquote>
-<p><a href="http://feed.chensd.com" target="_blank" rel="external">http://feed.chensd.com</a></p>
-</blockquote>
-<p>但是，Wordpress中所有页面的默认RSS订阅地址并没有改变，仍然是<a href="http://chensd.com">http://chensd.com/feed</a>，虽然可以借助其它一些插件来修改，但有个更简单的方法，仅通过修改主题就可以完成这个操作。</p>
-<p>首先，打开控制面板，然后打开&ldquo;外观（Appearance）&rdquo;中的&ldquo;编辑（Editor）&rdquo;，选择右侧的&ldquo;头部文件（header.php）&rdquo;文件，找到其中如下的一列：</p>
-<blockquote>
-<p>&lt;link rel=&quot;alternate&quot; type=&quot;text/xml&quot; title=&quot;RSS .92&quot; href=&quot;<span style="color:#f00;">&lt;?php bloginfo(&#39;rss_url&#39;); ?&gt;</span>&quot; /&gt;</p>
-</blockquote>
+        <span itemprop="articleBody"><a id="more"></a>用Wordpress搭建的博客，所有页面默认的RSS订阅地址为：<br><br><a href="http://chensd.com">http://chensd.com/feed</a><br><br>但为了方便RSS的管理控制和发布统计，一般会用第三个RSS烧制工具，比如国内的Feedsky，通过这些网站提供的服务，可以把RSS地址转换成：<br><br><a href="http://feed.feedsky.com/chensd" target="_blank" rel="external">http://feed.feedsky.com/chensd</a><br><br>但这个订阅地址依赖feedsky，所以很多时候我们可能并不放心，幸好feedsky提供<a href="http://www.williamlong.info/archives/1186.html" target="_blank" rel="external">个性化域名</a>的支持，因此，你可以把自己的域名作为RSS订阅地址，即，可以在”Feed优化”&rArr;”域名绑定”中修改成：<br><br><a href="http://feed.chensd.com" target="_blank" rel="external">http://feed.chensd.com</a><br><br>但是，Wordpress中所有页面的默认RSS订阅地址并没有改变，仍然是<a href="http://chensd.com">http://chensd.com/feed</a>，虽然可以借助其它一些插件来修改，但有个更简单的方法，仅通过修改主题就可以完成这个操作。<br><br>首先，打开控制面板，然后打开”外观（Appearance）”中的”编辑（Editor）”，选择右侧的”头部文件（header.php）”文件，找到其中如下的一列：<br><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"alternate"</span> <span class="attribute">type</span>=<span class="value">"text/xml"</span> <span class="attribute">title</span>=<span class="value">"RSS"</span> <span class="attribute">href</span>=<span class="value">"<span class="php"><span class="preprocessor">&lt;?php</span> bloginfo(<span class="string">'rss_url'</span>); <span class="preprocessor">?&gt;</span></span>"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p>奖其中href的值改成我们需要的Http://feed.chensd.com即可，如下：</p>
-<blockquote>
-<p>&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;RSS 2.0&quot; href=&quot;<span style="color:#f00;"><a href="http://feed.chensd.com" target="_blank" rel="external">http://feed.chensd.com</a></span>&quot; /&gt;</p>
-</blockquote>
-</span>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"alternate"</span> <span class="attribute">type</span>=<span class="value">"application/rss+xml"</span> <span class="attribute">title</span>=<span class="value">"RSS 2.0"</span> <span class="attribute">href</span>=<span class="value">"http://feed.chensd.com"</span> /&gt;</span></span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -346,7 +335,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -359,10 +348,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

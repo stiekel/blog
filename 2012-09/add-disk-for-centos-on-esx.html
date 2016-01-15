@@ -48,7 +48,7 @@
 <meta property="og:description" content="一台运行在ESX上的CentOS服务器磁盘不够，现需要为其增加硬盘空间。计划新增加一个虚拟硬盘，并使用LVM进行卷管理，挂载到/store。
 1、在ESX中增加一块新硬盘在ESX中找到该虚拟机，在“Edit Setting”中，为其添加一块新硬盘，并记住其“Virtual Device Node”，如“SCSI(0:1)”。">
 <meta property="og:image" content="http://chensd.com/upfile/2012/09/add_disk_in_ESX.png">
-<meta property="og:updated_time" content="2015-11-15T03:57:51.800Z">
+<meta property="og:updated_time" content="2016-01-05T12:47:59.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为ESX上的CentOS添加新硬盘">
 <meta name="twitter:description" content="一台运行在ESX上的CentOS服务器磁盘不够，现需要为其增加硬盘空间。计划新增加一个虚拟硬盘，并使用LVM进行卷管理，挂载到/store。
@@ -153,10 +153,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -241,7 +249,7 @@
         <span itemprop="articleBody"><p>一台运行在ESX上的CentOS服务器磁盘不够，现需要为其增加硬盘空间。计划新增加一个虚拟硬盘，并使用LVM进行卷管理，挂载到/store。</p>
 <h3 id="1、在ESX中增加一块新硬盘">1、在ESX中增加一块新硬盘</h3><p>在ESX中找到该虚拟机，在“Edit Setting”中，为其添加一块新硬盘，并记住其“Virtual Device Node”，如“SCSI(0:1)”。<a id="more"></a></p>
 <p><a href="/upfile/2012/09/add_disk_in_ESX.png"><img src="/upfile/2012/09/add_disk_in_ESX.png" alt="Add Disk to VM on ESX" title="Add Disk to VM on ESX"></a></p>
-<h3 id="2、在CentOS中发现新硬盘">2、在CentOS中发现新硬盘</h3><p>使用如下的命令，可以在虚拟机中发现这块新增加的硬盘：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"scsi add-single-device 0 0 1 0"</span> &amp;gt; /proc/scsi/scsi</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、在CentOS中发现新硬盘">2、在CentOS中发现新硬盘</h3><p>使用如下的命令，可以在虚拟机中发现这块新增加的硬盘：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"scsi add-single-device 0 0 1 0"</span> &gt; /proc/scsi/scsi</span><br></pre></td></tr></table></figure></p>
 <p>之后，可以通过fdisk -l看到新增加的硬盘，类似如下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Disk /dev/sda: <span class="number">7516</span> MB, <span class="number">7516192768</span> bytes</span><br><span class="line"><span class="number">255</span> heads, <span class="number">63</span> sectors/track, <span class="number">913</span> cylinders</span><br><span class="line">Units = cylinders of <span class="number">16065</span> * <span class="number">512</span> = <span class="number">8225280</span> bytes</span><br><span class="line"></span><br><span class="line">Device Boot Start End Blocks Id System</span><br><span class="line">/dev/sda1 * <span class="number">1</span> <span class="number">13</span> <span class="number">104391</span> <span class="number">83</span> Linux</span><br><span class="line">/dev/sda2 <span class="number">14</span> <span class="number">913</span> <span class="number">7229250</span> <span class="number">5</span> Extended</span><br><span class="line">/dev/sda5 <span class="number">14</span> <span class="number">770</span> <span class="number">6080571</span> <span class="number">83</span> Linux</span><br><span class="line">/dev/sda6 <span class="number">771</span> <span class="number">913</span> <span class="number">1148616</span> <span class="number">82</span> Linux swap / Solaris</span><br><span class="line"></span><br><span class="line">Disk /dev/sdb: <span class="number">21.4</span> GB, <span class="number">21474836480</span> bytes</span><br><span class="line"><span class="number">255</span> heads, <span class="number">63</span> sectors/track, <span class="number">2610</span> cylinders</span><br><span class="line">Units = cylinders of <span class="number">16065</span> * <span class="number">512</span> = <span class="number">8225280</span> bytes</span><br><span class="line"></span><br><span class="line">Disk /dev/sdb doesn<span class="string">'t contain a valid partition table</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="3、使用LVM管理新硬盘">3、使用LVM管理新硬盘</h3><p>这台机器之前并不是使用LVM进行磁盘管理，为了方便，对这个新增加的硬盘采用LVM进行卷管理。先创建一个PV：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pvcreate /dev/sdb</span><br><span class="line"></span><br><span class="line">  Physical volume <span class="string">"/dev/sdb"</span> successfully created</span><br></pre></td></tr></table></figure></p>
 <p>再建立VG：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vgcreate vg0 /dev/sdb</span><br><span class="line">  Volume group <span class="string">"vg0"</span> successfully created</span><br></pre></td></tr></table></figure></p>
@@ -344,7 +352,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -357,10 +365,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

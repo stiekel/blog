@@ -48,7 +48,7 @@ AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在�
 <meta property="og:description" content="最近与xiaofeng在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。
 AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在浏览器中每次点击都要刷新页面才能获取新数据的缺点，用户在浏览器的行为将被AJAX的JavaScript脚本捕">
 <meta property="og:image" content="http://chensd.com/upfile/2011/05/dig.png">
-<meta property="og:updated_time" content="2015-11-15T03:57:58.857Z">
+<meta property="og:updated_time" content="2016-01-05T12:48:08.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用PHP和AJAX实现“顶”贴功能">
 <meta name="twitter:description" content="最近与xiaofeng在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。
@@ -153,10 +153,18 @@ AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在�
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -361,7 +369,7 @@ AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -374,10 +382,10 @@ AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在�
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

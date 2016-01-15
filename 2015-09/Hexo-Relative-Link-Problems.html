@@ -51,7 +51,7 @@
 
 分页链接：本来 href 的值应该是 /page/2/index.html 之类，但它的目标地址却是不存在的 /page/index.html ，于是就 404 了
 分类链接：本来 href 的值应该是">
-<meta property="og:updated_time" content="2015-11-15T03:57:49.647Z">
+<meta property="og:updated_time" content="2016-01-05T12:47:57.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo中的分页、标签、分类链接地址错误问题">
 <meta name="twitter:description" content="从 Wordpress 迁移到 Hexo 已经有半年多的时间了，但有一个问题一直困扰着我没有解决，那就是站点上很多链接的 href 值都有问题，链接点击后会到一些根本不存在的或错误的页面，比如：
@@ -158,10 +158,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -346,7 +354,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -359,10 +367,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

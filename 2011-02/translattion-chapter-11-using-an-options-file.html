@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="MySQL,选项文件," />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -57,7 +57,7 @@
 影印出版社：东南大学出版社（影印版连接）
 原　作　者：Seyed M.M. Tahaghoghi, Hugh E. Williams
 译　作　者：不可能不确定（@SidC">
-<meta property="og:updated_time" content="2015-11-15T03:58:07.576Z">
+<meta property="og:updated_time" content="2016-01-05T12:50:10.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="译文：在MySQL中使用选项文件（Options File）">
 <meta name="twitter:description" content="译　　　文：在MySQL中使用选项文件（Options File）
@@ -167,10 +167,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -267,127 +275,68 @@
 <p>如果你不想使用默认值，那么就要在每次运行时进行指定，这不仅麻烦，还有可能引发一些错误。幸好MySQL支持将需要指定的参数或者选项值存储在一个选项文件（options file）里，有时称之为配置文件（configuration file），大多数MySQL程序都能从选项文件中读取选项或者脚本，这些程序包括：myisamchk、myisampack、mysql、mysqladmin、mysqlbinlog、mysqlcc、mysqlcheck、mysqld、mysqld_safe、mysqldump、mysqlhotcopy、mysqlinport、mysql.server和mysqlshow。</p>
 <p>下面，将以MySQL监视器为例进行选项文件的介绍。<a id="more"></a></p>
 <h2 id="为MySQL监视器配置选项">为MySQL监视器配置选项</h2><p>在本书中经常可以看到在启动监视器时为其指定用户名和密码，诸如：</p>
-<blockquote>
-<p>sid@sid-ubuntu-laptop:~$ mysql –user=root –password=db</p>
-<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
-<p>Your MySQL connection id is 50</p>
-<p>Server version: 5.1.49-1ubuntu8.1 (Ubuntu)</p>
-<p>Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.</p>
-<p>This software comes with ABSOLUTELY NO WARRANTY. This is free software,</p>
-<p>and you are welcome to modify and redistribute it under the GPL v2 license</p>
-<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
-<p>mysql&gt;<br>为了让你的指头少敲几次键盘，你可以将你的用户名和密码保存在一个选项文件里，并将选项文件放在一个监视器在启动时会去检索的位置，之后监视器在启动时，将会从选项文件中自动读取相应的用户名和密码。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sid@sid-ubuntu-laptop:~$ mysql --user=root --password=db&#10;Welcome to the MySQL monitor.  Commands end with ; or \g.&#10;Your MySQL connection id is 50&#10;Server version: 5.1.49-1ubuntu8.1 (Ubuntu)&#10;&#10;Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.&#10;This software comes with ABSOLUTELY NO WARRANTY. This is free software,&#10;and you are welcome to modify and redistribute it under the GPL v2 license&#10;Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input atement.&#10;&#10;mysql&#62;</span><br></pre></td></tr></table></figure>
+<p>为了让你的指头少敲几次键盘，你可以将你的用户名和密码保存在一个选项文件里，并将选项文件放在一个监视器在启动时会去检索的位置，之后监视器在启动时，将会从选项文件中自动读取相应的用户名和密码。</p>
 <p>在这个选项文件里，首先要指定目标程序－－在这里将是MySQL监视器程序mysql－－再将各个选项一一列在它的后面：</p>
-<blockquote>
-<p>[mysql]</p>
-<p>user=root</p>
-<p>password=db<br>如果你使用的是Linux或者Mac OS X，在一个文本编辑器中输入如上的内容后，将其命名为.my.cnf并保存在用户目录中（~/.my.cnf），如果是Windows，将其命名为my.cnf并保存在 C盘的根目录中（ c:\my.cnf），然后，你将可以不用指定用户名和密码而启动MySQL监视器－－相应的值MySQL监视器会自动从选项文件中读取：<br>sid@sid-ubuntu-laptop:~$ mysql</p>
-<p>Welcome to the MySQL monitor.  Commands end with ; or \g.</p>
-<p>Your MySQL connection id is 47</p>
-<p>Server version: 5.1.49-1ubuntu8.1 (Ubuntu)</p>
-<p>Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.</p>
-<p>This software comes with ABSOLUTELY NO WARRANTY. This is free software,</p>
-<p>and you are welcome to modify and redistribute it under the GPL v2 license</p>
-<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
-<p>mysql&gt;<br>这实在是太方便了！不幸的是，现在要给你浇一盆冷水了，要提醒的是，将密码使用非加密的方式（纯文本）来存储绝对不是个好主意。至少你要保证只有你能够读写这个文件，在Linux和Mac OS X系统中，可以使用chrom命令来实现：<br>chmod u=rw,g=,o= ~/.my.cnf<br>在本书的第二章中我们讨论了权限的设定，在便利和安全中进行权衡是系统和数据安全中一个永恒不变的话题。你需要确保每个程序的需求。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mysql]&#10;user=root&#10;password=db</span><br></pre></td></tr></table></figure>
+<p>如果你使用的是Linux或者Mac OS X，在一个文本编辑器中输入如上的内容后，将其命名为.my.cnf并保存在用户目录中（~/.my.cnf），如果是Windows，将其命名为my.cnf并保存在 C盘的根目录中（ c:\my.cnf），然后，你将可以不用指定用户名和密码而启动MySQL监视器－－相应的值MySQL监视器会自动从选项文件中读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sid@sid-ubuntu-laptop:~$ mysql&#10;Welcome to the MySQL monitor.  Commands end with ; or \g.&#10;Your MySQL connection id is 47&#10;Server version: 5.1.49-1ubuntu8.1 (Ubuntu)&#10;&#10;Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.&#10;This software comes with ABSOLUTELY NO WARRANTY. This is free software,&#10;and you are welcome to modify and redistribute it under the GPL v2 license&#10;Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.&#10;&#10;mysql&#62;</span><br></pre></td></tr></table></figure>
+<p>这实在是太方便了！不幸的是，现在要给你浇一盆冷水了，要提醒的是，将密码使用非加密的方式（纯文本）来存储绝对不是个好主意。至少你要保证只有你能够读写这个文件，在Linux和Mac OS X系统中，可以使用chrom命令来实现：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rw,g=,o= ~/.my.cnf</span><br></pre></td></tr></table></figure>
+<p>在本书的第二章中我们讨论了权限的设定，在便利和安全中进行权衡是系统和数据安全中一个永恒不变的话题。你需要确保每个程序的需求。</p>
 <p>让我们来看看另外一个例子，如果你想用MySQL监视器连接一个使用端口57777和地址mysql.chensd.com的mysql服务器，并准备使用该服务器上的music数据库，连接这个数据库的用户名为allmusic，密码为the_password，那启动MySQL监视器则需要使用如下的命令</p>
-<blockquote>
-<p>$ mysql \</p>
-<p>–host=mysql.chensd.com \</p>
-<p>–port=57777 \</p>
-<p>–user=allmusic \</p>
-<p>–password=the_password \</p>
-<p>–database=music<br>输入这条命令将是一个恼人的过程，当然，你可以将这些值存储在如下的选项文件中<br>[mysql]</p>
-<p>host=mysql.chensd.com</p>
-<p>port=57777</p>
-<p>user=allmusic</p>
-<p>password=the_password</p>
-<p>database=music<br>考虑到安全问题，你可以不在选项文件中指定密码，并使用password来取代之，如下：<br>[mysql]</p>
-<p>host=mysql.chensd.com</p>
-<p>port=57777</p>
-<p>user=allmusic</p>
-<p>password</p>
-<p>database=music<br>这样，MySQL监视器就知道你需要指定密码，在进行连接之前，将会提示你输入密码。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql \&#10;--host=mysql.chensd.com \&#10;--port=57777 \&#10;--user=allmusic \&#10;--password=the_password \&#10;--database=music</span><br></pre></td></tr></table></figure>
+<p>输入这条命令将是一个恼人的过程，当然，你可以将这些值存储在如下的选项文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mysql]&#10;&#10;host=mysql.chensd.com&#10;port=57777&#10;user=allmusic&#10;password=the_password&#10;database=music</span><br></pre></td></tr></table></figure>
+<p>考虑到安全问题，你可以不在选项文件中指定密码，并使用password来取代之，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mysql]&#10;&#10;host=mysql.chensd.com&#10;port=57777&#10;user=allmusic&#10;password&#10;database=music</span><br></pre></td></tr></table></figure>
+<p>这样，MySQL监视器就知道你需要指定密码，在进行连接之前，将会提示你输入密码。</p>
 <h2 id="选项文件的结构">选项文件的结构</h2><p>在上一节我们知道如何为MySQL监视器指定选项值，选项文件可以为每个使用它的程序创建对应的一部分（section），比如，可以为mysql程序指定[mysql]部分，为mysqldump程序指定[mysqldump]部分，同样的，可以使用[mysqld]为、mysqld、mysqld_safe和mysql_nt指定某些个选项。</p>
 <p>如果某个选项是针对所有客户端程序的，则可将其整理到[client]部分，同样的，[server]部分中所列出的选项将适用于所有的服务端程序。</p>
 <p>需要注意的是，不要将只有某些程序才有的选项加入到通用选项中。例如，mysql是一个客户端程序，且有database这个选项，但是，像mysqladmin和mysqlshow虽然也是客户端程序，但并没有database这个选项，如果将database这个选项放到[client]部分中，如下：</p>
-<blockquote>
-<p>[client]</p>
-<p>database=music<br>那么这些程序就会出错并退出，像这样：<br>sid@sid-ubuntu-laptop:~$ mysqladmin status –user=root –password=db</p>
-<p>mysqladmin: unknown variable ‘database=music’<br>像database这样的选项，必须包含在[mysql]中，而不是放在[client]中。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[client]&#10;database=music</span><br></pre></td></tr></table></figure>
+<p>那么这些程序就会出错并退出，像这样：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sid@sid-ubuntu-laptop:~$ mysqladmin status --user=root --password=db</span><br><span class="line">mysqladmin: unknown variable <span class="string">'database=music'</span></span><br></pre></td></tr></table></figure>
+<p>像database这样的选项，必须包含在[mysql]中，而不是放在[client]中。</p>
 <p>让我们来看看一个更有意思的选项文件：</p>
-<blockquote>
-<p>[server]</p>
-<p>user=mysql</p>
-<p>port=67777</p>
-<p>basedir=/usr/local/mysql-standard-5.0.22-linux-i686</p>
-<p>socket=/home/mysql/servert.sock</p>
-<p>datadir=/home/mysql/data</p>
-<p>tmpdir=/home/sql/tmp</p>
-<p>pid_file=/home/mysql/logs/server.pid</p>
-<p>#log server message to:</p>
-<p>log=/home/mysql/logs/servert.main.log</p>
-<p>#log errors message to:</p>
-<p>log_error=/home/mysql/logs/servert.errors.log</p>
-<p>#log update to this binary logfile</p>
-<p>log_bir=/home/mysql/logs/servert.update.log</p>
-<p>[client]</p>
-<p>socket=/home/mysql/servert.sock</p>
-<p>[mysql]</p>
-<p>database=mysql</p>
-<p>[mysqldump]</p>
-<p>all-databases</p>
-<p>result=/tmp/dump.sql<br>这包括四部分，一个提供给所有的服务端程序，一个提供给所有的客户端程序，一个提供给mysql，一个提供给mysqldump，最后两个都是提供给客户端程序的，但我们列在上面的几个选项并不是所有的客户端程序都能够读取的，所以把它们分开列。<br>如果一个选项出现在了两个都适用的部分（比如[client]和[mysql]）中，那么越具有针对性的选项会被优先应用（在这里将是[mysql]中的选项）。</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[server]&#10;user=mysql&#10;port=67777&#10;basedir=/usr/local/mysql-standard-5.0.22-linux-i686&#10;socket=/home/mysql/servert.sock&#10;datadir=/home/mysql/data&#10;tmpdir=/home/sql/tmp&#10;pid_file=/home/mysql/logs/server.pid&#10;&#10;#log server message to:&#10;log=/home/mysql/logs/servert.main.log&#10;&#10;#log errors message to:&#10;log_error=/home/mysql/logs/servert.errors.log&#10;&#10;#log update to this binary logfile&#10;log_bir=/home/mysql/logs/servert.update.log&#10;&#10;[client]&#10;socket=/home/mysql/servert.sock&#10;&#10;[mysql]&#10;database=mysql&#10;&#10;[mysqldump]&#10;all-databases&#10;result=/tmp/dump.sql</span><br></pre></td></tr></table></figure>
+<p>这包括四部分，一个提供给所有的服务端程序，一个提供给所有的客户端程序，一个提供给mysql，一个提供给mysqldump，最后两个都是提供给客户端程序的，但我们列在上面的几个选项并不是所有的客户端程序都能够读取的，所以把它们分开列。<br>如果一个选项出现在了两个都适用的部分（比如[client]和[mysql]）中，那么越具有针对性的选项会被优先应用（在这里将是[mysql]中的选项）。</p>
 <p>以#开始的行在选项文件被读取时是忽略的，这使得可以在选项文件中添加注释，或者将某些值忽略掉。</p>
 <h2 id="选项的作用范围">选项的作用范围</h2><p>选项文件所在的位置决定了这些选项的作用范围。这些范围包括：</p>
 <ul>
 <li><strong>全局范围（System-wide）</strong><br>选项文件中的设置将会应用到系统中所有的MySQL程序。</li>
 </ul>
 <p>在Linux和Mac OS X系统中，全局范围的选项文件需要存储在/etc/my.cnf中，所有的MySQL客户端程序和服务端程序都会自动的读取这个位置的选项文件。</p>
-<p>在Windows系统中，选项文件可以存放在&lt;Windows_Directory&gt;\my.ini、&lt;Windows_Directory&gt;\my.cnf、c:\my.ini和c:\my.cnf，&lt;Windows_Directory&gt;是指windows的安装文件夹，通常情况下是c:\windows。目前所有的MySQL Windows版本（４.1.5以上）服务端程序默认情况下不再读取选项文件，因此，如果要为服务端程序指定选项，则需要在服务端程序特有范围（server-specific）选项中指定。但客户端程序不受此影响，仍然会读取这些选项文件。</p>
+<p>在Windows系统中，选项文件可以存放在<windows_directory>\my.ini、<windows_directory>\my.cnf、c:\my.ini和c:\my.cnf，<windows_directory>是指windows的安装文件夹，通常情况下是c:\windows。目前所有的MySQL Windows版本（４.1.5以上）服务端程序默认情况下不再读取选项文件，因此，如果要为服务端程序指定选项，则需要在服务端程序特有范围（server-specific）选项中指定。但客户端程序不受此影响，仍然会读取这些选项文件。</windows_directory></windows_directory></windows_directory></p>
 <ul>
 <li><strong>服务端程序特有范围（server-specific）</strong><br>这个范围内的设置只被应用到某个特定的MySQL安装实例中。</li>
 </ul>
-<p>这个范围内的选项文件Linux和Mac OS X中存储在&lt;MySQL_Directory&gt;/my.cnf，Windows存储在MySQL_Directory&gt;\my.ini。</p>
+<p>这个范围内的选项文件Linux和Mac OS X中存储在<mysql_directory>/my.cnf，Windows存储在MySQL_Directory&gt;\my.ini。</mysql_directory></p>
 <p>这个选项文件有时候也存储在数据文件夹中，但这并不是个好主意，首先，如果不使用默认的数据文件夹，则在安装完MySQL后，还需要指定相应的数据文件夹，否则选项文件是不会起作用的。其次，数据文件夹必须能够被其它需要读取选项文件的客户端程序（包括系统中的其它用户）访问，但数据文件夹最好只限于服务器内部的访问，因此最好将选项文件夹放在其它位置。</p>
 <p>Windows中，MySQL在安装过程中会将一个my.ini文件存放在安装文件夹中，当MySQL被安装为系统服务时，会指定选项文件的位置，下面是一个典型的服务：</p>
-<blockquote>
-<p>“C:\Program Files\MySQL\MySQL Server 5.0\bin\mysql-nt” –defaults-file=”C:\Program Files\MySQL\MySQL Server 5.0\my.ini”<br>如果你想将选项文件存放在其它位置，你可以改变它，比如，你可以让服务端从c:\my.ini读取选项文件：<br>“C:\Program Files\MySQL\MySQL Server 5.0\bin\mysql-nt” –defaults-file=”C:\my.ini”<br>如果你想通过命令行而不是系统服务的方式启动服务端，你也需要对选项文件进行指定，可以使用同一个文件，也可以重新建立一个，比如，你可以通过下面的命令来使服务端从c:\my.ini读取相应的配置：<br>C:\&gt; mysql-nt –defaults-file=”c:\my.ini”</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"C:\Program Files\MySQL\MySQL Server 5.0\bin\mysql-nt"</span> --defaults-file=<span class="string">"C:\Program Files\MySQL\MySQL Server 5.0\my.ini"</span></span><br></pre></td></tr></table></figure>
+<p>如果你想将选项文件存放在其它位置，你可以改变它，比如，你可以让服务端从c:\my.ini读取选项文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="string">"C:\Program Files\MySQL\MySQL Server 5.0\bin\mysql-nt"</span> --defaults-file=<span class="string">"C:\my.ini"</span></span><br></pre></td></tr></table></figure>
+<p>如果你想通过命令行而不是系统服务的方式启动服务端，你也需要对选项文件进行指定，可以使用同一个文件，也可以重新建立一个，比如，你可以通过下面的命令来使服务端从c:\my.ini读取相应的配置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt; mysql-nt --defaults-file=<span class="string">"c:\my.ini"</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>用户特有范围（User-Specific）</strong><br>这个范围的设置只在到某些特定用户运行MySQL程序时有效。</li>
 </ul>
 <p>在Linux和Mac OS X中，用户特有范围选项文件的默认存储位置是用户目录下的.my.cnf文件，即~/.my.cnf目录，Windows系统中还不支持用户特有范围的选项文件。</p>
 <h2 id="选项文件的检索顺序">选项文件的检索顺序</h2><p>MySQL的客户端和服务端程序按照特定的顺序从指定的位置读取选项文件；从后读取文件中得到的值将会取代先前文件中的值；命令行中指定的值会取代从选项文件中读取的值。</p>
 <p>default-file选项可以让MySQL程序忽略默认的选项文件，并从其指定的位置读取选项文件，例如：</p>
-<blockquote>
-<p>$ mysql –defaults-file=~/mysql/.my.cnf<br>如果除了默认的选项文件，你还想读取另外的选项文件，可以通过defauls-extra-file选项来进行指定：<br>$ mysql –defaults-extra-file=~/mysql/own.cnf<br>如果你不想程序读取任何选项文件，则可以使用no-defaults选项：<br>$ mysql –no-defaults<br>在Linux和Mac OS X系统中，检索的顺序是：/etc/my.cnf、&lt;MySQL_Directory&gt;/my.cnf、defaults-extra-file，最后是~/.my.cnf，需要注意的是，对于全局可写的选项文件是要被忽略的。通常情况下适当的权限设置应该是：文件所有者对文件具有读写权限，而所在组及其它用户只具有读的权限。这个权限的设置可以使用如下的命令：<br>$ chmod u=rw,g=,o= ~/.my.cnf<br>运行这个命令的时候，需要具有系统的root权限，可以在使用root登录后运行，也可以在这条命令之前加一个sudo。<br>在Windows系统中，检索的顺序是：&lt;Windows_Directory&gt;\my.ini、&lt;Windows_Directory&gt;\my.cnf、C:\my.ini、C:\my.cnf、&lt;MySQL_Directory&gt;\my.ini、&lt;MySQL_Directory&gt;\my.cnf，最后是defaults-extra-file，重复一遍，Windows中服务端程序不会主动读取选项文件，需要使用defaults-file选项进行指定。</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql --defaults-file=~/mysql/.my.cnf</span><br></pre></td></tr></table></figure>
+<p>如果除了默认的选项文件，你还想读取另外的选项文件，可以通过defauls-extra-file选项来进行指定：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql --defaults-extra-file=~/mysql/own.cnf</span><br></pre></td></tr></table></figure>
+<p>如果你不想程序读取任何选项文件，则可以使用no-defaults选项：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql --no-defaults</span><br></pre></td></tr></table></figure>
+<p>在Linux和Mac OS X系统中，检索的顺序是：/etc/my.cnf、<mysql_directory>/my.cnf、defaults-extra-file，最后是~/.my.cnf，需要注意的是，对于全局可写的选项文件是要被忽略的。通常情况下适当的权限设置应该是：文件所有者对文件具有读写权限，而所在组及其它用户只具有读的权限。这个权限的设置可以使用如下的命令：</mysql_directory></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod u=rw,g=,o= ~/.my.cnf</span><br></pre></td></tr></table></figure>
+<p>运行这个命令的时候，需要具有系统的root权限，可以在使用root登录后运行，也可以在这条命令之前加一个sudo。<br>在Windows系统中，检索的顺序是：<windows_directory>\my.ini、<windows_directory>\my.cnf、C:\my.ini、C:\my.cnf、<mysql_directory>\my.ini、<mysql_directory>\my.cnf，最后是defaults-extra-file，重复一遍，Windows中服务端程序不会主动读取选项文件，需要使用defaults-file选项进行指定。</mysql_directory></mysql_directory></windows_directory></windows_directory></p>
 <h2 id="判断选项是否有效">判断选项是否有效</h2><p>有时候我们并不清楚运行某个程序时哪些个选项起到了作用，特别是当在多个文件夹中读取多个选项文件时。大多数MySQL程序都支持print-defaults选项，通过这个选项，可以知道运行程序时有哪些选项起到了作用。例如，想知道mysqldump程序运行是有哪些选项是起到了作用，可以使用如下的命令：</p>
-<blockquote>
-<p>$ mysqldump –print-defaults</p>
-<p>mysqldump would have been started with the following arguments:</p>
-<p>–socket=/home/mysql/servert.sock</p>
-<p>–all-databases</p>
-<p>–result_file=/tmp/dump.sql</p>
-<p>–host=localhost</p>
-<p>–port=3306</p>
-<p>–databases=Music</p>
-<p>–result_file=/home/saied/dump.sql<br>运行my_print_defaults命令并指定要查看的程序可以达到同样的效果，例如，要查看所有客户端程序和mysqldump的设置，可以使用如下的命令：<br>$ my_print_defaults client mysqldump</p>
-<p>–socket=/home/mysql/servert.sock</p>
-<p>–all-databases</p>
-<p>–result_file=/tmp/dump.sql</p>
-<p>–host=localhost</p>
-<p>–port=3306</p>
-<p>–databases=Music</p>
-<p>–result_file=/home/saied/dump.sql</p>
-</blockquote>
-</span>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump --print-defaults</span><br><span class="line">mysqldump would have been started with the following arguments:</span><br><span class="line"></span><br><span class="line">--socket=/home/mysql/servert.sock</span><br><span class="line">--all-databases</span><br><span class="line">--result_file=/tmp/dump.sql</span><br><span class="line">--host=localhost</span><br><span class="line">--port=<span class="number">3306</span></span><br><span class="line">--databases=Music</span><br><span class="line">--result_file=/home/saied/dump.sql</span><br></pre></td></tr></table></figure>
+<p>运行my_print_defaults命令并指定要查看的程序可以达到同样的效果，例如，要查看所有客户端程序和mysqldump的设置，可以使用如下的命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ my_<span class="built_in">print</span>_defaults client mysqldump</span><br><span class="line"></span><br><span class="line">--socket=/home/mysql/servert.sock</span><br><span class="line">--all-databases</span><br><span class="line">--result_file=/tmp/dump.sql</span><br><span class="line">--host=localhost</span><br><span class="line">--port=<span class="number">3306</span></span><br><span class="line">--databases=Music</span><br><span class="line">--result_file=/home/saied/dump.sql</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -396,8 +345,6 @@
         <div class="post-tags">
           
             <a href="/tags/MySQL/" rel="tag">#MySQL</a>
-          
-            <a href="/tags/选项文件/" rel="tag">#选项文件</a>
           
         </div>
       
@@ -478,7 +425,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -491,10 +438,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

@@ -50,7 +50,7 @@
 <meta property="og:image" content="http://chensd.com/upfile/2010/12/twip_index_php.png">
 <meta property="og:image" content="http://chensd.com/upfile/2010/12/twip_result.png">
 <meta property="og:image" content="http://chensd.com/upfile/2010/12/Metrist.png">
-<meta property="og:updated_time" content="2015-11-15T03:58:04.451Z">
+<meta property="og:updated_time" content="2016-01-05T12:48:14.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP空间无法无天API搭建">
 <meta name="twitter:description" content="天朝上邦是普及计算机技术的天堂，V5。
@@ -155,10 +155,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -253,34 +261,18 @@
 <li>Default Access Type：这个选择“Read &amp; Write”；</li>
 <li>Application ICON：图标，随意；<br>填完后，会给你一个包括有API key / Registered Callback URL / Consumer key等内容，找个安全的地方记下来，等一下还需要用的。</li>
 </ul>
-<h3 id="二、程序下载与修改">二、程序下载与修改</h3><p>不少开源项目都在做TW API相关的东西。比如这个<a href="http://code.google.com/p/twip/" target="_blank" rel="external">twip项目</a>，先<a href="http://twip.googlecode.com/files/twip-4.1-r184.tar.gz" target="_blank" rel="external">下载</a>回程序，然后用WinRAR之类的程序解压，找到其中的config-example.php文件，将其改名为</p>
-<blockquote>
-<p>config.php<br>然后，找个文本编辑器打开，比如记事本之类，会看到以下内容：</p>
-<div id="_mcePaste">&lt;?php</div>
-
-<div id="_mcePaste">define(‘OAUTH_KEY’,’’);</div>
-
-<div id="_mcePaste">define(‘OAUTH_SECRET’,’’);</div>
-
-<div id="_mcePaste">define(‘BASE_URL’,’’);</div>
-
-<div id="_mcePaste">define(‘API_VERSION’,’1’);</div>
-
-<div id="_mcePaste">define(‘DEBUG’,FALSE);</div>
-
-<div id="_mcePaste">define(‘DOLOG’,FALSE);</div>
-
-<div id="_mcePaste">define(‘COMPRESS’,FALSE);</div>
-
-<p><div id="_mcePaste">?&gt;</div><br>接下来，要做的是，确定你的程序存放的位置，免费PHP空间的朋友自理，已经有域名绑定了的PHP空间的，自己可以随意，比如，我这里放在这个博客的根目录下的twapi目录下，则，地址为：<br><a href="http://chensd.com/twapi/">http://chensd.com/twapi/</a><br>现在可以回到推官网（<a href="http://dev.twitter.com/" target="_blank" rel="external">http://dev.twitter.com/</a>），然后点击Your apps，将Callback URL修改为上面的地址。</p>
-</blockquote>
+<h3 id="二、程序下载与修改">二、程序下载与修改</h3><p>不少开源项目都在做TW API相关的东西。比如这个<a href="http://code.google.com/p/twip/" target="_blank" rel="external">twip项目</a>，先<a href="http://twip.googlecode.com/files/twip-4.1-r184.tar.gz" target="_blank" rel="external">下载</a>回程序，然后用WinRAR之类的程序解压，找到其中的config-example.php文件，将其改名为 <code>config.php</code> 然后，找个文本编辑器打开，比如记事本之类，会看到以下内容：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'OAUTH_KEY'</span>,<span class="string">''</span>);</span><br><span class="line">define(<span class="string">'OAUTH_SECRET'</span>,<span class="string">''</span>);</span><br><span class="line">define(<span class="string">'BASE_URL'</span>,<span class="string">''</span>);</span><br><span class="line">define(<span class="string">'API_VERSION'</span>,<span class="string">'1'</span>);</span><br><span class="line">define(<span class="string">'DEBUG'</span>,<span class="keyword">FALSE</span>);</span><br><span class="line">define(<span class="string">'DOLOG'</span>,<span class="keyword">FALSE</span>);</span><br><span class="line">define(<span class="string">'COMPRESS'</span>,<span class="keyword">FALSE</span>);</span><br></pre></td></tr></table></figure>
+<p>接下来，要做的是，确定你的程序存放的位置，免费PHP空间的朋友自理，已经有域名绑定了的PHP空间的，自己可以随意，比如，我这里放在这个博客的根目录下的twapi目录下，则，地址为 <code>http://chensd.com/twapi/</code> 现在可以回到推官网（<a href="http://dev.twitter.com/" target="_blank" rel="external">http://dev.twitter.com/</a>），然后点击Your apps，将Callback URL修改为上面的地址。</p>
 <p>找到刚刚记下的API key / Registered Callback URL / Consumer key，把API key填到第二行的OAUTH_KEY后的单绰号里，把Consumer key填到第二行的OAUTH_SECRET后的单引号里，把你确定的地址填到BASE_URL后的单引号里，完成，然后保存。</p>
 <h3 id="三、上传与服务器的配置">三、上传与服务器的配置</h3><p>对于使用VPS的朋友，可以使用SSH Secure File Transfer Client这个工具进行上传。其它的可以八仙过海。</p>
 <p>对于VPS，先要让PHP支持curl，以安装Ubuntu 10.04的PhotonVPS可以输入如下命令：</p>
-<blockquote>
-<p>sudo apt-get install php5-curl<br>然后重启一下apache：<br>sudo /etc/init.d/apache2 restart<br>CURL设置就完成了。再就是给twip中的oauth文件夹给写权限，进入放twip的目录，本例是进入chensd.com所在的目录，然后依次执行如下命令：<br>cd twapi</p>
-<p>sudo chmod 777 oauth<br>即可完成权限的改变。服务器的设置也就完成了。</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5-curl</span><br></pre></td></tr></table></figure>
+<p>然后重启一下apache：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/apache2 restart</span><br></pre></td></tr></table></figure>
+<p>CURL设置就完成了。再就是给twip中的oauth文件夹给写权限，进入放twip的目录，本例是进入chensd.com所在的目录，然后依次执行如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> twapi</span><br><span class="line"></span><br><span class="line">sudo chmod <span class="number">777</span> oauth</span><br></pre></td></tr></table></figure>
+<p>即可完成权限的改变。服务器的设置也就完成了。</p>
 <h3 id="四、打完收功">四、打完收功</h3><p>使用浏览器进入刚刚设置的callback URL，即可看到如下的页面：</p>
 <p><a href="/upfile/2010/12/twip_index_php.png"><img src="/upfile/2010/12/twip_index_php.png" alt="Twip搭建成功" title="twip_index_php"></a></p>
 <p>然后点击“使用O模式”，选择“模拟OAuth验证”，输入自定义的URL地址，和账号密码，再提交认证——整个世界都熙熙攘攘了！</p>
@@ -381,7 +373,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -394,10 +386,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

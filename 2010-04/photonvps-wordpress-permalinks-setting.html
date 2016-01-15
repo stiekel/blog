@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://chensd.com/upfile/2010/04/wordpress-edit-post-config-permalink-500x68.png">
 <meta property="og:image" content="http://chensd.com/upfile/2010/04/ubuntu-ssh-vps-sudo_a2enmod-500x281.png">
 <meta property="og:image" content="http://chensd.com/upfile/2010/04/ubuntu-ssh-vps-allowoverride-2-500x329.png">
-<meta property="og:updated_time" content="2015-11-15T03:58:03.953Z">
+<meta property="og:updated_time" content="2016-01-05T12:48:13.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PhotonVPS系列之六：Wordpress的固定连接设置问题">
 <meta name="twitter:description" content="Wordpress的固定连接，有很优点，具体网上有一大箩筐，基本上所有的老Bloger都会推荐你用固定连接。但使用PhotonVPS的同学可能发现，设置固定连接时会出现一些问题。">
@@ -153,10 +153,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -240,55 +248,37 @@
       
         <span itemprop="articleBody"><p>Wordpress的固定连接，有很优点，具体网上有一大箩筐，基本上所有的老Bloger都会推荐你用固定连接。但使用<a href="http://chensd.com/tag/photonvps">PhotonVPS</a>的同学可能发现，设置固定连接时会出现一些问题。</p>
 <a id="more"></a>
-<h3 id="一、在Wordpress中设置固定连接">一、在Wordpress中设置固定连接</h3><p>在<a href="http://chensd.com/2010-03/photonvps-ssh-command.html">PhotonVPS系列之四：SSH基本命令</a>里，已经知道了如何在<a href="http://chensd.com/tag/photonvps">PhotonVPS</a>上搭建一个Wordpress博客程序，搭建完成后，进入后台管理，在&ldquo;设置&rdquo;中选择&ldquo;固定连接&rdquo;，可以看到如下图的设置：</p>
+<h3 id="一、在Wordpress中设置固定连接">一、在Wordpress中设置固定连接</h3><p>在<a href="http://chensd.com/2010-03/photonvps-ssh-command.html">PhotonVPS系列之四：SSH基本命令</a>里，已经知道了如何在<a href="http://chensd.com/tag/photonvps">PhotonVPS</a>上搭建一个Wordpress博客程序，搭建完成后，进入后台管理，在”设置”中选择”固定连接”，可以看到如下图的设置：</p>
 <p><a href="/upfile/2010/04/wordpress-permalinks-setting.png"><img src="/upfile/2010/04/wordpress-permalinks-setting-500x281.png" alt="" title="wordpress-permalinks-setting"></a></p>
 <p>Wordpress里的常规设置中，没有提供伪html结尾的地址，我们可以进行一个自定义，例如，在自定义结构中输入：</p>
-<blockquote>
-<p>/%year%-%monthnum%/%postname%.html</p>
-</blockquote>
-<p>这样设置，当完成一篇博文后，并在编辑文章中的文章标题下方的&ldquo;固定连接&rdquo;中进行设置后，就可以看到如下的效果：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/%year%-%monthnum%/%postname%.html</span><br></pre></td></tr></table></figure>
+<p>这样设置，当完成一篇博文后，并在编辑文章中的文章标题下方的”固定连接”中进行设置后，就可以看到如下的效果：</p>
 <p><a href="/upfile/2010/04/wordpress-edit-post-config-permalink.png"><img src="/upfile/2010/04/wordpress-edit-post-config-permalink-500x68.png" alt="" title="wordpress-edit-post-config-permalink"></a></p>
 <blockquote>
 <p><a href="http://chensd.com/2010-04/photonvps-wordpress-permalinks-setting.html">http://chensd.com/2010-04/photonvps-wordpress-permalinks-setting.html</a></p>
 </blockquote>
 <p>设置完成后，点击博客首页里的各个地址，可以发现，原本可以正常打开的连接，现在都打不开了。这是因为PhotonVPS VPS的默认设置有问题，我们还需要进行进一步的改动。</p>
-<h3 id="二、打开ReWrite支持">二、打开ReWrite支持</h3><p>在windows下，可以使用<a href="http://chensd.com/2010-03/photonvps-ssh-control-panel.html">PuTTY</a>工具，在Linux下，可以直接使用终端下提供的ssh命令完成连接，以使用的Ubuntu 9.10为例，点击&quot;应用程序&quot;-&gt;&ldquo;附件&rdquo;-&gt;&ldquo;终端&rdquo;，然后输入：</p>
-<blockquote>
-<p>ssh root@Chensd.com</p>
-</blockquote>
+<h3 id="二、打开ReWrite支持">二、打开ReWrite支持</h3><p>在windows下，可以使用<a href="http://chensd.com/2010-03/photonvps-ssh-control-panel.html">PuTTY</a>工具，在Linux下，可以直接使用终端下提供的ssh命令完成连接，以使用的Ubuntu 9.10为例，点击”应用程序”-&gt;”附件”-&gt;”终端”，然后输入：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@Chensd.com</span><br></pre></td></tr></table></figure>
 <p>按提示输入密码，即可进入VPS的终端。输入如下命令：</p>
-<blockquote>
-<p>sudo a2enmod</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo a2enmod</span><br></pre></td></tr></table></figure>
 <p>然后再输入</p>
-<blockquote>
-<p>rewrite</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite</span><br></pre></td></tr></table></figure>
 <p>即可完成rewrite的设置。</p>
 <p><a href="/upfile/2010/04/ubuntu-ssh-vps-sudo_a2enmod.png"><img src="/upfile/2010/04/ubuntu-ssh-vps-sudo_a2enmod-500x281.png" alt="设置apache2的rewrite" title="ubuntu-ssh-vps-sudo_a2enmod"></a></p>
 <h3 id="三、设置Apache2的AllowOverride">三、设置Apache2的AllowOverride</h3><p>接着输入命令：</p>
-<blockquote>
-<p>sudo vi /etc/apache2/sites-enabled/000-default</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/sites-enabled/<span class="number">000</span>-default</span><br></pre></td></tr></table></figure>
 <p>将会看到如下的内容：</p>
 <p><a href="/upfile/2010/04/ubuntu-ssh-vps-allowoverride-2.png"><img src="/upfile/2010/04/ubuntu-ssh-vps-allowoverride-2-500x329.png" alt="" title="ubuntu-ssh-vps-allowoverride-2"></a></p>
 <p>如果没有看到自己所在网站的文件夹，则可以输入：</p>
-<blockquote>
-<p>sudo vi /etc/apache2/sites-available/default</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/sites-available/default</span><br></pre></td></tr></table></figure>
 <p>默认是在上一个的位置，找到自己网站的文件夹，定位光标到其下方</p>
-<blockquote>
-<p>AllowOverride None</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AllowOverride None</span><br></pre></td></tr></table></figure>
 <p>的None值最后一个字母e，按下i键，使VI编辑器进入插入状态，用Backspace和Delete键结合，删除None，并输入All，如下：</p>
-<blockquote>
-<p>AllowOverride All</p>
-</blockquote>
-<p>然后按ESC键退出VI的插入模式，输入&ldquo;:&rdquo;，键入&ldquo;wq&rdquo;，回车，即可进行保存。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AllowOverride All</span><br></pre></td></tr></table></figure>
+<p>然后按ESC键退出VI的插入模式，输入”:”，键入”wq”，回车，即可进行保存。</p>
 <h3 id="四、重启Apache2">四、重启Apache2</h3><p>完成后，退出到终端命令提示状态，输入如下命令以重启Apache2：</p>
-<blockquote>
-<p>/etc/init.d/apache2 restart</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 restart</span><br></pre></td></tr></table></figure>
 <p>OK，打完收功！</p>
 </span>
       
@@ -383,7 +373,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -396,10 +386,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

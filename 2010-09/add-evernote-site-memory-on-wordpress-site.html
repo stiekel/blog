@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="不可能不确定">
 <meta property="og:description" content="Evernote的评论不用多说，国内也有不少用户，作为一个优秀的云服务，相对于Dropbox，被封的可能性要小得多，因为Evernote更注重的是收集而不是分享。前段时间Evernote推出了在网站中添加Site Memory按钮，来快速保存网页中信息的功能，更是方便了用户，下面就以Wordpress blog为例来介绍一下添加Evernote Site Memory按钮的方法。">
 <meta property="og:image" content="http://chensd.com/upfile/2010/09/get-evernote-site-memory-button-code.png">
-<meta property="og:updated_time" content="2015-11-15T03:57:51.952Z">
+<meta property="og:updated_time" content="2016-01-05T12:47:59.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Wordpress中添加Evernote的Site Memory按钮">
 <meta name="twitter:description" content="Evernote的评论不用多说，国内也有不少用户，作为一个优秀的云服务，相对于Dropbox，被封的可能性要小得多，因为Evernote更注重的是收集而不是分享。前段时间Evernote推出了在网站中添加Site Memory按钮，来快速保存网页中信息的功能，更是方便了用户，下面就以Wordpress blog为例来介绍一下添加Evernote Site Memory按钮的方法。">
@@ -150,10 +150,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -249,13 +257,8 @@
 <li>Styling：可以选择是只复制纯文本，或者全部复制；<br><a href="/upfile/2010/09/get-evernote-site-memory-button-code.png"><img src="/upfile/2010/09/get-evernote-site-memory-button-code.png" alt="" title="get-evernote-site-memory-button-code"></a></li>
 </ul>
 <p>填完后复制相应的代码即可，例如如下的代码：</p>
-<blockquote>
-<div id="_mcePaste">&lt;script type=”text/javascript” src=”<a href="http://static.evernote.com/noteit.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://static.evernote.com/noteit.js&quot;&gt;&lt;/script&amp;gt</a>;</div>
-
-<div id="_mcePaste">&lt;a href=”#” onclick=”Evernote.doClip({styling:’full’,providerName:’不可能不确定’,suggestTags:’技巧’}); return false;”&gt;&lt;img src=”<a href="http://static.evernote.com/article-clipper.png" target="_blank" rel="external">http://static.evernote.com/article-clipper.png</a>“ alt=”Clip to Evernote” /&gt;&lt;/a&gt;</div>
-
-</blockquote>
-<h3 id="二、配置wordpress博客">二、配置wordpress博客</h3><p>然后是博客的配置工作。简单的讲，就是修改主题中的single.php即可。打开博客管理后台，仿效点击“外观”》“编辑”，然后选择编辑single.php页面，在&lt;/div&gt;&lt;!– END entry –&gt;代码之前，粘贴你的代码即可。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://static.evernote.com/noteit.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">onclick</span>=<span class="value">"Evernote.doClip(&#123;styling:'full',providerName:'不可能不确定',suggestTags:'技巧'&#125;); return false;"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://static.evernote.com/article-clipper.png"</span> <span class="attribute">alt</span>=<span class="value">"Clip to Evernote"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、配置wordpress博客">二、配置wordpress博客</h3><p>然后是博客的配置工作。简单的讲，就是修改主题中的single.php即可。打开博客管理后台，仿效点击“外观”》“编辑”，然后选择编辑single.php页面，在<!-- END entry -->代码之前，粘贴你的代码即可。</p>
 <p>然后即可完成配置。</p>
 </span>
       
@@ -350,7 +353,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -363,10 +366,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

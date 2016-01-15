@@ -150,10 +150,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -173,96 +181,6 @@
       <div class="main-inner">
         <div id="content" class="content"> 
   <section id="posts" class="posts-expand">
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-06/wp-add-new-plugins-error.html" itemprop="url">
-                PhotonVPS系列之十：添加新插件出现“执行请求动作，连接信息必须提供”错误提示
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-06-20T00:29:41+08:00" content="Jun 20 2010">
-            Jun 20 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/建站相关/" itemprop="url" rel="index">
-                  <span itemprop="name">建站相关</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-06/wp-add-new-plugins-error.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-06/wp-add-new-plugins-error.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>一大清早，在给一个Wordpress博客添加插件的时候，遇到了提供&ldquo;执行请求动作，连接信息必须提供&rdquo;的问题，具体提示情况如下：</p>
-<p><a href="/upfile/2010/05/Install-plugin-error.png"><img src="/upfile/2010/05/Install-plugin-error.png" alt="执行请求动作，连接信息必须提供" title="Install-plugin-error"></a></p>
-<p>这个是因为，Linux的文件系统很强调权限的概念&mdash;&mdash;当然在Windows的NTFS分区中也已经有了这个概念，而添加新插件时，会涉及新建文件，所以会出现上面这样的错误，这个错误，还会出现在上传文件的时候。解决方法也很简单，只需要将目录的权限进行更改即可，即，把Wordpress博客所在的文件夹的归属，改变给Apache2运行时所使用的用户。因此，有两个步骤，一个得到Apache2运行所使用的用户名，二是改变目录权限。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-06/wp-add-new-plugins-error.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
       
 
@@ -617,11 +535,100 @@
 
 
     
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2010-05/change-blog-from-ix-to-photonvps.html" itemprop="url">
+                PhotonVPS系列之九：将IXWebHosting中的博客转移到PhotonVPS
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2010-05-28T08:41:21+08:00" content="May 28 2010">
+            May 28 2010
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/建站相关/" itemprop="url" rel="index">
+                  <span itemprop="name">建站相关</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2010-05/change-blog-from-ix-to-photonvps.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2010-05/change-blog-from-ix-to-photonvps.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>IXWebHost（以下简称IX）的唯一优势，可能就是超便宜的价格了，比如<a href="http://www.ixwebhosting.com/index.php/v2/pages.hostingPlans">Unlimited PRO</a>系列，月付7.95，但有三个免费域名、15个独立IP、无限流量、无限空间、无限数据库。但是，这些诱人数据的背后，也意味着对用户耐心的考验，其速度的确不敢恭维，尤其是在天朝上邦。PhotonVPS也是个走价格路线的主，其Bean 1月付10.95刀，也是VPS中的低价供应商。随着使用时间的增加，也越发发现其VPS超卖现象越来越严重。</p>
+<p>但好歹也要“矮子里面挑将军”，虽然PhotonVPS也算不上一流，但好歹还比IX强，前两天，也终于把<a href="http://chensd.com/2010-05/photonvps-apache2-single-ip-support-multi-domains.html">Apache2的单IP多域名</a>支持配置成功，于是计划把放在IX上的三个博客（<a href="http://xingyz.com">灌木丛</a>、<a href="http://zbao.us">鲍毡博客</a>、<a href="http://saywiki.com">途说维基</a>），全部转到PhotonVPS来，毕竟，这三个全部是中文博客。三个博客也全部都是由Wordpress构建，因此要转移，主要是博客程序和MySQL数据库里的数据。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2010-05/change-blog-from-ix-to-photonvps.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/17/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/15/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/">&raquo;</a>
   </nav>
 
  </div>
@@ -655,7 +662,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -668,10 +675,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

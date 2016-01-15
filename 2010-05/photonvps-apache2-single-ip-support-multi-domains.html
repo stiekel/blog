@@ -51,7 +51,7 @@
 在God">
 <meta property="og:image" content="http://chensd.com/upfile/2010/05/Godaddy_t_saywiki-560x101.png">
 <meta property="og:image" content="http://chensd.com/upfile/2010/05/t_saywik.png">
-<meta property="og:updated_time" content="2015-11-15T03:58:02.474Z">
+<meta property="og:updated_time" content="2016-01-05T12:48:12.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PhotonVPS系列之八：Apache2中单IP多域名的设置">
 <meta name="twitter:description" content="VPS的费用中，购买单独的IP是一个不少的开支，例如PhotonVPS的独立IP的费用就是每年一个IP要36$，幸好PhotonVPS本来就送两个IP，但仅仅两个人用得话，一年130+$的费用还是比较高的。不过幸好Apache可以将让一个IP绑定多个域名，这样就可以使一个VPS挂N个网站了。下面我们就看看Godaddy域名和PhotonVPS中的设置方法，目的是完成一个如下功能的配置：
@@ -157,10 +157,18 @@
         </li>
       
         
-        <li class="menu-item menu-item-works">
-          <a href="/works" rel="section">
-            <i class="menu-item-icon icon-next-works"></i> <br />
-            作品
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
           </a>
         </li>
       
@@ -253,17 +261,11 @@
 <h3 id="一、Godaddy设置">一、Godaddy设置</h3><p>先进入Godaddy的Domain Manager中，然后选择要设置的域名，进入Total DNS Control，然后点击Add New A Record，在Host Name中输入t，在Points To Ip Address中输入173.224.209.19，完成设置。</p>
 <p><a href="/upfile/2010/05/Godaddy_t_saywiki.png"><img src="/upfile/2010/05/Godaddy_t_saywiki-560x101.png" alt="Godaddy中t.saywiki.com的设置" title="Godaddy_t_saywiki"></a></p>
 <h3 id="二、新建/home/wwwsaywiki目录和index-htm文件">二、新建/home/wwwsaywiki目录和index.htm文件</h3><p>使用windows下的PuTTY，或者Ubuntu中的ssh工具，<a href="http://chensd.com/2010-03/photonvps-ssh-control-panel.html">登录到PhotonVPS的VPS上</a>。首先是新建/home/wwwsaywiki目录，输入以下命令即可完成：</p>
-<blockquote>
-<p>mkdir /home/wwwsaywiki/</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/wwwsaywiki/</span><br></pre></td></tr></table></figure>
 <p>目录即新建完成，再新建index.htm文件，输入如下命令</p>
-<blockquote>
-<p>vi /home/wwwsaywiki/index.htm</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /home/wwwsaywiki/index.htm</span><br></pre></td></tr></table></figure>
 <p>然后即进入vi，按下i，进入vi的编辑模式，输入如下的内容：</p>
-<blockquote>
-<p>&lt;h1&gt;this is t.saywiki.com&lt;/h1&gt;</p>
-</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>this is t.saywiki.com<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后按esc键退出vi的编辑模式，输入&ldquo;:&rdquo;，再输入wp，保存退出。</p>
 <h3 id="三、设置Apache2">三、设置Apache2</h3><p>目录，这个VPS已经挂有两个网站，基本情况如下：</p>
 <ul>
@@ -271,41 +273,12 @@
 <li><a href="http://shenxf.com" target="_blank" rel="external">shenxf.com</a>，使用IP：173.224.209.19</li>
 </ul>
 <p>现在，需要将t.saywiki.com绑定到173.224.209.20这个IP上。这个需要通过设置Apache2来完成，主要是通过一个相关的配置文件来完成，输入如下文件，开始编辑相关的配置文件：</p>
-<blockquote>
-<p>sudo vi /etc/apache2/sites-available/default</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/sites-available/default</span><br></pre></td></tr></table></figure>
 <p>开始编辑这个文件，在文件中，输入以下内容：</p>
-<blockquote>
-<p>NameVirtualHost 173.224.209.20:80</p>
-<pre><code>&amp;nbsp;&amp;lt;VirtualHost <span class="number">173.224</span><span class="number">.209</span><span class="number">.20</span>:<span class="number">80</span>&amp;gt;
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; ServerName t.saywiki.com
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; DocumentRoot /home/wwwsaywiki
-
-&amp;lt;/VirtualHost&amp;gt;
-
-&amp;nbsp;&amp;lt;VirtualHost <span class="number">173.224</span><span class="number">.209</span><span class="number">.20</span>:<span class="number">80</span>&amp;gt;
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; ServerName chensd.com
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; DocumentRoot /home/wwwcsd/
-
-&amp;lt;/VirtualHost&amp;gt;
-
-NameVirtualHost <span class="number">173.224</span><span class="number">.209</span><span class="number">.19</span>:<span class="number">80</span>
-
-&amp;nbsp;&amp;lt;VirtualHost <span class="number">173.224</span><span class="number">.209</span><span class="number">.19</span>:<span class="number">80</span>&amp;gt;
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; ServerName shenxf.com
-
-&amp;nbsp;&amp;nbsp; &amp;nbsp;DocumentRoot /home/wwwsxf/
-
-&amp;lt;/VirtualHost&amp;gt;
-</code></pre></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameVirtualHost 173.224.209.20:80&#10;  &#60;VirtualHost 173.224.209.20:80&#62;&#10;    ServerName t.saywiki.com&#10;    DocumentRoot /home/wwwsaywiki&#10;  &#60;/VirtualHost&#62;&#10;  &#60;VirtualHost 173.224.209.20:80&#62;&#10;    ServerName chensd.com&#10;    DocumentRoot /home/wwwcsd/&#10;  &#60;/VirtualHost&#62;&#10;&#10;NameVirtualHost 173.224.209.19:80&#10;  &#60;VirtualHost 173.224.209.19:80&#62;&#10;    ServerName shenxf.com&#10;    DocumentRoot /home/wwwsxf/&#10;  &#60;/VirtualHost&#62;</span><br></pre></td></tr></table></figure>
 <p>OK，在浏览器中输入<a href="http://saywiki.com" target="_blank" rel="external">t.saywiki.com</a>，成功显示&ldquo;this is t.saywiki.com&rdquo;，设置成功。</p>
 <p><a href="/upfile/2010/05/t_saywik.png"><img src="/upfile/2010/05/t_saywik.png" alt="t.saywiki.com设置成功" title="t_saywik"></a></p>
-<p><a href="http://chensd.com/tag/photonvps">PhotonVPS系列</a></p>
+<p><a href="http://chensd.com/tags/photonvps">PhotonVPS系列</a></p>
 </span>
       
     </div>
@@ -401,7 +374,7 @@ NameVirtualHost <span class="number">173.224</span><span class="number">.209</sp
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">125</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -414,10 +387,10 @@ NameVirtualHost <span class="number">173.224</span><span class="number">.209</sp
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">69</span>
+            <a href="/tags">
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>

@@ -39,19 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的ngRoute，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为Angualar New Router，以前的ui-view被新的ng-viewport取而代之，另外引入了component的概念。我们用一个例子来对它做一个简单的了解。
-先放代码和DEMO。">
+<meta name="description" content="由于该模块已经停止针对 AngularJS 1.4.7 及以下版本的维护，请不要再在项目中使用。
+Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的ngRoute，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为Angualar New Router，以前的ui-view被新的ng-viewport取而代之，另外引入了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular2路由模块简介">
 <meta property="og:url" content="http://chensd.com/2015-06/Angular-New-Router.html">
 <meta property="og:site_name" content="不可能不确定">
-<meta property="og:description" content="Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的ngRoute，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为Angualar New Router，以前的ui-view被新的ng-viewport取而代之，另外引入了component的概念。我们用一个例子来对它做一个简单的了解。
-先放代码和DEMO。">
-<meta property="og:updated_time" content="2016-01-05T12:47:56.465Z">
+<meta property="og:description" content="由于该模块已经停止针对 AngularJS 1.4.7 及以下版本的维护，请不要再在项目中使用。
+Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的ngRoute，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为Angualar New Router，以前的ui-view被新的ng-viewport取而代之，另外引入了">
+<meta property="og:updated_time" content="2016-03-03T22:55:55.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular2路由模块简介">
-<meta name="twitter:description" content="Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的ngRoute，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为Angualar New Router，以前的ui-view被新的ng-viewport取而代之，另外引入了component的概念。我们用一个例子来对它做一个简单的了解。
-先放代码和DEMO。">
+<meta name="twitter:description" content="由于该模块已经停止针对 AngularJS 1.4.7 及以下版本的维护，请不要再在项目中使用。
+Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的ngRoute，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为Angualar New Router，以前的ui-view被新的ng-viewport取而代之，另外引入了">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -245,7 +245,8 @@
       
 
       
-        <span itemprop="articleBody"><p>Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的<code>ngRoute</code>，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为<a href="https://github.com/angular/router" target="_blank" rel="external">Angualar New Router</a>，以前的<code>ui-view</code>被新的<code>ng-viewport</code>取而代之，另外引入了<code>component</code>的概念。我们用一个例子来对它做一个简单的了解。</p>
+        <span itemprop="articleBody"><p><strong>由于该模块已经停止针对 AngularJS 1.4.7 及以下版本的维护，请不要再在项目中使用。</strong></p>
+<p>Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的<code>ngRoute</code>，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为<a href="https://github.com/angular/router" target="_blank" rel="external">Angualar New Router</a>，以前的<code>ui-view</code>被新的<code>ng-viewport</code>取而代之，另外引入了<code>component</code>的概念。我们用一个例子来对它做一个简单的了解。</p>
 <p>先放<a href="https://coding.net/u/Stiekel/p/static/git/tree/master/public/angular-new-router" target="_blank" rel="external">代码</a>和<a href="http://stiekel.coding.io/angular-new-router/#/" target="_blank" rel="external">DEMO</a>。</p>
 <a id="more"></a>
 <h3 id="基础代码">基础代码</h3><p>先来构建基础的HTML和JS代码，<a href="https://coding.net/u/Stiekel/p/static/git/blob/master/public/angular-new-router/index.html" target="_blank" rel="external">index.html</a>代码如下：</p>
@@ -420,6 +421,10 @@
             
               <span class="links-of-author-item">
                 <a href="https://github.com/stiekel" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/Stiekel" target="_blank">Coding.NET</a>
               </span>
             
               <span class="links-of-author-item">

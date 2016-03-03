@@ -7,6 +7,8 @@ categories:
   - 编程杂记
 ---
 
+__由于该模块已经停止针对 AngularJS 1.4.7 及以下版本的维护，请不要再在项目中使用。__
+
 Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的`ngRoute`，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为[Angualar New Router](https://github.com/angular/router)，以前的`ui-view`被新的`ng-viewport`取而代之，另外引入了`component`的概念。我们用一个例子来对它做一个简单的了解。
 
 先放[代码](https://coding.net/u/Stiekel/p/static/git/tree/master/public/angular-new-router)和[DEMO](http://stiekel.coding.io/angular-new-router/#/)。

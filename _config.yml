@@ -92,13 +92,16 @@ exclude_generator:
 deploy:
   type: git
   #repository: https://gitcafe.com/Sid/Sid.git
-  repository: git@gitcafe.com:Sid/Sid.git
-  branch: gitcafe-pages
+  #repository: git@gitcafe.com:Sid/Sid.git
+  #branch: gitcafe-pages
+  repository: https://git.coding.net/Stiekel/blog.git
+  branch: coding-pages
 
 duoshuo_shortname: sidcn
 
 social:
   GitHub: https://github.com/stiekel
+  Coding.NET: https://coding.net/u/Stiekel
   Twitter: https://twitter.com/SidCN
   Weibo: http://weibo.com/sidcn
   DouBan: http://www.douban.com/people/Stiekel/

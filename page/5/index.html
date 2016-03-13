@@ -193,6 +193,94 @@
           
           
             
+              <a class="post-title-link" href="/2013-12/cfa-exam-resource-video-mp3.html" itemprop="url">
+                期货从业资格考试过关心得及学习资料（视频+音频mp3+PDF）
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-12-23T08:17:25+08:00" content="Dec 23 2013">
+            Dec 23 2013
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/考试/" itemprop="url" rel="index">
+                  <span itemprop="name">考试</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013-12/cfa-exam-resource-video-mp3.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013-12/cfa-exam-resource-video-mp3.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>10月的时候，手头比较闲，网上逛的时候看到以前的考试大改名233网校了，想着闲的没事，于是看了一下考试日历，正好11月16号刚好有个期货从业资格考试，看着正好是不大了解的新鲜玩意儿，便打上计划买书报名准备考试了。运气也还比较好，正好通过了。按照惯例，还是喷一点考试心得，发一些准备资料吧。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013-12/cfa-exam-resource-video-mp3.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013-08/active-tabbable-in-bootstrap-with-url.html" itemprop="url">
                 使用URL直接激活Bootstrap中的tabbable
               </a>
@@ -557,102 +645,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011-11/php-cli-param-as-get-format.html" itemprop="url">
-                在PHP CLI下使用类似GET的方法传参
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-11-29T15:28:31+08:00" content="Nov 29 2011">
-            Nov 29 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-11/php-cli-param-as-get-format.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-11/php-cli-param-as-get-format.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Linux下为了方便，有时候会直接使用命令行的方式来执行php程序，比如一些crontab任务之类，但通常写出来的大部分php程序，都没有考虑到命令行下的一些情况，直接使用GET进行参数传递也是常态，但这在命令行下却很无奈，尤其是传递多个GET参数时，连命令都无法正确执行——GET多参数分隔符&amp;会妨碍命令的执行。</p>
-<h3 id="1、PHP_CLI的参数传递方式">1、PHP CLI的参数传递方式</h3><p>PHP CLI下参数的传递是使用Linux命令行的方式进行，将参数值按照指定的先后顺序依次排列，一旦顺序错误，最终传送的结果也将错误，而且，如果程序要支持命令行参数，还需要专门的分析和拆开$argv数组，如果是修改现有程序，工作量将会更大。</p>
-<h3 id="2、捕获参数，组装伪$_GET和$_REQUEST数组">2、捕获参数，组装伪$_GET和$_REQUEST数组</h3><p>命令行下是没有$_GET等变量的，但如果使用GET进行参数传递，程序中肯定会有对诸如$_GET和$_REQUEST数组的调用。如果要降低修改的工作量，最简单的办法就是，抓获CLI传递的参数，再将参数组装成一个$_GET和$_REQUEST数组。<br>为了避开cli中对参数的先后顺序的要求，让命令执行使用更容易分辨更让人熟悉的URL参数传递方式，可以按如下的格式来传递参数并捕获：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php filename.php &#34;name=Roges&#38;height=187.96&#38;weight=99.79&#34;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2011-11/php-cli-param-as-get-format.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
   </nav>
 
  </div>
@@ -686,7 +683,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">125</span>
+              <span class="site-state-item-count">126</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -193,6 +193,97 @@
           
           
             
+              <a class="post-title-link" href="/2011-08/server-mysql-status-moniter-by-php.html" itemprop="url">
+                利用PHP实现对服务器性能与状态的监控
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2011-08-31T15:34:10+08:00" content="Aug 31 2011">
+            Aug 31 2011
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/编程杂记/" itemprop="url" rel="index">
+                  <span itemprop="name">编程杂记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011-08/server-mysql-status-moniter-by-php.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011-08/server-mysql-status-moniter-by-php.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近由于工作上的原因，需要开发一套服务器性能的监控工具，主要是一些同架构同软件配置的服务器。考虑到最近用php比较多，随即决定使用php来实现。主要需要实现的部分功能如下：</p>
+<ul>
+<li>1、系统状态，如cpu / 内存 / swap等数据；</li>
+<li>2、MySQL的性能与运行状态；<br>其它主要是配合性的数据存储以及可视化。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2011-08/server-mysql-status-moniter-by-php.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011-07/js-css-support-in-webbrowser-of-sliverlight-for-windows-phone.html" itemprop="url">
                 Sliverlight for WP7 中WebBrowser控件对js和css的支持性总结
               </a>
@@ -547,96 +638,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011-03/why-2-step-verification-is-safe.html" itemprop="url">
-                Google两步登陆的安全性分析与保护措施
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-03-04T06:30:10+08:00" content="Mar 4 2011">
-            Mar 4 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/胡说八道/" itemprop="url" rel="index">
-                  <span itemprop="name">胡说八道</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-03/why-2-step-verification-is-safe.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-03/why-2-step-verification-is-safe.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>前两天写了篇关于<a href="http://chensd.com/2011-03/google-2-steps-verification.html">Google两步登陆的介绍文章</a>，在<a href="http://twitter.com/#!/Woo997/status/42749365391081472">推上</a>和<a href="http://www.cnbeta.com/articles/136126.htm">cnBeta</a>上都有不少人质疑其安全性，主要是因为对电信运营商的不信任。两步登陆用了两天多了，今天早上也专门试了试它的一些情况，在这里刚好总结一下。</p>
-<p>设置为两步登陆后，完成第二步登陆的数字码有三种途径可以获得，一是通过手机上的程序生成，二是通过设定的手机接收短信，三是设置时生成的备用数字验证码。此外，利用程序特有密码（Application-specific Password）也是一个访问Google账户中数据的方法，下面分别从这四方面来分别分析它的安全性。</p>
-<p>需要说明的是，<strong>对于设置了两步登陆的账号，单独得到其账户密码和数字验证码都是没有用的</strong>，而且，通过程序生成和短信接收得到的六位数字验证码还有一个时效限制。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2011-03/why-2-step-verification-is-safe.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -675,7 +676,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">126</span>
+              <span class="site-state-item-count">127</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -689,7 +690,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

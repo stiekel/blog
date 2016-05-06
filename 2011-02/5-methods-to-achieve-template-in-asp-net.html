@@ -1,252 +1,100 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html lang="zh-Hans">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASP.NET中五种实现模板功能的方法 [ 不可能不确定 ]</title>
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
-
-
-
-  <meta name="keywords" content="ASP.NET," />
-
-
-
-  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
-
-
-<meta name="description" content="在追求风格一致的项目中，无论是UI设计还是程序代码，都希望尽量更多的重用，一来修改方便，二来提高效率。对于WEB程序实现，设计的重用更多的时候也是代码的重用，在完成前期的工作后，如果后期能够模套用模板一样来进行，那将大大利于项目的进行。
-为了能够实现模板这个功能，在ASP.NET 1.x中提供了用户控件（User Control），到了ASP.NET 2.0还出现了母版（Master Page），">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ASP.NET中五种实现模板功能的方法">
-<meta property="og:url" content="http://chensd.com/2011-02/5-methods-to-achieve-template-in-asp-net.html">
-<meta property="og:site_name" content="不可能不确定">
-<meta property="og:description" content="在追求风格一致的项目中，无论是UI设计还是程序代码，都希望尽量更多的重用，一来修改方便，二来提高效率。对于WEB程序实现，设计的重用更多的时候也是代码的重用，在完成前期的工作后，如果后期能够模套用模板一样来进行，那将大大利于项目的进行。
-为了能够实现模板这个功能，在ASP.NET 1.x中提供了用户控件（User Control），到了ASP.NET 2.0还出现了母版（Master Page），">
-<meta property="og:image" content="http://chensd.com/upfile/2011/02/TemplateTest_site_shutcat.png">
-<meta property="og:updated_time" content="2016-01-05T12:47:56.309Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ASP.NET中五种实现模板功能的方法">
-<meta name="twitter:description" content="在追求风格一致的项目中，无论是UI设计还是程序代码，都希望尽量更多的重用，一来修改方便，二来提高效率。对于WEB程序实现，设计的重用更多的时候也是代码的重用，在完成前期的工作后，如果后期能够模套用模板一样来进行，那将大大利于项目的进行。
-为了能够实现模板这个功能，在ASP.NET 1.x中提供了用户控件（User Control），到了ASP.NET 2.0还出现了母版（Master Page），">
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post'
-  };
-</script>
-
-  <title> ASP.NET中五种实现模板功能的方法 | 不可能不确定 </title>
+    
+    
+      <link rel="stylesheet" href="/css/random.css">
+    
+      <link rel="stylesheet" href="/css/vegas.min.css">
+    
+      <link rel="stylesheet" href="/css/highlight-railscasts.css">
+    
+      <link rel="stylesheet" href="/css/jquery.fancybox.css">
+    
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-3804589-6', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-  <div class="container one-column page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">不可能不确定</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
+<body>
+<div id="container" class="hide-area">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            关于
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content"> 
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              ASP.NET中五种实现模板功能的方法
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-02-23T14:48:08+08:00" content="Feb 23 2011">
-            Feb 23 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-02/5-methods-to-achieve-template-in-asp-net.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-02/5-methods-to-achieve-template-in-asp-net.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">不可能不确定</div>
+        </a>
       </div>
-    </header>
+      <div id="menu-list">
+        <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/tags">Tags</a></li>
+        
+          <li><a href="/categories">Categories</a></li>
+        
+          <li><a href="/about">About</a></li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
 
-    <div class="post-body">
-
+  <div id="content-outer">
+    <div id="content-inner">
       
       
-
+  <article id="post">
+    <h1>ASP.NET中五种实现模板功能的方法</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 Feb 23 2011</span>
       
-        <span itemprop="articleBody"><p>在追求风格一致的项目中，无论是UI设计还是程序代码，都希望尽量更多的重用，一来修改方便，二来提高效率。对于WEB程序实现，设计的重用更多的时候也是代码的重用，在完成前期的工作后，如果后期能够模套用模板一样来进行，那将大大利于项目的进行。</p>
+        <span id = "post-title-updated">修改于 Jan 5 2016</span>
+      
+      <span id = "post-title-categories">分类
+      
+      
+        
+        
+        <a href="/categories/编程杂记/">编程杂记</a>
+      
+      </span>
+      <span id = "post-title-tags">
+      标签
+      
+      
+        
+        
+        <a href="/tags/ASP-NET/">ASP.NET</a>
+      
+      </span>
+    </p>
+    <p>在追求风格一致的项目中，无论是UI设计还是程序代码，都希望尽量更多的重用，一来修改方便，二来提高效率。对于WEB程序实现，设计的重用更多的时候也是代码的重用，在完成前期的工作后，如果后期能够模套用模板一样来进行，那将大大利于项目的进行。</p>
 <p>为了能够实现模板这个功能，在ASP.NET 1.x中提供了用户控件（User Control），到了ASP.NET 2.0还出现了母版（Master Page），除此之外，还有三种方法可以达到类似的目的，具体实现却各有优点。</p>
 <h3 id="一、抄在前面">一、抄在前面</h3><p>有一回对我说道，“你读过书么？”我略略点一点头。他说，“读过书，……我便考你一考。茴香豆的茴字，怎样写的？”我想，讨饭一样的人，也配考我么？便回过脸去，不再理会。孔乙己等了许久，很恳切的说道，“不能写罢？……我教给你，记着！这些字应该记着。将来做掌柜的时候，写账要用。”我暗想我和掌柜的等级还很远呢，而且我们掌柜也从不将茴香豆上账；又好笑，又不耐烦，懒懒的答他道，“谁要你教，不是草头底下一个来回的回字么？”孔乙己显出极高兴的样子，将两个指头的长指甲敲着柜台，点头说，“对呀对呀！……回字有四样写法，你知道么？”我愈不耐烦了，努着嘴走远。孔乙己刚用指甲蘸了酒，想在柜上写字，见我毫不热心，便又叹一口气，显出极惋惜的样子。</p>
 <p>——周树人《<a href="http://zh.wikisource.org/zh-hans/%E5%AD%94%E4%B9%99%E5%B7%B1" target="_blank" rel="external">孔乙己</a>》·1919年</p>
@@ -290,444 +138,144 @@
 <h3 id="三、各方法的优点">三、各方法的优点</h3><p>母版页功能最为强大，可以建立一个供其它页进行填充的框架结构。而用户控件则可以将多行代码或者控件进行组合，类似于一个容器。Response.WriteFile可以将小段的HTML代码进行直接的输出，include则可以将ASPX代码进行组合。虽然iframe是一个令人厌恶的结构，但却可以简单粗暴的组合多个ASPX页。</p>
 <h3 id="四、代码打包下载">四、代码打包下载</h3><p><a href="http://chensd.com/2011-02/5-methods-to-achieve-template-in-asp-net.html/templatetest">源代码下载</a>（14KB）</p>
 <p>下载代码压缩包后，可将其解压，再在IIS中映射一个虚拟目录，即可实现浏览。default.aspx是一个导航页。</p>
-</span>
-      
-    </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/ASP-NET/" rel="tag">#ASP.NET</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2011-02/asp-dot-net-source-tools-viewcode.html" rel="prev">ASP.NET源码阅读小工具：ViewCode</a>
-            
-          </div>
-
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2011-02/translattion-chapter-11-using-an-options-file.html" rel="next">译文：在MySQL中使用选项文件（Options File）</a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
   </article>
 
+  
+<nav id="pagination">
+  
+    <a href="/2011-02/asp-dot-net-source-tools-viewcode.html" class="prev">&larr; 上一篇 ASP.NET源码阅读小工具：ViewCode</a>
+  
+
+  
+
+  
+    <a href="/2011-02/translattion-chapter-11-using-an-options-file.html" class="next">下一篇 译文：在MySQL中使用选项文件（Options File） &rarr;</a>
+  
+</nav>
 
 
-    <div class="post-spread">
+      
+      <div class="ds-thread" data-thread-key="2011-02/5-methods-to-achieve-template-in-asp-net.html" data-title="ASP.NET中五种实现模板功能的方法" data-url="http://chensd.com/2011-02/5-methods-to-achieve-template-in-asp-net.html"></div>
+      
       
     </div>
   </div>
 
- </div>
-
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2011-02/5-methods-to-achieve-template-in-asp-net.html"
-                   data-title="ASP.NET中五种实现模板功能的方法" data-url="http://chensd.com/2011-02/5-methods-to-achieve-template-in-asp-net.html">
-              </div>
-            
-          </div>
-        
-      </div>
-
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by Stiekel using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
       
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        &copy;
+        
+
+        2010
+        
+         - 2016
+        
+      
     </div>
   </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Stiekel</p>
-        </div>
-        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">127</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">69</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/Stiekel" target="_blank">Coding.NET</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-        <section class="post-toc-wrap sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
-          <div class="post-toc">
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、抄在前面"><span class="nav-number">1.</span> <span class="nav-text">一、抄在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、实现方法"><span class="nav-number">2.</span> <span class="nav-text">二、实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、使用母版方法实现"><span class="nav-number">2.1.</span> <span class="nav-text">1、使用母版方法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、使用用户控件实现"><span class="nav-number">2.2.</span> <span class="nav-text">2、使用用户控件实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、利用Response-WriteFile来直接输出html文件"><span class="nav-number">2.3.</span> <span class="nav-text">3、利用Response.WriteFile来直接输出html文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、通过使用Include添加ASPX文件的方法实现"><span class="nav-number">2.4.</span> <span class="nav-text">4、通过使用Include添加ASPX文件的方法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、通过iframe方法实现"><span class="nav-number">2.5.</span> <span class="nav-text">5、通过iframe方法实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、各方法的优点"><span class="nav-number">3.</span> <span class="nav-text">三、各方法的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、代码打包下载"><span class="nav-number">4.</span> <span class="nav-text">四、代码打包下载</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
-  
-  &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="icon-next-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Stiekel</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
- </div>
-    </footer>
-
-    <div class="back-to-top"></div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  
-  
-    
-
-  
-    
-  
+</div>
 
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
-
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
+var duoshuoQuery = {short_name:"SidCN"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
 </script>
 
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
 
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+    <ul>
+    
+      <li><a href="https://github.com/stiekel">GitHub</a></li>
+    
+      <li><a href="https://coding.net/u/Stiekel">Coding.NET</a></li>
+    
+      <li><a href="https://twitter.com/SidCN">Twitter</a></li>
+    
+      <li><a href="http://weibo.com/sidcn">Weibo</a></li>
+    
+      <li><a href="http://www.douban.com/people/Stiekel/">DouBan</a></li>
+    
+    </ul>
+  </div>
+</div>
 
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
+<div id="btn-view">Hide</div>
 
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    var $tocContent = $('.post-toc-content');
-    if (isDesktop() && CONFIG.sidebar === 'post') {
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-        displaySidebar();
-      }
-    }
-  });
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+
+
+  <script>
+  // fancybox
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
     });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
   </script>
 
-  
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
 </body>
 </html>
+

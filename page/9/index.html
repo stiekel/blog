@@ -1,895 +1,154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html lang="zh-Hans">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Node.js Developer [ 不可能不确定 ]</title>
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
-
-
-
-  <meta name="keywords" content="不可能不确定,Node.js,PHP,期货,期货从业资格考试,软考,系统分析师,信息系统监理师,项目管理师" />
-
-
-
-  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
-
-
-<meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不可能不确定">
-<meta property="og:url" content="http://chensd.com/page/9/index.html">
-<meta property="og:site_name" content="不可能不确定">
-<meta property="og:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不可能不确定">
-<meta name="twitter:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post'
-  };
-</script>
-
-  <title> 不可能不确定 </title>
+    
+    
+      <link rel="stylesheet" href="/css/random.css">
+    
+      <link rel="stylesheet" href="/css/vegas.min.css">
+    
+      <link rel="stylesheet" href="/css/highlight-railscasts.css">
+    
+      <link rel="stylesheet" href="/css/jquery.fancybox.css">
+    
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
+<div class="random-center hide-area">
+  <div id="random-index">
+    <div class="center-field">
+      <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" width=120 height=120 onClick="openUserCard()">
+    </div>
+    <div class="center-field">
+      <div class="title" onClick="openUserCard()">不可能不确定</div>
+      <div class="sub-title" onClick="openUserCard()">A Node.js Developer</div>
+    </div>
+    <hr >
+    <div class="center-field">
+      <ul>
+        
+          
+        
+          
+            <li><a href="/archives">Archives</a></li>
+          
+        
+          
+            <li><a href="/tags">Tags</a></li>
+          
+        
+          
+            <li><a href="/categories">Categories</a></li>
+          
+        
+          
+            <li><a href="/about">About</a></li>
+          
+        
+      </ul>
+    </div>
   </div>
-<![endif]-->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-3804589-6', 'auto');
-  ga('send', 'pageview');
+</div>
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+    <ul>
+    
+      <li><a href="https://github.com/stiekel">GitHub</a></li>
+    
+      <li><a href="https://coding.net/u/Stiekel">Coding.NET</a></li>
+    
+      <li><a href="https://twitter.com/SidCN">Twitter</a></li>
+    
+      <li><a href="http://weibo.com/sidcn">Weibo</a></li>
+    
+      <li><a href="http://www.douban.com/people/Stiekel/">DouBan</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+<div id="btn-view">Hide</div>
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
 
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+</script>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">不可能不确定</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            关于
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011-01/2010-my-e-pet-list.html" itemprop="url">
-                2010年我的新购电子产品列表
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-01-27T03:53:16+08:00" content="Jan 27 2011">
-            Jan 27 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/生活杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">生活杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-01/2010-my-e-pet-list.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-01/2010-my-e-pet-list.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>过去的一年是“奢侈”的一年，没有什么目标，没有什么进步。但却在电子产品上花了太多的精力，附带和各公司快递员混了个脸熟。快回家过年了，列个表吧：</p>
-<ul>
-<li><p><strong>二手T60                                ￥2400</strong><br>像ThinkPad这样拉风的笔记本，无论在什么地方，都像漆黑中的萤火虫一样，那样的鲜明，那样的出众！它那忧郁的造型，稀嘘的键盘帽，神乎其神的ThinkLight，还有那颗鲜红的TrackPoint，都深深的出卖了它。</p>
-</li>
-<li><p><strong>T60兼容六芯电池                    ￥150</strong><br>二手本的电池实在是太悲剧了，坚持个十来分钟就不行了。于是托<a href="http://shenxf.com">朋友</a>给弄来了个兼容电池。</p>
-</li>
-<li><p><strong>Targus Thinkpad单肩包                ￥100</strong><br>这个价位的Targus就不要指望是真的了，用了大半年，感觉倒也还行。与包一起的，还有三种型号的小红点，试来试去，最后选用了Soft-Rem（小红盘）。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2011-01/2010-my-e-pet-list.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011-01/chrome-plugins-china-search-engine.html" itemprop="url">
-                天朝专用Chrome插件：在右键中添加第二个搜索引擎
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2011-01-08T08:45:49+08:00" content="Jan 8 2011">
-            Jan 8 2011
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/下载/" itemprop="url" rel="index">
-                  <span itemprop="name">下载</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011-01/chrome-plugins-china-search-engine.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011-01/chrome-plugins-china-search-engine.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>在Chrome里，选中文本后右键菜单会直接增加一条菜单“使用Google搜索”，这个功能的确很方便，可是身在天朝就不一定了，有时候，为了搜索“温度计胡萝卜”而不被重置连接，就不得不先复制内容，打开新标签页，输入网址打开某搜索引擎，粘贴文字，再点“搜索”……</p>
-<p>Chrome虽然允许修改默认搜索引擎，但我想使用Chrome的人，很多都还是对Google搜索有一定好感的，仅仅为了某些搜索而改变默认搜索引擎，的确有些不值得。不过Chrome却并不支持在环境菜单中增加多个搜索引擎，于是，这个插件例诞生了。</p>
-<p>这个插件的作用是：</p>
-<ul>
-<li>1、在不改变默认搜索引擎的情况下，在右键中增加一个搜索引擎选项；</li>
-<li>2、只有在选中文字的情况下才增加这个选项；<br><a href="/upfile/2011/01/chrome_plugins_youdao_search.png"><img src="/upfile/2011/01/chrome_plugins_youdao_search.png" alt="" title="Chrome搜索：在右键菜单中增加“使用有道搜索”"></a></li>
-</ul>
-<p>另外，使用的是有道搜索，X度还是留给别人吧。</p>
-<p>Chrome插件库需要交$5的注册费，所以先只好就放在这个博客上了。</p>
-<p>在右键菜单增加第二搜索引擎的Chrome插件下载：<a href="/upfile/2011/01/chrome_plugins_add_SE_yodao.crx">下载</a></p>
-<blockquote>
-<p><strong>更新</strong>：插件使用了有道搜索，如果你想换成其它你喜欢的搜索引擎，可以<a href="http://blog.yxsy.org/make_crx_chrome_apps.html" title="自己动手：修改crx文件制作自己的Chrome Apps" target="_blank" rel="external">参照这个指南</a>。</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-12/which-google-services-block-by-gfw.html" itemprop="url">
-                Google有哪些产品和服务在大陆不能正常使用？
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-12-28T03:36:45+08:00" content="Dec 28 2010">
-            Dec 28 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/乱七八糟/" itemprop="url" rel="index">
-                  <span itemprop="name">乱七八糟</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-12/which-google-services-block-by-gfw.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-12/which-google-services-block-by-gfw.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Google的服务，在大陆表现为完全打不开和部分能够正常操作，另外还包括一些服务，Google限制北美地区以外的用户使用。</p>
-<h2 id="一、完全不能使用的">一、完全不能使用的</h2><p>完全不能使用的服务主要是域名被直接Block，以致无法打开。这类服务有：</p>
-<p>1、YouTube：从07年开始，YouTube就开始出现不能正常使用的情况，但躲躲闪闪，或者改改语言，也基本能够凑和，但在2009年3月的常规性清查中，YouTube终于正式完全被封；</p>
-<p>2、PicasaWeb：大约是在09年7月左右，PicasaWeb开始正式无法使用，但仍然可以访问PicasaWeb的非英语站点，例如，Picasaweb.google.it等，但大约在今年10，这些语言的版本也开始无法访问；</p>
-<p>3、FeedBurner：FeedBurner曾经数度被封，11月FeedBurner进行了改版，加入了很多吸引人的功能，但国内的博主和站长们，却不得不继续忍受Feedsky这种服务；</p>
-<p>4、Google问答：谷歌在终止与天涯问答的合作后，便在香港的服务器上开始了Google问答服务，但在这个服务推出后的第二天，便被封禁，这好像是Google唯一一个针对大陆推出并被封锁的产品；</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-12/which-google-services-block-by-gfw.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-12/let-the-bullets-fly.html" itemprop="url">
-                子弹乱㞗飞
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-12-19T02:45:52+08:00" content="Dec 19 2010">
-            Dec 19 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/电影与音乐/" itemprop="url" rel="index">
-                  <span itemprop="name">电影与音乐</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-12/let-the-bullets-fly.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-12/let-the-bullets-fly.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>1、到底是“算逑”还是“算㞗”，是要分清楚的，骂人的这个“㞗”字指的是男人的两个球，而“逑”是个好字，所谓“君子好逑”、“逑好”。看这字幕临时工给请的；</p>
-<p>2、1919年的常用货币还是不是银子我不知道，我知道的是清廷常规岁入一年才七八千万两银子，180万两算什么？拿到现在用财政收入比一比就是一千多亿了，就算给黄四爷四条大腿，怕他也挣不来。况且，那一匹马拉得动那么一大车银子么；</p>
-<p>3、马拉火车厢冒哪门子烟鸣哪门子汽笛？</p>
-<p>4、啥斧子能砍动钢轨？赶明找姜导买一把；</p>
-<p>5、可圈可点之处：民国八年做县长；</p>
-<p>6、1919年在中国南部，盒子炮应该是稀罕玩意儿；</p>
-<p>7、看到满地的红泥巴和最后天上飞的那只禽兽，我才想起来，
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-12/let-the-bullets-fly.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-12/moto-mb200-cliq-dext-my-sense.html" itemprop="url">
-                MOTO CLIQ入手半月小记
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-12-10T08:21:15+08:00" content="Dec 10 2010">
-            Dec 10 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/手机/" itemprop="url" rel="index">
-                  <span itemprop="name">手机</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-12/moto-mb200-cliq-dext-my-sense.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-12/moto-mb200-cliq-dext-my-sense.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>早就想入手Android了，可手里的BlackBerry 8700老不坏。中旬的时候，一个朋友的朋友买了联通的iPhone4套餐，拿过来让我折腾折腾，帮别人折腾好了，自己给忍不住了，终于下定决心入新机，再三比较，在<a href="http://detail.zol.com.cn/211/210020/param.shtml">LG GW620</a>、<a href="http://detail.zol.com.cn/209/208652/param.shtml">Samsung i5700</a>和Moto <a href="http://detail.zol.com.cn/211/210610/param.shtml">MB200</a>中选择了后者。22号在淘宝上以1200的价格拍下了装备，24号中午就收到了。顺丰的速度的确没得说，详实的物品追踪信息更大大提高了用户体验。</p>
-<p>买手机之前当时有好多疑问，大部分也没有能够比较清楚的了解到，现在买到了，刚好一一回顾一下。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-12/moto-mb200-cliq-dext-my-sense.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/10/">&raquo;</a>
-  </nav>
-
- </div>
-
-        
-
-        
-      </div>
-
-      
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      <section class="site-overview">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Stiekel</p>
-        </div>
-        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">127</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">69</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/Stiekel" target="_blank">Coding.NET</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
-    </div>
-  </aside>
-
-
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
-  
-  &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="icon-next-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Stiekel</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
- </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
+    <script src="/js/jquery-2.2.3.min.js"></script>
   
+    <script src="/js/vegas.min.js"></script>
   
-
+    <script src="/js/random.js"></script>
   
-    
+    <script src="/js/highlight.pack.js"></script>
   
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
   
 
-  
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+  <script>
+  // fancybox
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
     });
-  </script>
-
-  
-
-  
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
-        effect: "fadeIn"
-      });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
     });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
   </script>
+
 </body>
 </html>
+

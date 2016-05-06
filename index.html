@@ -1,886 +1,154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html lang="zh-Hans">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Node.js Developer [ 不可能不确定 ]</title>
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
-
-
-
-  <meta name="keywords" content="不可能不确定,Node.js,PHP,期货,期货从业资格考试,软考,系统分析师,信息系统监理师,项目管理师" />
-
-
-
-  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
-
-
-<meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不可能不确定">
-<meta property="og:url" content="http://chensd.com/index.html">
-<meta property="og:site_name" content="不可能不确定">
-<meta property="og:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不可能不确定">
-<meta name="twitter:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post'
-  };
-</script>
-
-  <title> 不可能不确定 </title>
+    
+    
+      <link rel="stylesheet" href="/css/random.css">
+    
+      <link rel="stylesheet" href="/css/vegas.min.css">
+    
+      <link rel="stylesheet" href="/css/highlight-railscasts.css">
+    
+      <link rel="stylesheet" href="/css/jquery.fancybox.css">
+    
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
+<div class="random-center hide-area">
+  <div id="random-index">
+    <div class="center-field">
+      <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" width=120 height=120 onClick="openUserCard()">
+    </div>
+    <div class="center-field">
+      <div class="title" onClick="openUserCard()">不可能不确定</div>
+      <div class="sub-title" onClick="openUserCard()">A Node.js Developer</div>
+    </div>
+    <hr >
+    <div class="center-field">
+      <ul>
+        
+          
+        
+          
+            <li><a href="/archives">Archives</a></li>
+          
+        
+          
+            <li><a href="/tags">Tags</a></li>
+          
+        
+          
+            <li><a href="/categories">Categories</a></li>
+          
+        
+          
+            <li><a href="/about">About</a></li>
+          
+        
+      </ul>
+    </div>
   </div>
-<![endif]-->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-3804589-6', 'auto');
-  ga('send', 'pageview');
+</div>
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+    <ul>
+    
+      <li><a href="https://github.com/stiekel">GitHub</a></li>
+    
+      <li><a href="https://coding.net/u/Stiekel">Coding.NET</a></li>
+    
+      <li><a href="https://twitter.com/SidCN">Twitter</a></li>
+    
+      <li><a href="http://weibo.com/sidcn">Weibo</a></li>
+    
+      <li><a href="http://www.douban.com/people/Stiekel/">DouBan</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+<div id="btn-view">Hide</div>
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
 
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+</script>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">不可能不确定</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            关于
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016-04/Transfer-web-app-to-desktop-app-with-NW-js.html" itemprop="url">
-                使用 NW.js 将 Web 应用打包为桌面应用
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-04-03T16:01:51+08:00" content="Apr 3 2016">
-            Apr 3 2016
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016-04/Transfer-web-app-to-desktop-app-with-NW-js.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016-04/Transfer-web-app-to-desktop-app-with-NW-js.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>平时工作中经常需要开发各种管理后台，为了提升开发效率，一般会使用 Bootstrap 一类的 CSS 框架，使用 AngularJS 一类的单页应用框架，让 Web 开发能够更好的将精力集中在业务逻辑上。但逃不过另外一个麻烦，那便是跨浏览器的兼容问题。所以我一般的粗暴做法是，干脆就不支持 IE 浏览器，通过 userAgent 判断并提示用户切换到 Chrome 。其实，除了这个办法之外，还可以考虑将 Web 应用打包为桌面应用。开源社区提供了 NW.js 来轻松的将 Web 应用打包为桌面应用，这样只需要做到兼容 Chrome 就够了。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016-04/Transfer-web-app-to-desktop-app-with-NW-js.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016-03/Angular-Handle-Global-Http-Error-with-Interceptors.html" itemprop="url">
-                AngularJS 中利用 Interceptors 来统一处理 HTTP 的错误
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-03-12T06:29:26+08:00" content="Mar 12 2016">
-            Mar 12 2016
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016-03/Angular-Handle-Global-Http-Error-with-Interceptors.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016-03/Angular-Handle-Global-Http-Error-with-Interceptors.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Web 开发中，除了数据操作之外，最频繁的就是发起和处理各种 HTTP 请求了，加上 HTTP 请求又是异步的，如果在每个请求中来单独捕获各种常规错误，处理各类自定义错误，那将会有大量的功能类似的代码，或者使用丑陋的方法在每个请求中调用某几个自定义的函数来处理。这两种方法基本都不是靠谱之选。好在 AngularJS 提供了 <a href="https://docs.angularjs.org/api/ng/service/$http#Interceptors">Interceptors</a>——拦截战斗机——来对应用内所有的 XHR 请求进行统一处理。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016-03/Angular-Handle-Global-Http-Error-with-Interceptors.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016-01/AngularJS-Directive-angular-image-404.html" itemprop="url">
-                AngularJS 指令 angular-image-404
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-01T08:12:41+08:00" content="Jan 1 2016">
-            Jan 1 2016
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016-01/AngularJS-Directive-angular-image-404.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016-01/AngularJS-Directive-angular-image-404.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>在进行 AngularJS 应用的开发时，经常需要显示图片，而 <code>img</code> 有时候并不能成功的获取到 <code>src</code> 或 <code>ng-src</code> 指定的图片，这时候可能需要通过其它办法来指定一个备用图片，可以想到的办法有：</p>
-<ul>
-<li><p>在 <code>ng-src</code> 的属性中，指定完普通的图片地址后，使用 <code>||</code> 追加备用图片的地址，如</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng-src='&#123;&#123;"myImg.png" || "fallback.png"&#125;&#125;'</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 <code>ng-show</code> 和 <code>ng-hide</code> 控制两个 <code>img</code>，其中一个正常显示图片，另外一个显示力求用图片</p>
-</li>
-</ul>
-<p>开始我也这么做，所以找了一下，发现了一个 AngularJS 指令，<a href="https://github.com/sebasrodriguez/angular-fallback-image">angular-fallback-image</a> 不过这个指令并不完善，必须指定指令图片才行，我想要的是，就算没有指定图片，也可以显示一个占位性质的图片，于是我做了修改，发了 <a href="https://github.com/sebasrodriguez/angular-fallback-image/pull/1">Pull Request</a> ，不过这位乌拉圭的<a href="https://github.com/sebasrodriguez">小哥</a> 似乎有段时间没处理 Github 上的东西了。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016-01/AngularJS-Directive-angular-image-404.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html" itemprop="url">
-                使用 Gulp 构建 AngularJS / Jade 项目
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-08T07:22:45+08:00" content="Nov 8 2015">
-            Nov 8 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 <code>public</code> 中，Bower 也配置为将依赖包直接安装到 <code>public/lib</code> 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。</p>
-<p>上周在做一个 App 项目的商户端，对应的 API 已经完成，只是用 AngularJS 来实现一个前端 Web 页面，其中的 HTML 使用了 Jade 来完成。由于是一个完全的前端项目，终于决定尝试用 Gulp 来进行构建。整体的需求如下：</p>
-<ul>
-<li>使用 Bower 管理前端依赖</li>
-<li>需要将 Jade 文件编码成 HTML，并按照 Angular New Router 中的 Components 来组织目录结构</li>
-<li>将 CSS / JavaScript 文件组装为单个文件</li>
-<li>图片和字体等静态资源存放到对应目录</li>
-<li>使用 Gulp 创建一个调试用的服务器，并能够修改文件后自动重载浏览器页面</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015-11/Use-Gulp-in-AngularJS-and-Jade-project.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-10/Use-Waterline-in-Express-project.html" itemprop="url">
-                在 Express 项目中使用 Waterline
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-26T01:40:22+08:00" content="Oct 26 2015">
-            Oct 26 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-10/Use-Waterline-in-Express-project.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-10/Use-Waterline-in-Express-project.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>在上一篇<a href="http://chensd.com/2015-10/Node-ORM-Waterline.html">Node.js ORM 数据操作中间件 Waterline </a>中，我们介绍了 Waterline 的功能与特点，这篇文章中我们将用一个实例 waterline-sample （<a href="https://github.com/stiekel/waterline-sample">Github</a>、<a href="https://coding.net/u/Stiekel/p/waterline-sample/git">Coding.NET</a>），来看看在 Express 项目中如何使用 Waterline。</p>
-<p>要在项目中使用 Waterline ，无非是解决如何配置，在什么时机初始化，怎样组织所有的数据集合，以及在控制器中怎么调用 Waterline 中的数据集合这几个问题。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015-10/Use-Waterline-in-Express-project.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-  </nav>
-
- </div>
-
-        
-
-        
-      </div>
-
-      
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      <section class="site-overview">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Stiekel</p>
-        </div>
-        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">127</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">69</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/Stiekel" target="_blank">Coding.NET</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
-    </div>
-  </aside>
-
-
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
-  
-  &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="icon-next-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Stiekel</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
- </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
+    <script src="/js/jquery-2.2.3.min.js"></script>
   
+    <script src="/js/vegas.min.js"></script>
   
-
+    <script src="/js/random.js"></script>
   
-    
+    <script src="/js/highlight.pack.js"></script>
   
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
   
 
-  
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+  <script>
+  // fancybox
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
     });
-  </script>
-
-  
-
-  
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
-        effect: "fadeIn"
-      });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
     });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
   </script>
+
 </body>
 </html>
+

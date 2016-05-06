@@ -1,902 +1,154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html lang="zh-Hans">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Node.js Developer [ 不可能不确定 ]</title>
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
-
-
-
-  <meta name="keywords" content="不可能不确定,Node.js,PHP,期货,期货从业资格考试,软考,系统分析师,信息系统监理师,项目管理师" />
-
-
-
-  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
-
-
-<meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不可能不确定">
-<meta property="og:url" content="http://chensd.com/page/13/index.html">
-<meta property="og:site_name" content="不可能不确定">
-<meta property="og:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不可能不确定">
-<meta name="twitter:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post'
-  };
-</script>
-
-  <title> 不可能不确定 </title>
+    
+    
+      <link rel="stylesheet" href="/css/random.css">
+    
+      <link rel="stylesheet" href="/css/vegas.min.css">
+    
+      <link rel="stylesheet" href="/css/highlight-railscasts.css">
+    
+      <link rel="stylesheet" href="/css/jquery.fancybox.css">
+    
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
+<div class="random-center hide-area">
+  <div id="random-index">
+    <div class="center-field">
+      <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" width=120 height=120 onClick="openUserCard()">
+    </div>
+    <div class="center-field">
+      <div class="title" onClick="openUserCard()">不可能不确定</div>
+      <div class="sub-title" onClick="openUserCard()">A Node.js Developer</div>
+    </div>
+    <hr >
+    <div class="center-field">
+      <ul>
+        
+          
+        
+          
+            <li><a href="/archives">Archives</a></li>
+          
+        
+          
+            <li><a href="/tags">Tags</a></li>
+          
+        
+          
+            <li><a href="/categories">Categories</a></li>
+          
+        
+          
+            <li><a href="/about">About</a></li>
+          
+        
+      </ul>
+    </div>
   </div>
-<![endif]-->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-3804589-6', 'auto');
-  ga('send', 'pageview');
+</div>
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+    <ul>
+    
+      <li><a href="https://github.com/stiekel">GitHub</a></li>
+    
+      <li><a href="https://coding.net/u/Stiekel">Coding.NET</a></li>
+    
+      <li><a href="https://twitter.com/SidCN">Twitter</a></li>
+    
+      <li><a href="http://weibo.com/sidcn">Weibo</a></li>
+    
+      <li><a href="http://www.douban.com/people/Stiekel/">DouBan</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+<div id="btn-view">Hide</div>
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
 
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+</script>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">不可能不确定</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            关于
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-09/lg-gs100.html" itemprop="url">
-                推荐：待机十天的超便宜备用手机LG GS100
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-09-26T03:36:06+08:00" content="Sep 26 2010">
-            Sep 26 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/手机/" itemprop="url" rel="index">
-                  <span itemprop="name">手机</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-09/lg-gs100.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-09/lg-gs100.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>现在手机屏幕越来越大、功能越来越多，但打电话这个功能，却是越来越不靠谱了。手机做得越来越像笔记本——连电池都一样。我手里的Blackberry 8700也一样，虽然是个老机器，可电池也真是个老电池，基本上一天一充，白天用手机，晚上闲不着。早就想买个备用的了，前不久在网上碰到LG GS100，刚好符合备用手机的几个需求：</p>
-<ul>
-<li>1、屏幕小，功能少；</li>
-<li>2、电池好，待机长；</li>
-<li>3、启动快，充电快；</li>
-<li>4、关键的一点：价格便宜；<br>9月11号拿到手机，用完了浮电，14号早上七点开始充电，直到当天晚上9点正式开始使用，一直到19号都是满格电（三格），中午一个电话后，变成了两格，但随后又恢复了满格。21号晚上手机给了别人，24号晚上，开始提示电力不足，按照我使用情况来看，电力不足后，一般还可以坚持一天。</li>
-</ul>
-<p>在这十天里，通话约有80分钟，短信不到十条，玩游戏大约30分钟左右。若只是作为备用手机，<strong>估计待机半个月应该不是问题</strong>。后来又买了一部，目前正在充电，到时候进行一个最大限度的待机测试。</p>
-<p>当然，这个手机也有缺点：<strong>充电接口不是通用的miniUSB</strong>！</p>
-<p>在功能上，这个手机提供一个伪装呼叫，可能是唯一一个还比较有用的功能了，另外就是常规的闹铃之类，一共可以设置三个闹铃。</p>
-<p>卖这个商品基本就是赔本赚吆喝，目前有货的只有<a href="http://www.360buy.com/product/225614.html">京东商城</a>和<a href="http://product.dangdang.com/Product.aspx?product_id=1074578701">当当网</a>，京东的价格是129块。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-09/lg-gs100.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-09/google-health.html" itemprop="url">
-                用Google Health存储和管理自己的健康状况记录
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-09-15T23:57:18+08:00" content="Sep 15 2010">
-            Sep 15 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/乱七八糟/" itemprop="url" rel="index">
-                  <span itemprop="name">乱七八糟</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-09/google-health.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-09/google-health.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Google与百度的最大区别之一，就是Google绝对不仅仅只做与广告有关的事情。<a href="https://health.google.com">Google Health</a>再一次向我们证明了这一点。</p>
-<p><a href="https://health.google.com">Google Health</a>是一个存储和管理你健康状况记录的服务，不幸的是，默认使用https连接的Google Health不出意外的被挡在了天朝之外——目前除了Gmail，其它的使用https连接的Google服务，基本已经都被档在了墙外。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-09/google-health.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-09/access-operate-exam-soft.html" itemprop="url">
-                未来教育二级Access模拟系统（含视频演示，附题库）
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-09-15T00:12:57+08:00" content="Sep 15 2010">
-            Sep 15 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/考试/" itemprop="url" rel="index">
-                  <span itemprop="name">考试</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-09/access-operate-exam-soft.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-09/access-operate-exam-soft.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><a id="more"></a>
-<p>关于这个模拟系统，需要注意以下几个问题：</p>
-<ul>
-<li>1、每题都有视频演示；</li>
-<li>2、部分题目的答案及视频演示有误；</li>
-<li>3、视频演示中，所使用的Access为2000版，仅小部分与2003版有部分区别；</li>
-<li>4、评分系统并不准确，在评分时，请注意在Access弹出的“安全警告”窗口中选择“打开”；</li>
-<li>5、软件安装完成后，第一次运行评分时，有可能会失败，但之后不会再有问题；<br>软件下载：未来教育软件全国计算机等级考试二级Access考试模拟系统，<a href="http://url.cn/QZOQl1" title="微云下载（ACCESS_Setup.exe）" target="_blank" rel="external">微云下载</a></li>
-</ul>
-<p>附：上机题库每题考点概要Excel文件，<a href="http://url.cn/KY3OJb" title="微云下载（模拟系统题例.xls）" target="_blank" rel="external">微云下载</a>，该文件包括：</p>
-<ul>
-<li>1、上机模拟考试每题考点；</li>
-<li>2、重要题目的标红提示；<br>如若以上二者不能下载，请在本文后留言。</li>
-</ul>
-<h2 id="连接">连接</h2><ul>
-<li>2008年3月和9月试卷下载：<a href="http://chensd.com/2010-03/ncre-2-access-2008-test-papers.html">http://chensd.com/2010-03/ncre-2-access-2008-test-papers.html</a></li>
-<li>2009年3月的试卷下载：<a href="http://chensd.com/2010-03/ncre-2-access-200903-test-papers.html">http://chensd.com/2010-03/ncre-2-access-200903-test-papers.html</a></li>
-<li>2009年9月的试卷下载：<a href="http://chensd.com/2010-03/ncre-2-access-200909-test-papers.html">http://chensd.com/2010-03/ncre-2-access-200909-test-papers.html</a></li>
-<li>2010年3月的试卷（word版）下载：<a href="http://chensd.com/2010-09/ncre-2-access-201003-doc.html">http://chensd.com/2010-09/ncre-2-access-201003-doc.html</a></li>
-<li>2010年3月公共基础题目答案与分析：<a href="http://chensd.com/2010-03/ncre-2-201003-jichu.html">http://chensd.com/2010-03/ncre-2-201003-jichu.html</a></li>
-<li>2010年3月笔试题目答案分析：<a href="http://chensd.com/2010-03/ncre-2-access-201003-answer-analyse.html">http://chensd.com/2010-03/ncre-2-access-201003-answer-analyse.html</a><br>【2013-9-24更新】偶然打开Google Analytics，看到还是有不同人通过搜索引擎来到这个页面，而老的115和启明网盘连接已经不可用，于是重新传上了一份到微云上。</li>
-</ul>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-09/add-evernote-site-memory-on-wordpress-site.html" itemprop="url">
-                在Wordpress中添加Evernote的Site Memory按钮
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-09-11T02:38:13+08:00" content="Sep 11 2010">
-            Sep 11 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/建站相关/" itemprop="url" rel="index">
-                  <span itemprop="name">建站相关</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-09/add-evernote-site-memory-on-wordpress-site.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-09/add-evernote-site-memory-on-wordpress-site.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><a href="http://www.steelsnarl.com/evernote%E5%87%A0%E4%B8%AA%E6%8A%80%E5%B7%A7%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%E3%80%81%E5%85%B1%E4%BA%AB%EF%BC%89/">Evernote的评论</a>不用多说，国内也有不少用户，作为一个优秀的云服务，相对于Dropbox，被封的可能性要小得多，因为Evernote更注重的是收集而不是分享。前段时间Evernote推出了在网站中添加<a href="http://techcrunch.com/2010/09/10/site-memory-evernote-for-websites/">Site Memory按钮</a>，来快速保存网页中信息的功能，更是方便了用户，下面就以Wordpress blog为例来介绍一下添加Evernote Site Memory按钮的方法。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-09/add-evernote-site-memory-on-wordpress-site.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2010-09/ncre-2-access-201003-doc.html" itemprop="url">
-                2010年3月计算机二级Access考试真题下载（word版）
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2010-09-09T07:51:22+08:00" content="Sep 9 2010">
-            Sep 9 2010
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/考试/" itemprop="url" rel="index">
-                  <span itemprop="name">考试</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2010-09/ncre-2-access-201003-doc.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2010-09/ncre-2-access-201003-doc.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>如果要打开，文字版的真题才是王道，要格式通用又方便，Word才是王道。在考试吧上看到<a href="http://www.exam8.com/computer/djks/dj2/Access/zhenti/201004/1026393.html">网页版</a>的2010年3月的二级Access考试真题，但格式比较乱，而且还分了七页，于是用<a href="http://www.gidot.net/typesetter/">排版助手</a>整理了一下，再在word里调了一下格式，放出来方便一下大家。</p>
-<p>关于这个版本的说明：</p>
-<ul>
-<li>1、文字版，无广告，无水印；</li>
-<li>2、其中一个关于集合的题目，用表格进行了重绘；</li>
-<li>3、一个关于二叉树的题目，二叉树使用Microsoft Visio进行了重绘；<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2010-09/ncre-2-access-201003-doc.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/14/">&raquo;</a>
-  </nav>
-
- </div>
-
-        
-
-        
-      </div>
-
-      
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      <section class="site-overview">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Stiekel</p>
-        </div>
-        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">127</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">69</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/Stiekel" target="_blank">Coding.NET</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
-    </div>
-  </aside>
-
-
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
-  
-  &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="icon-next-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Stiekel</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
- </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
+    <script src="/js/jquery-2.2.3.min.js"></script>
   
+    <script src="/js/vegas.min.js"></script>
   
-
+    <script src="/js/random.js"></script>
   
-    
+    <script src="/js/highlight.pack.js"></script>
   
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
   
 
-  
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+  <script>
+  // fancybox
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
     });
-  </script>
-
-  
-
-  
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
-        effect: "fadeIn"
-      });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
     });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
   </script>
+
 </body>
 </html>
+

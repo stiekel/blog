@@ -1,936 +1,154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html lang="zh-Hans">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Node.js Developer [ 不可能不确定 ]</title>
   
-
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
-
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
-
-
-    <meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。" />
-
-
-
-  <meta name="keywords" content="不可能不确定,Node.js,PHP,期货,期货从业资格考试,软考,系统分析师,信息系统监理师,项目管理师" />
-
-
-
-  <link rel="alternate" href="/atom.xml" title="不可能不确定" type="application/atom+xml" />
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
-
-
-<meta name="description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不可能不确定">
-<meta property="og:url" content="http://chensd.com/page/3/index.html">
-<meta property="og:site_name" content="不可能不确定">
-<meta property="og:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不可能不确定">
-<meta name="twitter:description" content="不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。">
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post'
-  };
-</script>
-
-  <title> 不可能不确定 </title>
+    
+    
+      <link rel="stylesheet" href="/css/random.css">
+    
+      <link rel="stylesheet" href="/css/vegas.min.css">
+    
+      <link rel="stylesheet" href="/css/highlight-railscasts.css">
+    
+      <link rel="stylesheet" href="/css/jquery.fancybox.css">
+    
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
+<div class="random-center hide-area">
+  <div id="random-index">
+    <div class="center-field">
+      <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" width=120 height=120 onClick="openUserCard()">
+    </div>
+    <div class="center-field">
+      <div class="title" onClick="openUserCard()">不可能不确定</div>
+      <div class="sub-title" onClick="openUserCard()">A Node.js Developer</div>
+    </div>
+    <hr >
+    <div class="center-field">
+      <ul>
+        
+          
+        
+          
+            <li><a href="/archives">Archives</a></li>
+          
+        
+          
+            <li><a href="/tags">Tags</a></li>
+          
+        
+          
+            <li><a href="/categories">Categories</a></li>
+          
+        
+          
+            <li><a href="/about">About</a></li>
+          
+        
+      </ul>
+    </div>
   </div>
-<![endif]-->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-3804589-6', 'auto');
-  ga('send', 'pageview');
+</div>
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
+    <ul>
+    
+      <li><a href="https://github.com/stiekel">GitHub</a></li>
+    
+      <li><a href="https://coding.net/u/Stiekel">Coding.NET</a></li>
+    
+      <li><a href="https://twitter.com/SidCN">Twitter</a></li>
+    
+      <li><a href="http://weibo.com/sidcn">Weibo</a></li>
+    
+      <li><a href="http://www.douban.com/people/Stiekel/">DouBan</a></li>
+    
+    </ul>
+  </div>
+</div>
+
+<div id="btn-view">Hide</div>
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?6ab46e09bc8d0da169baff9f975ecaf8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-3804589-6', 'auto');
+  ga('send', 'pageview');
 
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+</script>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title">不可能不确定</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
-            关于
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-07/websocket-stress-test-and-performance-test.html" itemprop="url">
-                WebSocket的性能与压力测试
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-30T17:22:09+08:00" content="Jul 30 2015">
-            Jul 30 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-07/websocket-stress-test-and-performance-test.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-07/websocket-stress-test-and-performance-test.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>相对于短连接应用，长连接应用的测试要麻烦得多——尤其是性能和压力测试。此前，甚至从来没有给任何一个上线的 WebSocket 应用做过这方面的测试，前两天，看到有人在 <a href="http://segmentfault.com/q/1010000003028043">SegmentFault 上问</a>这方面的问题，刚好又有空，于是想着，还是来查查这方面的资料吧。在 Github 上一搜，还真有现成的工具，名字很简单，直接就叫<a href="https://github.com/M6Web/websocket-bench">websocket-bench</a>，</p>
-<p>websocket-bench 是个用 Node.js 编写的命令行工具，可以对使用 Socket.io、<a href="https://github.com/faye/faye">faye</a>、<a href="https://github.com/primus/primus">Primus</a>、<a href="https://github.com/tavendo/WAMP">WAMP</a> 编写的长连接应用进行性能和压力测试，用法和参数与 ab 差不多，多了一个指定连接成功后进行的操作的定义。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015-07/websocket-stress-test-and-performance-test.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-06/Angular-New-Router.html" itemprop="url">
-                Angular2路由模块简介
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-06-07T15:19:08+08:00" content="Jun 7 2015">
-            Jun 7 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-06/Angular-New-Router.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-06/Angular-New-Router.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><strong>由于该模块已经停止针对 AngularJS 1.4.7 及以下版本的维护，请不要再在项目中使用。</strong></p>
-<p>Angular2虽然还没有正式发布，但全新设计的路由模块已经提前面世，它从AngularJS 1.4开始支持。相对于老的<code>ngRoute</code>，使用更方便，配置更简单，更加注重约定。新的路由模块被命名为<a href="https://github.com/angular/router">Angualar New Router</a>，以前的<code>ui-view</code>被新的<code>ng-viewport</code>取而代之，另外引入了<code>component</code>的概念。我们用一个例子来对它做一个简单的了解。</p>
-<p>先放<a href="https://coding.net/u/Stiekel/p/static/git/tree/master/public/angular-new-router">代码</a>和<a href="http://stiekel.coding.io/angular-new-router/#/">DEMO</a>。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015-06/Angular-New-Router.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-06/AngularJS-popular-Plugins-and-Directive.html" itemprop="url">
-                AngularJS常用插件与指令收集
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-06-01T18:21:23+08:00" content="Jun 1 2015">
-            Jun 1 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-06/AngularJS-popular-Plugins-and-Directive.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-06/AngularJS-popular-Plugins-and-Directive.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>使用AngularJS有差不多一年时间了，前前后后也用了不少库和指令，整理了一下，分成四大类列出。有demo地址的，就直接连接到demo地址，其它的直接链到github托管库中。</p>
-<h3 id="图片视频类">图片视频类</h3><ul>
-<li><a href="http://passy.github.io/angular-masonry/" target="_blank" rel="external">angular-maxonry</a> 图片墙效果插件，可以将图片组织成类似于瀑布流的效果，依赖于jQuery、<a href="http://imagesloaded.desandro.com/" target="_blank" rel="external">imageloaded</a>和<a href="http://masonry.desandro.com/" target="_blank" rel="external">Masonry</a></li>
-<li><a href="http://andrekoenig.info/angular-deckgrid/#/" target="_blank" rel="external">angular-deckgrid</a> 另一个照片瀑布流解决方案</li>
-<li><a href="https://github.com/alexk111/ngImgCrop" target="_blank" rel="external">ngImgCrop</a> 图片剪裁工具</li>
-<li><a href="https://github.com/Wildhoney/ngVideo" target="_blank" rel="external">ngVideo</a> 播放器，直接播放指定地址的mp4，控制按钮美观度远甩朝内99.99%的视频站</li>
-<li><a href="https://github.com/stiekel/angular-image-404" target="_blank" rel="external">angular-image-404</a> 当 <code>img</code> 元素的图片无法正常获取时，使用这个指令可以显示占位图片，可以自定义占位图，也可以使用默认的占位图</li>
-</ul>
-<h3 id="输入控件类">输入控件类</h3><ul>
-<li><a href="https://github.com/fatlinesofcode/ngDraggable" target="_blank" rel="external">ngDraggable</a> 控制元素拖动的控件，<a href="http://htmlpreview.github.io/?https://github.com/fatlinesofcode/ngDraggable/blob/master/example.html" target="_blank" rel="external">Demo</a></li>
-<li><a href="https://github.com/wpalahnuk/ngAutocomplete" target="_blank" rel="external">ngAutocomplete</a> 喜闻乐见的自动补完</li>
-<li><a href="http://textangular.com/" target="_blank" rel="external">textAngular</a> 文本编辑器，更简洁，更漂亮</li>
-<li><a href="http://mbenford.github.io/ngTagsInput/" target="_blank" rel="external">ngTagsInput</a> 以标签的方式来组织输入</li>
-<li><a href="http://prajwalkman.github.io/angular-slider/" target="_blank" rel="external">Angular-slider</a> 以拖动方式输入值的控件</li>
-<li><a href="http://itslenny.github.io/angular-slidezilla/" target="_blank" rel="external">Angular Slidezilla</a> 与Angular-slider功能一样，只不过设计风格不一样</li>
-<li><a href="https://vitalets.github.io/checklist-model/" target="_blank" rel="external">Checklist-model</a> AngularJS 多选框输入的值处理得并不好，通过这个指令，可以方便的将多选框的值直接组织成数组</li>
-</ul>
-<h3 id="文本编辑器">文本编辑器</h3><ul>
-<li><a href="https://github.com/fraywing/textAngular" target="_blank" rel="external">textAngular</a> 在 Github 中排名第一的 HTML 编辑器， <a href="http://textangular.com/" target="_blank" rel="external">Demo</a>（需翻墙）</li>
-<li><a href="https://www.froala.com/wysiwyg-editor" target="_blank" rel="external">Angular Froala</a> 非常好用的另外一个 HTML 编辑器，而且支持 inline 编辑，比 textAngular 漂亮，<a href="https://github.com/froala/angular-froala" target="_blank" rel="external">Github</a></li>
-<li><a href="https://github.com/YinChangSheng/angular-umeditor" target="_blank" rel="external">angular-umeditor</a> 百度umeditor的AngularJS扩展，umeditor从界面上讲并不够现代化，但却总有人喜欢它</li>
-</ul>
-<h3 id="界面类">界面类</h3><ul>
-<li><a href="https://angular-ui.github.io/bootstrap/" target="_blank" rel="external">ui-bootstrap</a> 官方扩展，在AngularJS中方便的以指令的方式使用<a href="http://getbootstrap.com/" target="_blank" rel="external">Bootstrap</a></li>
-<li><a href="http://angular-ui.github.io/ui-map/" target="_blank" rel="external">ui-map</a> 用于在页面中集成Google Maps</li>
-<li><a href="http://angular-ui.github.io/ng-grid/" target="_blank" rel="external">NG-Grid</a> 官方提供的表格插件，支持表格的主题、排序、直接编辑、多行选择等操作，而且使用非常简单，只需要一行HTML代码，但是，比较难看，适合于不讲究外观但要求功能强大的场合，像后台工具、管理系统之类</li>
-<li><a href="http://samu.github.io/angular-table/examples/examples.html" target="_blank" rel="external">angular-table</a> 第三方表格工具，适合于需要对表格进行高度定制的场合</li>
-<li><a href="http://ng-table.com/#/" target="_blank" rel="external">ng-table</a> 在易用性和外观上对上面两个进行折衷的解决方案</li>
-<li><a href="https://angular-ui.github.io/" target="_blank" rel="external">AngularUI</a> 上面的ui-bootstrap、ui-map就是它的一部分，官方提供的常用扩展集，除了这两个，还有ui-router、ui-select等，注意，它使用的是Bootstrap 2.x</li>
-<li><a href="http://adaptv.github.io/adapt-strap/" target="_blank" rel="external">Adapt-Strap</a> 第三方Bootstrap插件，而且是基于扁平化的Bootstrap 3，更美观</li>
-<li><a href="https://gabiaxel.github.io/ng-polymer-elements/" target="_blank" rel="external">ng-polymer-elements</a> <a href="https://www.polymer-project.org/1.0/" target="_blank" rel="external">Polymer</a>风格的AngularJS指令，Material Design设计，值得尝试</li>
-<li><a href="http://chieffancypants.github.io/angular-loading-bar/" target="_blank" rel="external">Angular Loading Bar</a> 可用于在页面顶部增加一个漂亮的进度条</li>
-<li><a href="http://ngmodules.org/modules/angular-busy" target="_blank" rel="external">angular-busy</a> 与Angular Loading Bar有点类似，主要用于处理$http通信时候的动画</li>
-<li><a href="http://ngmodules.org/modules/ngInfiniteScroll" target="_blank" rel="external">ngInfiniteScroll</a> 从名字可以看出来，它是一个用于组织瀑布流和时间线的扩展</li>
-<li><a href="https://github.com/iameugenejo/ngScrollTo" target="_blank" rel="external">ngScrollTo</a> 页内滚动工具，可以将页面滚动到指定id的元素位置</li>
-<li><a href="http://likeastore.github.io/ngDialog/#" target="_blank" rel="external">ngDialog</a> 比Bootstrap更简单，更好用，更漂亮的网页对话框</li>
-<li><a href="https://github.com/eu81273/angular.treeview" target="_blank" rel="external">Angular Treeview</a> 树状目录组织扩展，使用相当方便，而且不依赖于jQuery</li>
-<li><a href="https://github.com/Marcorinck/angular-growl" target="_blank" rel="external">angular-growl</a> 用于在页面上显示警告框，可以设置显示时间，还可以直接显示$http中收到的警告</li>
-<li><a href="http://sparkalow.github.io/angular-truncate/" target="_blank" rel="external">angular-truncate</a> 当文字过多过长时，显示部分文字的插件，可以按文字总长度来控制，也可以按单词数量来控制</li>
-<li><a href="https://github.com/sebasrodriguez/angular-fallback-image" target="_blank" rel="external">angular-fallback-image</a> 当你的图片地址返回的是 404 的时候，使用这个插件可以将其替换为另外的占位图</li>
-</ul>
-<h3 id="其它工具类">其它工具类</h3><ul>
-<li><a href="https://angular-translate.github.io/" target="_blank" rel="external">angular-translate</a> AngularJS的i18n扩展</li>
-<li><a href="https://satellizer.herokuapp.com/" target="_blank" rel="external">Satellizer</a> 可以方便的在AngularJS中集成第三方账号登陆，支持国际主流社交网站账号，支持协议有OAuth 1.0/2.0</li>
-<li><a href="https://github.com/gsklee/ngStorage" target="_blank" rel="external">ngStorage</a> 本在存储插件，用于处理localStorage和sessionStorage</li>
-<li><a href="https://github.com/asafdav/ng-csv" target="_blank" rel="external">ng-csv</a> 导出csv的扩展</li>
-<li><a href="https://github.com/tadeuszwojcik/angular-once" target="_blank" rel="external">angular-once</a> 双向绑定虽然方便，但如果数据太多，会造成一些性能问题。<code>angular-once</code>的解决方案是，对于不涉及到修改的数据，不要使用双向绑定，而是使用<code>angular-once</code>提供的<code>once-text</code>、<code>once-src</code>等等。</li>
-</ul>
-<h3 id="更新">更新</h3><p>@2015-8-3 <code>angular-once</code> 网友<a href="http://t.qq.com/sijie_cai" target="_blank" rel="external">蔡斯杰</a>提供<br>@2015-9-16 <code>Checklist-model</code><br>@2015-11-21 <code>angular-fallback-imaage</code>、<code>textAngular</code>、<code>angular-froala</code><br>@2016-1-2 <code>angular-image-404</code></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-05/Start-MongoDB-Redis-as-Demon-and-Shutdown.html" itemprop="url">
-                怎样以后台Demon方式启动关闭MongoDB和Redis
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-05-26T11:20:13+08:00" content="May 26 2015">
-            May 26 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/建站相关/" itemprop="url" rel="index">
-                  <span itemprop="name">建站相关</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-05/Start-MongoDB-Redis-as-Demon-and-Shutdown.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-05/Start-MongoDB-Redis-as-Demon-and-Shutdown.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>不知道是多少次看到人问怎样以后台方式启动MongoDB，网上搜索了一下，其实写这个的文章还是挺多的。不过看完发现大家都只写了怎么启动，却没写如何关闭。而且我又想凑个数刷个关键字，于是记下这篇。</p>
-<p>update @ 2015-5-26 增加Redis的启动与关闭</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015-05/Start-MongoDB-Redis-as-Demon-and-Shutdown.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015-05/algorithm-of-weight.html" itemprop="url">
-                一种权重算法及其实现
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-05-15T09:25:24+08:00" content="May 15 2015">
-            May 15 2015
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/编程杂记/" itemprop="url" rel="index">
-                  <span itemprop="name">编程杂记</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015-05/algorithm-of-weight.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015-05/algorithm-of-weight.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>一大早在<a href="https://v2ex.com/t/191209">V2EX上看到有人讨论</a>一个关于权重的算法，源于题主的面试，他还发了<a href="http://www.cnblogs.com/javanerd/p/4504482.html">博文</a>，果然，面试他的人夸奖了他的态度。这的确是难得的。</p>
-<p>面试官给出的题目如下：</p>
-<blockquote>
-<p>每首歌曲都是一个评分，现在有2000首歌曲，要求实现一个随机播放器，每首歌曲播放的概率应该正比于它的评分，例如评分9.1的歌曲，和评分7.9的歌曲，播放的次数应该是91:79</p>
-</blockquote>
-<p>面试官给出了如下的解决方案：</p>
-<blockquote>
-<p>把评分从小到大排序，之后把根据每首歌的评分，生成一个半闭开区间，然后生成一个随机数，看随机数落在哪个区间，就是选择的那首歌。例如，有三首歌，评分是[1,2,3] 那么应该是生成三个区间 [0-1,1-3,3-6]，之后生成一个0-6之间的随机数，随机数落在哪个区间，就选择对应的歌曲。</p>
-</blockquote>
-<p>被面试的人后来给出的解决方案是：</p>
-<blockquote>
-<p>假定每个评分只到小数点后一位，那么其实，利用空间换取时间的思路，只需要把每首歌按照他的评分多少相应的复制多少重复的歌曲，并且把所有的歌曲都扔到一个池子里面，之后从池子里面等概率的选取一首歌就行了。在最坏的情况下，2000首歌曲的评分都是9.9，那么每首歌需要复制99首。</p>
-</blockquote>
-<p>不过其实细想来，这无非就是一个简单的权重问题。权重算法有大量的解决思路，前不久在实现一个小的广告系统时，正好也有权重设置。在这里分享了下我的解决方案吧。</p>
-<p>分为三步：</p>
-<ul>
-<li>遍历所有项，得到所有项的总权重</li>
-<li>再次遍历所有项，给每一项，加一个0到总权重之间的随机值，得到新权重。注意，每项加的都是即时生成的随机数</li>
-<li>在第二步遍历的同时，取出新权重最大那一项</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015-05/algorithm-of-weight.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
-  </nav>
-
- </div>
-
-        
-
-        
-      </div>
-
-      
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      <section class="site-overview">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg" alt="Stiekel" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Stiekel</p>
-        </div>
-        <p class="site-description motion-element" itemprop="description">不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。</p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">127</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">69</span>
-              <span class="site-state-item-name">标签</span>
-              </a>
-          </div>
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/stiekel" target="_blank">GitHub</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://coding.net/u/Stiekel" target="_blank">Coding.NET</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/SidCN" target="_blank">Twitter</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/sidcn" target="_blank">Weibo</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.douban.com/people/Stiekel/" target="_blank">DouBan</a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img style="width: 80px; height: 28px;" src="http://7te9fe.com1.z0.glb.clouddn.com/cc-by-nc-sa.png" alt="Creative Commons" />
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
-    </div>
-  </aside>
-
-
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
-  
-  &copy; &nbsp;  2010 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="icon-next-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Stiekel</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
- </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
+    <script src="/js/jquery-2.2.3.min.js"></script>
   
+    <script src="/js/vegas.min.js"></script>
   
-
+    <script src="/js/random.js"></script>
   
-    
+    <script src="/js/highlight.pack.js"></script>
   
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
   
 
-  
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+  <script>
+  // fancybox
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
     });
-  </script>
-
-  
-
-  
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sidcn"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "http://7te9fe.com1.z0.glb.clouddn.com/loading.gif",
-        effect: "fadeIn"
-      });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
     });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
   </script>
+
 </body>
 </html>
+

@@ -5,31 +5,31 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="Linux下为了方便，有时候会直接使用命令行的方式来执行php程序，比如一些crontab任务之类，但通常写出来的大部分php程序，都没有考虑到命令行下的一些情况，直接使用GET进行参数传递也是常态，但这在命令行下却很无奈，尤其是传递多个GET参数时，连命令都无法正确执行——GET多参数分隔符&amp;会妨碍命令的执行。
+1、PHP CLI的参数传递方式PHP CLI下参数的传递是使用Linux命令行的方式进行，将参数值按照指定的先后顺序依次排列，一旦顺序错误，最终传送的结果也将错误，而且，如果程序要支持命令行参数，还需要专门的分析和拆开$argv数组，如果是修改现有程序，工作量将会更大。
+2、捕获参数，组装伪$_GET和$_REQUEST数组命令行下是没有$_GET等变量的，但如果使用GET进行参数传递，程序中肯定会有对诸如$_GET和$_REQUEST数组的调用。如果要降低修改的工作量，最简单的办法就是，抓获CLI传递的参数，再将参数组装成一个$_GET和$_REQUEST数组。为了避开cli中对参数的先后顺序的要求，让命令执行使用更容易分辨更让人熟悉的URL参数传递方式，可以按如下的格式来传递参数并捕获：
+1php filename.php &#34;name=Roges&#38;height=187.96&#38;weight=99.79&#34;">
   <title>在PHP CLI下使用类似GET的方法传参 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

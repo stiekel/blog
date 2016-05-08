@@ -5,31 +5,30 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="用Wordpress搭建的博客，所有页面默认的RSS订阅地址为：http://chensd.com/feed但为了方便RSS的管理控制和发布统计，一般会用第三个RSS烧制工具，比如国内的Feedsky，通过这些网站提供的服务，可以把RSS地址转换成：http://feed.feedsky.com/chensd但这个订阅地址依赖feedsky，所以很多时候我们可能并不放心，幸好feedsky提供个性化域名的支持，因此，你可以把自己的域名作为RSS订阅地址，即，可以在”Feed优化”&rArr;”域名绑定”中修改成：http://feed.chensd.com但是，Wordpress中所有页面的默认RSS订阅地址并没有改变，仍然是http://chensd.com/feed，虽然可以借助其它一些插件来修改，但有个更简单的方法，仅通过修改主题就可以完成这个操作。首先，打开控制面板，然后打开”外观（Appearance）”中的”编辑（Editor）”，选择右侧的”头部文件（header.php）”文件，找到其中如下的一列：1&lt;link rel="alternate" type="text/xml" title="RSS" href="&lt;?php bloginfo('rss_url'); ?&gt;" /&gt;
+奖其中href的值改成我们需要的Http://feed.chensd.com即可，如下：
+1&lt;link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feed.chensd.com" /&gt;">
   <title>修改Wordpress页面中的默认RSS地址 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

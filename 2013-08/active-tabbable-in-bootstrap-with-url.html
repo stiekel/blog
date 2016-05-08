@@ -5,31 +5,37 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="Bootstrap中的tabbable的确很好用，但是，tab-content不能直接使用url来定位，只能通过鼠标点击来激活。这成了一个限制，不过通过jquery可以轻松的来使用URL直接定位到tabbable中某个tab-content。
+如果要实现通过URL来定位相应的tabbable的内容，那需要改变如下几个内容：
+
+删除现有导航和tab-content中class的active值
+为相应的导航控制添加一个active的class值
+为相应的tab-content添加一个active的class值下面的这个js函数可以实现如上的几个操作：
+
+123456789101112function navigateToTab() &#123;    var TabId = window.location.hash.replace('#', '');    var isTabExists = ($(&amp;quot;.tabbable li:contains('&amp;quot; + $(&amp;quot;a[href=#&amp;quot; + TabId + &amp;quot;]&amp;quot;).html() + &amp;quot;')&amp;quot;).html());    if(TabId &amp;amp;&amp;amp; undefined != isTabExists) &#123;        //高亮相关连接        $(&amp;quot;.tabbable ul li&amp;quot;).removeClass('active');        $(&amp;quot;.tabbable li:contains('&amp;quot; + $(&amp;quot;a[href=#&amp;quot; + TabId + &amp;quot;]&amp;quot;).html() + &amp;quot;')&amp;quot;).addClass('active');        //呈现相关内容（tab-content）        $(&amp;quot;.tab-content .tab-pane&amp;quot;).removeClass('active');        $(&amp;quot;#&amp;quot; + TabId).addClass('active');    &#125;&#125;
+将上面的函数，放到通用的js文件中，即可在URL后加#和相应的tab-content id来实现定位了。
+更新：代码中增加了判断，只有#后面跟的tab-content id存在的时候，才进行相应的激活操作。">
   <title>使用URL直接激活Bootstrap中的tabbable [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

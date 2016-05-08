@@ -5,31 +5,30 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="前两天写了篇关于Google两步登陆的介绍文章，在推上和cnBeta上都有不少人质疑其安全性，主要是因为对电信运营商的不信任。两步登陆用了两天多了，今天早上也专门试了试它的一些情况，在这里刚好总结一下。
+设置为两步登陆后，完成第二步登陆的数字码有三种途径可以获得，一是通过手机上的程序生成，二是通过设定的手机接收短信，三是设置时生成的备用数字验证码。此外，利用程序特有密码（Application-specific Password）也是一个访问Google账户中数据的方法，下面分别从这四方面来分别分析它的安全性。
+需要说明的是，对于设置了两步登陆的账号，单独得到其账户密码和数字验证码都是没有用的，而且，通过程序生成和短信接收得到的六位数字验证码还有一个时效限制。">
   <title>Google两步登陆的安全性分析与保护措施 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

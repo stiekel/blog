@@ -5,31 +5,36 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="最近与xiaofeng在实现一个类Digg的聚合网站，其中有一个很常见功能——“顶”贴，虽然使用普通的超连接也可以实现这一功能，但在用户点击后会有一个刷新的过程，要想有更好的体验，使用AJAX是必须的，这也是一个典型的AJAX应用。
+AJAX在用户的操作和服务器间建立了一个桥梁，改变了以前在浏览器中每次点击都要刷新页面才能获取新数据的缺点，用户在浏览器的行为将被AJAX的JavaScript脚本捕获，并适时的向服务器获取数据，再在浏览器中进行显示。
+1、实现功能与结构最终的结果，是实现一个由一个超连接和一个span，点击超连接后，将数据库中该文章被顶次数加1，另外将span中显示的被顶数加1。具体演示可以参考Digg.com主页中的Digg按钮。这一功能分别有以下两个文件来实现：
+
+index.php：文章列表，有多篇文章，每篇文章标题的左侧显示有该文章的被顶数及“顶”按钮；
+
+dig.php：接受一个get参数，名称为postid，值为文章的id，实现的功能是将这篇文章存储在数据库中的被顶次数加1；
+
+dig.js：存储超链接的单击事件，在超链接单击后，一方面将文章id传给dig.php，另外将index.php页面中的被顶数加1；">
   <title>利用PHP和AJAX实现“顶”贴功能 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

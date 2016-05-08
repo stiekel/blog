@@ -5,31 +5,33 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="最近几天看了不少源码，因为源码存在笔记本上，而有时候却要从另外一个电脑上看，于是折腾了一个小工具，以从其它的机器上方便的使用浏览器看ASP.NET的源码，闲着也是闲着，就放到了这里来。
+工具分为两个aspx页面和一个inc文件，功能分别是：
+
+ViewCode.aspx：查看其所在文件夹及子目录内所有ASP.NET文件的源码，支持的文件类型包括aspx、master、ascx、htm、html、css、aspx.cs、txt、config；
+AddViewCodeLink.aspx：给其当前文件夹及子目录内所有aspx文件末尾添加一段代码，实现对ViewCode.inc的引用，表现上是添加一个ViewCode超链接；
+ViewCode.inc：这是添加到aspx文件末尾的一段代码，作用是向ViewCode.aspx传入当前文件的绝对路径，以在ViewCode.aspx中显示其代码；">
   <title>ASP.NET源码阅读小工具：ViewCode [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

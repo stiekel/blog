@@ -5,31 +5,33 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="总是有七弯八拐的原因让我们要将自己的PHP源码从GB2312转换到UTF8，而90%的情况下你会遇到麻烦——很有可能你已经不是第一个想将你手头的系统转换到UTF8的人，只不过前面那些人都被整郁闷了，因而你也有了这个机会。
+1、编码转到UTF-8可能出现的问题转换起来并不麻烦，而且网上有很多工具可以用于转换，但不推荐使用工具进行批量转换，编码转换时的不确定因素太多，比如原编码，甚至系统语言等，都会引起转换的失败。
+PHP源码直接转换到UTF-8后，很有可能会遇到下面的两个问题：
+
+1、首行代码为空；
+2、顶行有多个“锘匡豢”；当然，很多人已经解决了，还发了博文——不过这文章是让你郁闷的。这位用了两天时间终于解决了问题，但却舍不得与人分享一下。当然也有很靠谱的人，提供了使用VS进行解决的方法，不过搞PHP开发的还装VS的可能不多。">
   <title>PHP源码编码与转换：搞定首行为空和“锘匡豢” [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

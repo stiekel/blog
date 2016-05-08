@@ -5,31 +5,35 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="我所经历的大部分项目，并不是纯粹的前端项目，相关的前端文件，都是使用 Express 来处理，除了 Jade 文件之外的，全部放在 Express 静态文件目录 public 中，Bower 也配置为将依赖包直接安装到 public/lib 目录，然后直接使用原路径在 HTML 中引用对应的 JavaScript / CSS 文件，经常是一个页面加载几十个静态资源。
+上周在做一个 App 项目的商户端，对应的 API 已经完成，只是用 AngularJS 来实现一个前端 Web 页面，其中的 HTML 使用了 Jade 来完成。由于是一个完全的前端项目，终于决定尝试用 Gulp 来进行构建。整体的需求如下：
+
+使用 Bower 管理前端依赖
+需要将 Jade 文件编码成 HTML，并按照 Angular New Router 中的 Components 来组织目录结构
+将 CSS / JavaScript 文件组装为单个文件
+图片和字体等静态资源存放到对应目录
+使用 Gulp 创建一个调试用的服务器，并能够修改文件后自动重载浏览器页面">
   <title>使用 Gulp 构建 AngularJS / Jade 项目 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

@@ -5,31 +5,40 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="译　　　文：在MySQL中使用选项文件（Options File）
+原　文　名：Chapter 11 Using an Options File
+原　书　名：Learning MySQL
+原书出版社：O’REILLY Media
+影印出版社：东南大学出版社（影印版连接）
+原　作　者：Seyed M.M. Tahaghoghi, Hugh E. Williams
+译　作　者：不可能不确定（@SidCN）
+
+
+
+在阅读本书的过程中，你会发现可以往很多MySQL的程序和脚本传送各种选项或者参数，比如，可以向MySQL监视器传送数据库的用户名和密码。当没有为某个选项指定值的时候，就会使用选项的默认值，再比如，大多数的客户端程序都会使用localhost和3306作为数据库地址和端口的默认值。
+如果你不想使用默认值，那么就要在每次运行时进行指定，这不仅麻烦，还有可能引发一些错误。幸好MySQL支持将需要指定的参数或者选项值存储在一个选项文件（options file）里，有时称之为配置文件（configuration file），大多数MySQL程序都能从选项文件中读取选项或者脚本，这些程序包括：myisamchk、myisampack、mysql、mysqladmin、mysqlbinlog、mysqlcc、mysqlcheck、mysqld、mysqld_safe、mysqldump、mysqlhotcopy、mysqlinport、mysql.server和mysqlshow。
+下面，将以MySQL监视器为例进行选项文件的介绍。">
   <title>译文：在MySQL中使用选项文件（Options File） [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

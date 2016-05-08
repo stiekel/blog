@@ -5,31 +5,32 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="在追求风格一致的项目中，无论是UI设计还是程序代码，都希望尽量更多的重用，一来修改方便，二来提高效率。对于WEB程序实现，设计的重用更多的时候也是代码的重用，在完成前期的工作后，如果后期能够模套用模板一样来进行，那将大大利于项目的进行。
+为了能够实现模板这个功能，在ASP.NET 1.x中提供了用户控件（User Control），到了ASP.NET 2.0还出现了母版（Master Page），除此之外，还有三种方法可以达到类似的目的，具体实现却各有优点。
+一、抄在前面有一回对我说道，“你读过书么？”我略略点一点头。他说，“读过书，……我便考你一考。茴香豆的茴字，怎样写的？”我想，讨饭一样的人，也配考我么？便回过脸去，不再理会。孔乙己等了许久，很恳切的说道，“不能写罢？……我教给你，记着！这些字应该记着。将来做掌柜的时候，写账要用。”我暗想我和掌柜的等级还很远呢，而且我们掌柜也从不将茴香豆上账；又好笑，又不耐烦，懒懒的答他道，“谁要你教，不是草头底下一个来回的回字么？”孔乙己显出极高兴的样子，将两个指头的长指甲敲着柜台，点头说，“对呀对呀！……回字有四样写法，你知道么？”我愈不耐烦了，努着嘴走远。孔乙己刚用指甲蘸了酒，想在柜上写字，见我毫不热心，便又叹一口气，显出极惋惜的样子。
+——周树人《孔乙己》·1919年
+二、实现方法为了方便理解，在这里将分别使用这五种方法来完成如下的内容的页面，页面分为三部分，上半部分为header，下半部分为footer，要求将这两部分模板化，具体各页面只需要对中间的内容进行指定即可。本文最末提供了所有源代码的下载。">
   <title>ASP.NET中五种实现模板功能的方法 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

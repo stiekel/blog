@@ -5,31 +5,37 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="最近做一个垂直社区项目，图片上传是现如今社区的标配，何况面向的还是女性用户。后端使用Node.js，图片上传必然是要不刷新不用iframe了。顺便，也测试了一下Coding.net的“演示”功能，的确是方便免费够用，代码传上去基本零配置就可以跑起来了。这篇文章涉及的代码托管在Coding上，最终的例子也是运行在Coding的免费服务器上。
+协议与结构整个上传采用RFC1867协议，即基于HTML表单的文件上传协议。借助这个协议，为表单增加enctype=&quot;multipart/form-data&quot;，再使用type为file的input控制来选择文件，然后便可用POST方法上传文件。
+文件上传时会分段提交，借助Connect的connect-multiparty模块，即可接收各段组合整理为文件，并将文件存到临时目录，我们可再编写其它代码来处理文件。本例中，我们会把文件复制到public目录，以提供web访问。
+整个示例程序包括以下几部分：
+
+HTML表单，负责文件的选择
+JavaScript组织表单数据，执行上传
+Node.js接受上传的文件，并负责文件的移动和组织
+
+示例程序的代码托管在Coding上的Node.js-Ajax-Upload-File，在线演示地址为node-js-ajax-upload-file.codingapp.com。">
   <title>利用Ajax无刷新上传文件到Node.js服务器 [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

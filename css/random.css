@@ -1,7 +1,7 @@
 body {
   background-color: #bdc3c7;
   margin: 0px;
-  font-family: arial, sans-serif;
+  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   font-size: 16px;
 }
 a {
@@ -9,8 +9,6 @@ a {
   color: #3a539b;
 }
 a:hover {
-  background-color: #1e8bc3;
-  color: #fff;
   text-decoration: underline;
 }
 #container {

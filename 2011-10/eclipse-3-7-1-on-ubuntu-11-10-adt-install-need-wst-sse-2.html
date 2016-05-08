@@ -5,31 +5,36 @@
 
 
 
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Stiekel">
+  
+  
+  <meta name="description" content="前段时间新装了Ubuntu 11.10 beta2，又使用Ubuntu Software Center下载了eclipse，版本是3.7.1，今天试着配置一下ADT，第一步就卡住了。 安装时无法进行下一步，详细信息中提示：
+
+Cannot complete the install because one or more required items could not be found. Software being installed: Android Development Tools 12.0.0.v201106281929-138431 (com.android.ide.eclipse.adt.feature.group 12.0.0.v201106281929-138431) Missing requirement: Android Development Tools 12.0.0.v201106281929-138431 (com.android.ide.eclipse.adt.feature.group 12.0.0.v201106281929-138431) requires ‘org.eclipse.wst.sse.core 0.0.0’ but it could not be found
+
+网上搜索，StackOverFlow有人给出了详细答案，3.4 / 3.5 / 3.6均可解决，只需要添加org.eclipse.wst.sse.core的依赖库即可。按照3.4等的升级url构造了一下3.7的如下：
+
+http://download.eclipse.org/releases/ganymede/
+
+点击Install New Software中的Add按钮，将这个添加到依赖库中，再安装ADT即可顺利进行。">
   <title>Ubuntu 11.10中 Eclipse 3.7.1 安装ADT提示缺少org.eclipse.wst.sse.core [ 不可能不确定 ]</title>
   
-    
-    
-      <link rel="stylesheet" href="/css/random.css">
-    
-      <link rel="stylesheet" href="/css/vegas.min.css">
-    
-      <link rel="stylesheet" href="/css/highlight-railscasts.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
+    <link rel="alternative" href="/atom.xml" title="不可能不确定" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css" type="text/css">
+<link rel="stylesheet" href="/css/vegas.min.css" type="text/css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
   
 </head>
 

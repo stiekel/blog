@@ -8,7 +8,7 @@ subtitle: A Node.js Developer
 description: 不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。
 author: Stiekel
 email: histkc@gmail.com
-language: zh-Hans
+language: zh-CN
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -70,7 +70,7 @@ logger_format: dev
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: MMM D YYYY
+date_format: ll
 time_format: H:mm:ss
 
 # Pagination
@@ -84,20 +84,26 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: next
+theme: random
 exclude_generator:
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
+  repo:
+    coding: https://stiekel@git.coding.net/Stiekel/blog.git,coding-pages
+    github: https://stiekel@github.com/stiekel/stiekel.github.io.git,master
   #repository: https://gitcafe.com/Sid/Sid.git
   #repository: git@gitcafe.com:Sid/Sid.git
   #branch: gitcafe-pages
-  repository: https://git.coding.net/Stiekel/blog.git
-  branch: coding-pages
+  # repository: https://git.coding.net/Stiekel/blog.git
+  # branch: coding-pages
+  # repository: https://github.com/stiekel/stiekel.github.io.git
+  # boranch: master
 
 duoshuo_shortname: sidcn
+# uyan_id: 2066860
 
 social:
   GitHub: https://github.com/stiekel

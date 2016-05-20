@@ -1,4 +1,4 @@
-title: hexo theme random
+title: 发布了一个 Hexo 的新主题：Random
 date: 2016-05-20 06:17:40
 tags:
  - Blog

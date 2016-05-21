@@ -29,3 +29,8 @@ sftp-config.json
 
 # Users Environment Variables
 .lock-wscript
+
+public
+
+db.json
+

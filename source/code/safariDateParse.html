@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Safari Date Parse Test</title>
+</head>
+<body>
+<h1>Safari Date Parse Test</h1>
+
+文章：<a href="/2016-06/safari-date-parse.html">Safari 中转换 'YYYY-M-D' 格式时间的一个坑</a>
+
+<script type="text/javascript">
+  var strs = [
+    '2016-6-2',
+    '2016-06-02',
+    '2016-6-02',
+    '2016-06-2',
+    '2016/6/2',
+    '2016/06/02',
+    '2016/6/02',
+    '2016/06/2'
+  ];
+  strs.forEach(function(str){
+    alert(['new Date(', str, '):\n', new Date(str)].join(''))
+  });
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@ date: 2015-06-02 06:1\9:09
 tags:
   - JavaScript
 categories:
-  - 编程杂记
+  - 随手记
 ---
 
 昨天在微信开发的时候，遇到一个时间转换的坑，具体发现过程有多曲折就不说了。最终发现原因是，iOS 的 Sarari ——当然包括微信内置浏览器——在转换时间时，对 `YYYY-M-D` 的支持与 Chrome 和 Firefox 不一样。具体请看这个 [Demo](http://chensd.com/code/safariDateParse.html)。

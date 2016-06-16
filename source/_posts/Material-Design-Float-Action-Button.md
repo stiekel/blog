@@ -1,9 +1,9 @@
 title: CSS 模拟实现 Material Design 样式的悬浮操作按钮
 date: 2016-06-05 08:08:19
 tags:
- - 前端
+  - 前端
 categories:
-  - 编程杂记
+  - 随手记
 ---
 Material Design 的悬浮操作按钮虽然会挡住一部分页面内容，但的确提供了一种不错的表现操作按钮的思路。手里一个微信的项目正好准备试试用这种风格来表现创建一类的操作。关于 Material Design 的按钮介绍，可以看[这里](https://www.google.com/design/spec/components/buttons.html#buttons-button-types)。
 

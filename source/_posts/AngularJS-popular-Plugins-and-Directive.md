@@ -18,6 +18,7 @@ categories:
 
 ### 输入控件类
 *   [ngDraggable](https://github.com/fatlinesofcode/ngDraggable) 控制元素拖动的控件，[Demo](http://htmlpreview.github.io/?https://github.com/fatlinesofcode/ngDraggable/blob/master/example.html)
+*   [ui-sortable](https://github.com/angular-ui/ui-sortable/) 以拖动的方式调整数组中元素的索引和位置，依赖 jQuery 和 jQuery-ui。[Demo](http://angular-ui.github.io/ui-sortable/)
 *   [ngAutocomplete](https://github.com/wpalahnuk/ngAutocomplete) 喜闻乐见的自动补完
 *   [textAngular](http://textangular.com/) 文本编辑器，更简洁，更漂亮
 *   [ngTagsInput](http://mbenford.github.io/ngTagsInput/) 以标签的方式来组织输入
@@ -63,3 +64,4 @@ categories:
 @2015-9-16 `Checklist-model`
 @2015-11-21 `angular-fallback-imaage`、`textAngular`、`angular-froala`
 @2016-1-2 `angular-image-404`
+@2016-6-16 `ui-sortable`

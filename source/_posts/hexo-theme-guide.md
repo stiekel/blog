@@ -1,4 +1,4 @@
-title: Hexo 主题制作指南
+title: Hexo 主题开发指南
 date: 2016-06-19 15:17:53
 tags:
   - Hexo

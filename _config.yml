@@ -28,6 +28,8 @@ skip_render:
   - "books"
   - "books/*"
   - "books/**/*"
+  - "code/*"
+  - "code/**/*"
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -112,9 +114,17 @@ social:
   Weibo: http://weibo.com/sidcn
   DouBan: http://www.douban.com/people/Stiekel/
 
+menu:
+  首页: /
+  文章: /archives
+  标签: /tags
+  分类: /categories
+  关于: /about
+
 creative_commons: by-nc-sa
 google_analytics: UA-3804589-6
 baidu_analytics: 6ab46e09bc8d0da169baff9f975ecaf8
+# jiaThis_uid: 2066860
 since: 2010
 
 feed:

@@ -94,8 +94,8 @@ exclude_generator:
 deploy:
   type: git
   repo:
-    coding: https://stiekel@git.coding.net/Stiekel/blog.git,coding-pages
-    github: https://stiekel@github.com/stiekel/stiekel.github.io.git,master
+    coding: git@git.coding.net:Stiekel/blog.git,coding-pages
+    github: git@github.com:stiekel/stiekel.github.io.git,master
   #repository: https://gitcafe.com/Sid/Sid.git
   #repository: git@gitcafe.com:Sid/Sid.git
   #branch: gitcafe-pages

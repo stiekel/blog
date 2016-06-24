@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Line Count</title>
+  <style type="text/css">
+    p {
+      line-height: 1.3em;
+    }
+  </style>
+</head>
+<body>
+<p id="target">She just made having a baby look lovely. Everything is white and she always has a fresh blueberry pie that’s steaming and scones and clotted cream and she’s reading The Old Man and the Sea and her little boy is rolly with bonnets. It’s amazing, and I thought this is lovely. My kid is like playing with like explosive devices. I don’t know where she’s found them, like sticking them in our dog’s ear. She already knows how to dry wall cause she puts holes in the wall.<br />
+“今天的中国人一如当年的德国人，沉迷于‘崛起’幻觉，习惯于听信他人的吹捧，还想当然地认为只要中国继续保持经济增长，不仅未来的经济总量超越‘世界老大’美国可以期待，中国实现全面复兴也将是囊中之物。”上海外国语大学国际关系与公共事务学院教授程亚文在其新著《大国战略力》中尖锐地指出中国现下有不少人陷入了“盛世”幻觉，并没有意识到在经济总量的背后，中国其实还是一个极为落后的国家。世界上还没有一个大国是在风平浪静中兴起的，中国的新一轮文明复兴也将充满风险和曲折。防止国家崩溃、解体或衰败应该成为中国国家战略的重中之重。染上“软乎乎的幸福主义”只会让一个国家变得脆弱。
+</p>
+<p>行数：<span id="shower"></span></p>
+改变窗口大小，自动计算
+<button onclick="countLines()">立刻计算</button>
+<h1>相关文章</h1>
+<li><a href="http://chensd.com/2016-06/Material-Design-Float-Action-Button.html">CSS 模拟实现 Material Design 样式的悬浮操作按钮</a></li>
+
+<script type="text/javascript">
+var target = document.getElementById('target');
+var shower = document.getElementById('shower');
+
+function countLines(ele) {
+  var styles = window.getComputedStyle(ele, null);
+  var lh = parseInt(styles.lineHeight, 10);
+  var h = parseInt(styles.height, 10);
+  var lc = Math.round(h / lh);
+  console.log('line count:', lc, 'line-height:', lh, 'height:', h);
+  return lc;
+}
+
+function change() {
+  shower.innerHTML = countLines(target);
+}
+window.onresize = change;
+change();
+</script>
+</body>
+</html>

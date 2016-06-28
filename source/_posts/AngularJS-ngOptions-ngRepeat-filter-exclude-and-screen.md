@@ -77,7 +77,9 @@ filter: {name: "o", showName: "!新闻"};
 以上面的多属性过滤为例，可以这样使用：
 
 ```html
-li(ng-repeat='c in newsCategories | filter: {name: "o", showName: "!新闻"}, ng-bind='c.name')
+<li ng-repeat='c in newsCategories | filter: {name: "o", showName: "!新闻"}'>
+  {{c.name}}
+</li>
 ```
 
 ## 在ngOptions中使用过滤器
@@ -85,7 +87,11 @@ li(ng-repeat='c in newsCategories | filter: {name: "o", showName: "!新闻"}, ng
 直接在ngOptions的`as`和`for`语句后追加过滤器，如下：
 
 ```html
-select.form-control(ng-model='news.filter.category', ng-options='c.name as c.showName for c in newsCategories | filter: {name: "o", showName: "!新闻"}', ng-change='news.changeCategory()')
+<select 
+  class="form-control" 
+  ng-model='news.filter.category' 
+  ng-options='c.name as c.showName for c in newsCategories | filter: {name: "o", showName: "!新闻"}' 
+  ng-change='news.changeCategory()'></select>
 ```
 
 在网上搜索了一下这个话题，其实写的人很多了，不过还是决定写下来。

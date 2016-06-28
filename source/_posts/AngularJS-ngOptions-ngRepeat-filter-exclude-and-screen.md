@@ -7,7 +7,7 @@ categories:
   - 编程杂记
 ---
 
-ngRepeat和ngOptions中经常会涉及到特定值的筛选和排除，但在排除值的时候，与最直观的想法有点儿不一样，尝试了几次，最后是查了[官方的filter文档](https://docs.angularhtml.org/api/ng/filter/filter)，才找到正确的写法。干脆搬运一下。
+`ngRepeat` 和 `ngOptions` 中经常会涉及到特定值的筛选和排除，但在排除值的时候，与最直观的想法有点儿不一样，尝试了几次，最后是查了[官方的 filter 文档](https://docs.angularhtml.org/api/ng/filter/filter)，才找到正确的写法。干脆搬运一下。
 
 <!--more-->
 

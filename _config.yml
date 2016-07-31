@@ -115,11 +115,11 @@ social:
   DouBan: http://www.douban.com/people/Stiekel/
 
 menu:
-  首页: /
-  文章: /archives
-  标签: /tags
-  分类: /categories
-  关于: /about
+  首页: index.html
+  文章: archives
+  标签: tags
+  分类: categories
+  关于: about
 
 creative_commons: by-nc-sa
 google_analytics: UA-3804589-6
@@ -130,6 +130,7 @@ since: 2010
 feed:
   type: atom
   path: atom.xml
+  limit: 30
 
 archive_generator:
   per_page: 1000

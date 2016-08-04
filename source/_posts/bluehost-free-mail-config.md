@@ -15,7 +15,7 @@ BlueHost的空间附带了邮箱功能，功能相对够用。今天早上专门
 
 ### 1、BlueHost设置
 
-先在BlueHost主页上用域名和密码登陆，之后，进入cPanel，然后找到Mail之中的Email Accounts，开始创建Email账号。
+先在BlueHost主页上用域名和密码登录，之后，进入cPanel，然后找到Mail之中的Email Accounts，开始创建Email账号。
 
 [![](/upfile/2010/04/cPanel_Mail-500x146.png "cPanel_Mail")](/upfile/2010/04/cPanel_Mail.png)
 
@@ -23,11 +23,11 @@ BlueHost的空间附带了邮箱功能，功能相对够用。今天早上专门
 
 [![](/upfile/2010/04/Email_Accounts-500x298.png "Email_Accounts")](/upfile/2010/04/Email_Accounts.png)
 
-这样，邮箱就添加完成了，然后进入http://sex.com/webmail/，输入用户名密码，即可进行登陆：
+这样，邮箱就添加完成了，然后进入http://sex.com/webmail/，输入用户名密码，即可进行登录：
 
 [![](/upfile/2010/04/Mail_Login-307x400.png "Mail_Login")](/upfile/2010/04/Mail_Login.png)
 
-登陆后，就可以看到邮箱的管理界面了：
+登录后，就可以看到邮箱的管理界面了：
 
 [![](/upfile/2010/04/Mail_Manage-499x286.png "Mail_Manage")](/upfile/2010/04/Mail_Manage.png)
 

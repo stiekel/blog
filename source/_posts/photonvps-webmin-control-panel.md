@@ -13,7 +13,7 @@ date: 2010-03-15 08:41:47
 
 <!--more-->
 
-在通过客服得到webmin的登陆地址后，就可以进行登陆了，比如，我的VPS的登陆地址是：
+在通过客服得到webmin的登录地址后，就可以进行登录了，比如，我的VPS的登录地址是：
 
 *   [http://manage.unixbsd.info:5353](htpp://manage.unixbsd.info:5353/)
 然后输入客服得提供的用户名和密码，进入即可。进入后，界面如下（点击图片可放大）：
@@ -30,7 +30,7 @@ date: 2010-03-15 08:41:47
 5.  **网页SSH命令行终端**；
 6.  **查看状态信息**；
 </div>
-登陆后，默认进入的是VPS列表，点击VPS名，可以进行某个VPS的详细管理页面，如下图（点击图片可放大），
+登录后，默认进入的是VPS列表，点击VPS名，可以进行某个VPS的详细管理页面，如下图（点击图片可放大），
 [![](/upfile/2010/03/photonvps-webmin.jpg "photonvps-webmin")](/upfile/2010/03/photonvps-webmin.jpg)
 
 直接点击 Re-Install OS图标，可以重新给VPS安装系统，所有数据将丢失，设置也将程初始化状态。Re-Install OS的界面如下（点击图片可放大）：

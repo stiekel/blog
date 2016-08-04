@@ -53,7 +53,7 @@ categories:
 
 ### 其它工具类
 *   [angular-translate](https://angular-translate.github.io/) AngularJS的i18n扩展
-*   [Satellizer](https://satellizer.herokuapp.com/) 可以方便的在AngularJS中集成第三方账号登陆，支持国际主流社交网站账号，支持协议有OAuth 1.0/2.0
+*   [Satellizer](https://satellizer.herokuapp.com/) 可以方便的在AngularJS中集成第三方账号登录，支持国际主流社交网站账号，支持协议有OAuth 1.0/2.0
 *   [ngStorage](https://github.com/gsklee/ngStorage) 本在存储插件，用于处理localStorage和sessionStorage
 *   [ng-csv](https://github.com/asafdav/ng-csv) 导出csv的扩展
 *   [angular-once](https://github.com/tadeuszwojcik/angular-once) 双向绑定虽然方便，但如果数据太多，会造成一些性能问题。`angular-once`的解决方案是，对于不涉及到修改的数据，不要使用双向绑定，而是使用`angular-once`提供的`once-text`、`once-src`等等。

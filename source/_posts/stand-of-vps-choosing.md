@@ -12,7 +12,7 @@ date: 2010-10-04 09:38:37
 
 9月27号，在[Bare Virtual Server](http://www.barevs.com/)上看到[RLS Hosting](http://rlshosting.com/)折后才不到[三美元的VPS](http://www.barevs.com/rls-hosting-3-95-us-vps-256mb-openvz/)，而且，配置还不错，256M内存，512M共享内存，10G空间，100G流量，于是动心了，当时就和[朋友](http://shenxf.com)商量买这个，很快便用Paypal付了款，几乎是付款的同时，便收到了VPS已经成功开通的消息，拿到IP和密码，立即试了试，速度也还比较满意，国内下载稳定在1.05MB/S，算是很不错了。于是连忙把[PhotonVPS](http://chensd.com/tag/photonvps)的[BEAN 1](http://chensd.com/2010-03/photonvps-order.html)上放的几个博客全部迁移到了RLS Hosting的新VPS里。搬进去后都感觉不错，2.97刀的价格尤其吸引人，一乐还写了篇文章来专门推荐这个便宜速度又不错的VPS。
 
-悲剧出现在30号下午，博客已经打不开了，SSH也无法登陆，于是只好打开 VPS ControlPanel，进去一看，硬盘空间和流量情况显示正常，但当前使用内存的情况却一直为零，VPS状态显示正常在线。<!--more-->
+悲剧出现在30号下午，博客已经打不开了，SSH也无法登录，于是只好打开 VPS ControlPanel，进去一看，硬盘空间和流量情况显示正常，但当前使用内存的情况却一直为零，VPS状态显示正常在线。<!--more-->
 
 [![VPS空间和流量显示正常，内存显示异常](/upfile/2010/10/rls-vps-error-3.png "rls-vps-error-3")](/upfile/2010/10/rls-vps-error-3.png)
 

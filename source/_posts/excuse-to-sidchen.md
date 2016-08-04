@@ -16,6 +16,6 @@ date: 2011-06-11 09:19:16
 
 先向这位朋友表示歉意，由于我的鲁莽给您带来了巨大的麻烦，如果您就是这位朋友，请您留下任何联系方式，或者邮件至ncbcyOK@Gmail.com，我将以最快的速度与您取得联系。您所有的邮件都仍然完好的保存在邮箱里，并且我没有打开任何邮件，这点您可以放心！为了安全，我修改了这个账号的安全提问。
 
-另外的提醒是，如果您也是Google Accounts的用户，请您一定注意安全问题的设置，否则将可能给您带来同样的麻烦。虽然[Google提供的二步登陆](http://chensd.com/2011-03/why-2-step-verification-is-safe.html "Google两步登陆的安全性分析与保护措施")的确是超级安全，但可能绝大多数人不会去[开启这个功能](http://chensd.com/2011-03/google-2-steps-verification.html "Google两步登陆使用方法")。单从账号的安全性和找回方式来讲，QQ可能是绝对的世界领先了。
+另外的提醒是，如果您也是Google Accounts的用户，请您一定注意安全问题的设置，否则将可能给您带来同样的麻烦。虽然[Google提供的二步登录](http://chensd.com/2011-03/why-2-step-verification-is-safe.html "Google两步登录的安全性分析与保护措施")的确是超级安全，但可能绝大多数人不会去[开启这个功能](http://chensd.com/2011-03/google-2-steps-verification.html "Google两步登录使用方法")。单从账号的安全性和找回方式来讲，QQ可能是绝对的世界领先了。
 
 再一次向这位朋友报以歉意！

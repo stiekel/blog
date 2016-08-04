@@ -1,4 +1,4 @@
-title: 体验Google的两步登陆（2-Steps-Verification）
+title: 体验Google的两步登录（2-Steps-Verification）
 tags:
   - Google
   - 安全
@@ -8,7 +8,7 @@ categories:
 date: 2011-03-02 00:43:13
 ---
 
-很久前都听说了Google推出的两步登陆服务，虽然一段时间前就看到[Google Accounts](http://google.com/accounts)页面出现了Using 2-step verification的连接，但点进去都是说稍候，直到今天中午，终于变成了可以设置，于是毫不犹豫，马上开始体验。
+很久前都听说了Google推出的两步登录服务，虽然一段时间前就看到[Google Accounts](http://google.com/accounts)页面出现了Using 2-step verification的连接，但点进去都是说稍候，直到今天中午，终于变成了可以设置，于是毫不犹豫，马上开始体验。
 
 [![](/upfile/2011/03/1_2-steps-in-google-accounts-page1.png "1_2-steps-in-google-accounts-page")](/upfile/2011/03/1_2-steps-in-google-accounts-page1.png)
 
@@ -28,7 +28,7 @@ date: 2011-03-02 00:43:13
 
 [![](/upfile/2011/03/8_2-steps-code-verify.png "8_2-steps-code-verify")](/upfile/2011/03/8_2-steps-code-verify.png)
 
-至此对于设备的设置就已经完成了，不过Google提示你，当你的设备不能用（不能正常的运行Google Autenticator程序等），或者丢失，亦或被盗时，该如何进行登陆呢？接下来就是进行一些备用办法的设置。
+至此对于设备的设置就已经完成了，不过Google提示你，当你的设备不能用（不能正常的运行Google Autenticator程序等），或者丢失，亦或被盗时，该如何进行登录呢？接下来就是进行一些备用办法的设置。
 
 [![](/upfile/2011/03/9_2-steps-get-backup-options.png "9_2-steps-get-backup-options")](/upfile/2011/03/9_2-steps-get-backup-options.png)
 
@@ -40,28 +40,28 @@ Google提供两种补救办法，一是给你一个Verification Codes，最好�
 
 [![](/upfile/2011/03/11_2-steps-test-phone.png "11_2-steps-test-phone")](/upfile/2011/03/12_2-steps-application-specific-passwords.png)
 
-因为我的这个账号绑定到了Nexus One上，所以Google提示我需要一个Application-Specific passwords，以用来确认这些设备。如果你同时还在其它不能进行两步登陆的地方使用Google账户，也需要为为之生成一个这样的密码。如果使用Google账号的服务用的是OAuth登陆，则不需要。
+因为我的这个账号绑定到了Nexus One上，所以Google提示我需要一个Application-Specific passwords，以用来确认这些设备。如果你同时还在其它不能进行两步登录的地方使用Google账户，也需要为为之生成一个这样的密码。如果使用Google账号的服务用的是OAuth登录，则不需要。
 
 [![](/upfile/2011/03/12_2-steps-application-specific-passwords.png "12_2-steps-application-specific-passwords")](/upfile/2011/03/12_2-steps-application-specific-passwords.png)
 
-设置就基本完成了。在蓝色的点击“Turn on 2-step verification”按钮后，就真正的打开两步登陆设置了。
+设置就基本完成了。在蓝色的点击“Turn on 2-step verification”按钮后，就真正的打开两步登录设置了。
 
 [![](/upfile/2011/03/13_2-steps-turn-on.png "13_2-steps-turn-on")](/upfile/2011/03/13_2-steps-turn-on.png)
 
-完成设置后，现在处于登陆状态的Google账户会跳出，然后就可以开始第一次的旅程了。输入平时登陆的密码后。会提示还需要输入使用Google Authenticator生成的六位数字码，
+完成设置后，现在处于登录状态的Google账户会跳出，然后就可以开始第一次的旅程了。输入平时登录的密码后。会提示还需要输入使用Google Authenticator生成的六位数字码，
 
 [![](/upfile/2011/03/15_2-steps-login.png "15_2-steps-login")](/upfile/2011/03/15_2-steps-login.png)
 
-完成两步登陆后，Google提示需要生成一个application-specific passwords，因为很多软件无法进行两步登陆，例如Gmail手机版、Picasa桌面版等，为了使用这些软件，需要在这些软件下一次从Google获取资料时输入这个密码。
+完成两步登录后，Google提示需要生成一个application-specific passwords，因为很多软件无法进行两步登录，例如Gmail手机版、Picasa桌面版等，为了使用这些软件，需要在这些软件下一次从Google获取资料时输入这个密码。
 
 [![](/upfile/2011/03/17_2-steps-set-application-specific-passwords.png "17_2-steps-set-application-specific-passwords")](/upfile/2011/03/17_2-steps-set-application-specific-passwords.png)
 
-例如，这里为Nexus One上的Gmail生成一个密码，在完成两步登陆后，Nexus One上的Gmail上会要求输入密码，这时候输入平时的密码是无法登陆的，必须输入生成的Application-specific passwords。这个十数位的密码包含数字和字母，并且中间隔几个空格（空格不是密码，只是作隔开用）。
+例如，这里为Nexus One上的Gmail生成一个密码，在完成两步登录后，Nexus One上的Gmail上会要求输入密码，这时候输入平时的密码是无法登录的，必须输入生成的Application-specific passwords。这个十数位的密码包含数字和字母，并且中间隔几个空格（空格不是密码，只是作隔开用）。
 
 [![](/upfile/2011/03/18_2-steps-get-device-pwd.png "18_2-steps-get-device-pwd")](/upfile/2011/03/18_2-steps-get-device-pwd.png)
 
-以后在登陆时，两步登陆便要求使用Google Authenticator生成的六位数字码，或者也可以使用设置的备用电话通过短信（亦或通过电话）接收一个六位数字码。这才能真正的完成两步登陆。
+以后在登录时，两步登录便要求使用Google Authenticator生成的六位数字码，或者也可以使用设置的备用电话通过短信（亦或通过电话）接收一个六位数字码。这才能真正的完成两步登录。
 
-在使用中发现，手机上的Google Authenticator并不依赖网络。其实这个两步登陆与使用了很久的游戏密保工具类似，只不过以前的密保需要掏钱购买一个专门用来生成数字码的设备，而Google则提供一个软件来代替这个设备，用户便可以以0现金成本的代价来使用了——当然，Google两步登陆却提供了更多的补救方法。
+在使用中发现，手机上的Google Authenticator并不依赖网络。其实这个两步登录与使用了很久的游戏密保工具类似，只不过以前的密保需要掏钱购买一个专门用来生成数字码的设备，而Google则提供一个软件来代替这个设备，用户便可以以0现金成本的代价来使用了——当然，Google两步登录却提供了更多的补救方法。
 
-想更好的保护两步登录的安全性，请延伸阅读：[Google两步登陆的安全性分析与保护措施](http://chensd.com/2011-03/why-2-step-verification-is-safe.html)
+想更好的保护两步登录的安全性，请延伸阅读：[Google两步登录的安全性分析与保护措施](http://chensd.com/2011-03/why-2-step-verification-is-safe.html)

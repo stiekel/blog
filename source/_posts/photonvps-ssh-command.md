@@ -17,7 +17,7 @@ date: 2010-03-16 08:31:30
 
 ## 一、使用SSH连接VPS
 
-<div>PhotonVPS在交费后大约四个小时左右，会向你的注册email发送一个开通通知，通知中包括VPS的IP地址以及root密码，这便是你通过SSH登陆的所有信息。对于Win用户，可以在[这里](http://www.vpser.net/uncategorized/putty-ssh-linux-vps.html)查看详细连接方法，对于Linux用户，可以直接打开终端，然后输入如下命令：</div>
+<div>PhotonVPS在交费后大约四个小时左右，会向你的注册email发送一个开通通知，通知中包括VPS的IP地址以及root密码，这便是你通过SSH登录的所有信息。对于Win用户，可以在[这里](http://www.vpser.net/uncategorized/putty-ssh-linux-vps.html)查看详细连接方法，对于Linux用户，可以直接打开终端，然后输入如下命令：</div>
 <div>ssh root@173.224.209.19</div>
 <div>然后会提示一个RSA确认，输入yes，再输入密码即可，默认的密码是没有规律的，最好是[通过Webmin来修改一个易记而复杂的密码](http://chensd.com/2010-03/photonvps-webmin-control-panel.html)。</div>
 <div>[![](/upfile/2010/03/photonvps-linux-ssh.jpg "photonvps-linux-ssh")](/upfile/2010/03/photonvps-linux-ssh.jpg)</div>

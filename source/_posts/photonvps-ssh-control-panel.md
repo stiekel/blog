@@ -26,20 +26,20 @@ date: 2010-03-15 01:02:19
 > Root Password: XXXXX（随机密码，与上面的Root pass相同）
 <!--more-->
 
-这里包括了关于你VPS服务最重要的信息，包括你的IP地址、ROOT密码等，还有一个套餐内的附加IP。现在，就可以借助SSH进行登陆了。
+这里包括了关于你VPS服务最重要的信息，包括你的IP地址、ROOT密码等，还有一个套餐内的附加IP。现在，就可以借助SSH进行登录了。
 
-先说两种SSH的登陆方法，分别是：
+先说两种SSH的登录方法，分别是：
 
 1.  在Window平台下，可以借助PuTTY工具，具体下载在[这里](/upfile/2010/03/putty_0.60cn.zip)，使用教程，在[这里](http://www.vpser.net/uncategorized/putty-ssh-linux-vps.html)；
 [![](/upfile/2010/03/photonvps-putty.jpg "photonvps-putty")](/upfile/2010/03/photonvps-putty.jpg)
 2.  在Linux平台下，可以使用Linux自带的SSH工具，即直接使用ssh命令进行连接即可；
 [![](/upfile/2010/03/photonvps-linux-ssh.jpg "photonvps-linux-ssh")](/upfile/2010/03/photonvps-linux-ssh.jpg)
-另外就是要获得VPS控制面板的使用地址和用户名密码。可以在PhtonVPS客服系统里[提交服务申请单](https://www.photonvps.com/billing/submitticket.php?step=2&amp;deptid=1)，说明需要使用控制面板来使用VPS，并提供你的VPS基本信息，包括IP、名称、Root密码。三到四小时后，就会得到客服的回复，告知你VPS的控制面板地址、及登陆用户名和密码。如下图（点击可放大）。
+另外就是要获得VPS控制面板的使用地址和用户名密码。可以在PhtonVPS客服系统里[提交服务申请单](https://www.photonvps.com/billing/submitticket.php?step=2&amp;deptid=1)，说明需要使用控制面板来使用VPS，并提供你的VPS基本信息，包括IP、名称、Root密码。三到四小时后，就会得到客服的回复，告知你VPS的控制面板地址、及登录用户名和密码。如下图（点击可放大）。
 
 [![](/upfile/2010/03/photonvps-support-ticket.jpg "photonvps-support-ticket")](/upfile/2010/03/photonvps-support-ticket.jpg)
 
-之后，便可以登陆Webmin控制面板来控制VPS了。下一篇文章，将介绍Webmin的使用。下图中是Webmin登陆后的界面（点击可以放大）。
+之后，便可以登录Webmin控制面板来控制VPS了。下一篇文章，将介绍Webmin的使用。下图中是Webmin登录后的界面（点击可以放大）。
 
 [![](/upfile/2010/03/photonvps-webmin.jpg "photonvps-webmin")](/upfile/2010/03/photonvps-webmin.jpg)
 
-一般的，控制面板的登陆密码就是你的Root Pass。
+一般的，控制面板的登录密码就是你的Root Pass。

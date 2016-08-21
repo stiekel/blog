@@ -138,21 +138,45 @@ gulp.task('pace', function(){
 });
 ```
 
-其它需要直接复制的文件，也都是类似方法处理。
+其它需要直接复制的文件，也都是类似方法处理。 比如，有大量需要移动的文件，可以使用下面的代码：
+
+```js
+// Web 或者编译目录
+var BUILD_FLODER = 'dist';
+// 需要移动的文件列表
+var FilesToMove = [
+  // src 为源路径，dest 为目的位置
+  { src: 'node_modules/bootstrap/dist/fonts/*', dest: 'fonts'},
+  { src: 'node_modules/font-awesome/fonts/*', dest: 'fonts'},
+  { src: 'assets/favicon.ico', dest: '/'},
+  { src: 'assets/iconfont/*', dest: 'css/'}
+];
+gulp.task('files', function(){
+  FilesToMove.forEach(function(ftm){
+    if(!ftm.src || !ftm.dest) return;
+    gulp
+    .src(ftm.src)
+    .pipe(gulp.dest( path.join(BUILD_FLODER, ftm.dest) ))
+  });
+});
+```
 
 ### 使用 Gulp 来创建文件修改后浏览器自动刷新的 Web 服务器
 
 如果想要文件修改后，浏览器自动刷新，需要做两方面的工作：
 
 *   监控 JavaScript / Jade / CSS 文件，修改后重新转换或者压缩
-*   监控 JavaScript / Jade / CSS 文件，修改后刷新浏览器
+*   监控 JavaScript / Jade 文件，修改后刷新浏览器
+*   监控 CSS 文件的修改，热更新到浏览器
 
-对于第一个，使用 `gulp-watch` 模块来监视文件，并执行对应的 Task ，对于第二个，可以使用 `gulp-webserver` 模块，它可以创建一个 Web 服务器，并且在浏览器和服务器之间创建 Socket.IO 长链接，一旦有文件修改，便通过长链接通知浏览器刷新页面。
+对于第一个，使用 `gulp-watch` 模块来监视文件，并执行对应的 Task ，对于第二和第三个，可以使用 `gulp-erver-livereload` 模块，它可以创建一个 Web 服务器，并且在浏览器和服务器之间创建 Socket.IO 长链接，一旦有文件修改，便通过长链接通知浏览器刷新页面，或者将 css 热更新到浏览器中。
 
 
 ```js
+var path = require('path');
 var gulp = require('gulp');
-var webserver = require('gulp-webserver');
+var server = require('gulp-server-livereload');
+var BUILD_FLODER = 'dist';
 
 gulp.task('watch', function(){
   // 不同的文件个性，需要执行不同的任务来处理
@@ -162,12 +186,16 @@ gulp.task('watch', function(){
   gulp.watch(['app/controllers/*', 'app/modules/*', 'app/services/*'], ['scripts']);
 });
 
-gulp.task('webserver', function(){
-  gulp.src('./public/')
-    .pipe(webserver({
-      host: '0.0.0.0',
+gulp.task('webserver', function() {
+  // 指定 web 目的
+  gulp.src( path.join(BUILD_FLODER) )
+    .pipe(server({
+      // 是否监视文件修改并刷新
       livereload: true,
-      fallback: 'index.html'
+      // 当没有默认页面的时候，是否列出目录内所有的文件
+      directoryListing: true,
+      // 是否自动打开浏览器
+      open: true
     }));
 });
 ```

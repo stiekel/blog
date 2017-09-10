@@ -105,8 +105,8 @@ deploy:
   # repository: https://github.com/stiekel/stiekel.github.io.git
   # boranch: master
 
-duoshuo_shortname: sidcn
-# uyan_id: 2066860
+# duoshuo_shortname: sidcn
+uyan_id: 2066860
 
 social:
   GitHub: https://github.com/stiekel

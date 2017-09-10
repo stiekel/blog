@@ -8,7 +8,7 @@
     "d": "./node_modules/hexo/bin/hexo d"
   },
   "hexo": {
-    "version": "3.3.1"
+    "version": "3.3.7"
   },
   "dependencies": {
     "hexo": "latest",

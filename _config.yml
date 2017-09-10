@@ -4,8 +4,8 @@
 
 # Site
 title: 不可能不确定
-subtitle: A Node.js Developer
-description: 不可能不确定的博主是一名Node.js程序员，博客的内容会涉及电影 / 生活 / 吐槽 / JavaScript / PHP / Node.js / Express / MongoDB / MySQL / Redis / AngularJS / jQuery / HTML。
+subtitle: A JavaScript Developer
+description: 不可能不确定的博主是一名 JavaScript 程序员。
 author: Stiekel
 email: histkc@gmail.com
 language: zh-CN
@@ -94,7 +94,8 @@ exclude_generator:
 deploy:
   type: git
   repo:
-    coding: git@git.coding.net:Stiekel/blog.git,coding-pages
+    # coding: git@git.coding.net:Stiekel/blog.git,coding-pages
+    # github: git@github.com:stiekel/stiekel.github.io.git,gh-pages
     github: git@github.com:stiekel/stiekel.github.io.git,master
   #repository: https://gitcafe.com/Sid/Sid.git
   #repository: git@gitcafe.com:Sid/Sid.git

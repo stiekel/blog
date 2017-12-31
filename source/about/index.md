@@ -1,9 +1,9 @@
-date: 2015-01-16 22:12:33
+date: 2017-12-31 17:08:33
 ---
 
 ## 关于
 
-我现在是一名 JavaScript 程序员，前后端都会一点。日常开发涉及 JavaScript / Node.js / Express / MongoDB / MySQL / Redis / Vue / AngularJS / jQuery / Stylus / Jade / HTML 等。除了技术。业余生活包括电影、看书、 FPS 游戏、音乐和骑车。你可以通过以下方式了解我：
+我现在是一名 JavaScript 程序员，前后端都会一点。日常开发涉及 JavaScript / Go / Node.js / Elasticsearch / MongoDB / MySQL / Redis / Vue / AngularJS / jQuery / LESS / Stylus / Pug 等。除了技术。业余生活包括电影、看书、 FPS 游戏、音乐和骑车。你可以通过以下方式了解我：
 
 *   代码托管：[Github](https://github.com/stiekel) / [Coding.NET](https://coding.net/u/Stiekel)
 *   我看过的电影：[不可能不确定 - 豆瓣](http://movie.douban.com/people/Stiekel/collect)

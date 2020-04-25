@@ -1,5 +1,5 @@
 title: Safari 中转换 'YYYY-M-D' 格式时间的一个坑
-date: 2015-06-02 06:1\9:09
+date: 2015-06-02 06:19:09
 tags:
   - JavaScript
 categories:

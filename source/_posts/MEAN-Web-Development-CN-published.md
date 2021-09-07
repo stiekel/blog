@@ -8,7 +8,7 @@ categories:
   - 翻译
 
 photos:
-- http://7te9fe.com1.z0.glb.clouddn.com/books_mean_bigcover.jpg
+- //nskip.com/books/imgs/mean_bigcover.jpg
 ---
 
 两年前的时候，我没想到自己会成为一名 JavaScript 程序员，正如七年前，我没有想到自己会翻译别人的书一样。08年的时候，当拿到编写的第一本书的样书时，发现依然有那么多处错误，后来看到莱辛的名言：一本书，就是一大宗罪，深以为然。后来别人联系编写一本类似主题的书时，我便回绝了。
@@ -21,4 +21,4 @@ photos:
 
 书的封面动物，是一只[火烈鸟](https://zh.wikipedia.org/zh-cn/%E7%81%AB%E7%83%88%E9%B8%9F)——当然是通过 Google 图片搜索才知道的，
 
-新书信息：[http://chensd.com/books](http://chensd.com/books)
+新书信息：[http://nskip.com/books](http://nskip.com/books/#mean)

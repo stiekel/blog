@@ -140,3 +140,15 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 28px;
+}
+#main {
+    display: none;
+    visibility: hidden;
+}

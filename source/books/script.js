@@ -4,6 +4,11 @@ bookApp = angular.module('bookApp', ['fullPage.js']);
 bookApp.controller('MainController', ['$scope', MainController]);
 
 function MainController($scope){
+  const eleLoading = document.getElementById('loading');
+  const eleMain = document.getElementById('main');
+  eleLoading.style.display = 'none';
+  eleMain.style.display = 'block';
+  eleMain.style.visibility = 'visible';
   $scope.fpConfig = {
     sectionsColor: [],
     anchors: ['mean', 'wince'],

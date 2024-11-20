@@ -7,6 +7,7 @@ function MainController($scope){
   const eleLoading = document.getElementById('loading');
   const eleMain = document.getElementById('main');
   eleLoading.style.display = 'none';
+  eleLoading.style.visibility = 'hidden';
   eleMain.style.display = 'block';
   eleMain.style.visibility = 'visible';
   $scope.fpConfig = {

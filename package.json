@@ -6,6 +6,7 @@
     "s": "./node_modules/hexo/bin/hexo s",
     "c": "./node_modules/hexo/bin/hexo clean",
     "g": "./node_modules/hexo/bin/hexo g",
+    "G": "rm -rf themes/random && git clone https://github.com/stiekel/hexo-theme-random.git --depth=1 themes/random && npm run g",
     "d": "./node_modules/hexo/bin/hexo d"
   },
   "hexo": {

@@ -141,21 +141,22 @@ archive_generator:
 
 # stylesheets loaded in the <head>
 stylesheets:
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/random.css
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/vegas.min.css
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/highlight-railscasts.css
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/jquery.fancybox.css
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/iconfont/iconfont.css
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/jquery.fancybox-thumbs.css
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/css/plyr.css
+- /css/random.css
+- /css/vegas.min.css
+- /css/highlight-railscasts.css
+- /css/jquery.fancybox.css
+- /css/iconfont/iconfont.css
+- /css/jquery.fancybox-thumbs.css
+- /css/plyr.css
 
 # scripts loaded in the end of the body
 scripts:
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/jquery-2.2.3.min.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/vegas.min.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/random.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/highlight.pack.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/jquery.mousewheel.pack.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/jquery.fancybox.pack.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/jquery.fancybox-thumbs.js
-- https://cdn-1252212664.cos.ap-shanghai.myqcloud.com/js/plyr.js
+- /js/jquery-3.6.4.min.js
+- /js/vegas.min.js
+- /js/random.js
+- /js/highlight.pack.js
+- /js/jquery.mousewheel.pack.js
+- /js/jquery.fancybox.pack.js
+- /js/jquery.fancybox-thumbs.js
+- /js/plyr.js
+

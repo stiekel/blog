@@ -118,10 +118,10 @@ social:
 
 menu:
   首页: index.html
-  文章: archives
-  标签: tags
-  分类: categories
-  关于: about
+  文章: archives/index.html
+  标签: tags/index.html
+  分类: categories/index.html
+  关于: about/index.html
 
 creative_commons: by-nc-sa
 google_analytics: UA-3804589-6

@@ -18,12 +18,14 @@ date: 2017-12-31 17:08:33
 *   翻译：《MEAN Web 开发》，2015-8，人民邮电出版社，[介绍](/books/#mean)、[图灵社区](http://www.ituring.com.cn/book/1536)
 *   编写：《Windows CE 嵌入式系统开发从基础到实践》，2008-3，电子工业出版社，[介绍](/books/#wince)
 
-### 存一点
+### 存一点基金助手
 
-[存一点 cunyd.com](https://cunyd.com/) 是我创建的一个独立网站，收集了银行的存款产品，提供存款产品的对比。除了网站，还有微信小程序版本。
-<div style="text-align:center">
-    <img width=200 src="/upfile/2021/03/smzdc_mp_qr.jpg">
-</div>
+[存一点 cunyd.com](https://cunyd.com/) 是我创建的一个独立网站，它有如下几方面的功能：
+
+* 基金基本信息、排名、实时估值
+* 添加基金自选，穿透自选分析对应的股票和版块实时行情
+* 添加基金持仓，分析持仓基金结仓、收益估算
+* 场内ETF、LOF实时行情与排名
 
 ### 开源软件
 

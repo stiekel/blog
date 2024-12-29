@@ -160,34 +160,35 @@ scripts:
 - /js/jquery.fancybox-thumbs.js
 - /js/plyr.js
 
-backgroundImages:
-# - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_1.jpg?imageView2/1/w/__width__/h/__height__
-# - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_2.jpg?imageView2/1/w/__width__/h/__height__
-# - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_3.jpg?imageView2/1/w/__width__/h/__height__
-# - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_4.jpg?imageView2/1/w/__width__/h/__height__
-# - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_5.jpg?imageView2/1/w/__width__/h/__height__
-  - //nskip.com/images/picsum-random-0.jpeg
-  - //nskip.com/images/picsum-random-1.jpeg
-  - //nskip.com/images/picsum-random-2.jpeg
-  - //nskip.com/images/picsum-random-3.jpeg
-  - //nskip.com/images/picsum-random-4.jpeg
-  - //nskip.com/images/picsum-random-5.jpeg
-  - //nskip.com/images/picsum-random-6.jpeg
-  - //nskip.com/images/picsum-random-7.jpeg
-  - //nskip.com/images/picsum-random-8.jpeg
-  - //nskip.com/images/picsum-random-9.jpeg
-  - //nskip.com/images/picsum-random-10.jpeg
-  - //nskip.com/images/picsum-random-11.jpeg
-  - //nskip.com/images/picsum-random-12.jpeg
-  - //nskip.com/images/picsum-random-13.jpeg
-  - //nskip.com/images/picsum-random-14.jpeg
-  - //nskip.com/images/picsum-random-15.jpeg
-  - //nskip.com/images/picsum-random-16.jpeg
-  - //nskip.com/images/picsum-random-17.jpeg
-  - //nskip.com/images/picsum-random-18.jpeg
-  - //nskip.com/images/picsum-random-19.jpeg
-  - //nskip.com/images/picsum-random-20.jpeg
-  - //nskip.com/images/picsum-random-21.jpeg
-  - //nskip.com/images/picsum-random-22.jpeg
-  - //nskip.com/images/picsum-random-23.jpeg
+theme_config:
+  backgroundImages:
+  # - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_1.jpg?imageView2/1/w/__width__/h/__height__
+  # - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_2.jpg?imageView2/1/w/__width__/h/__height__
+  # - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_3.jpg?imageView2/1/w/__width__/h/__height__
+  # - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_4.jpg?imageView2/1/w/__width__/h/__height__
+  # - http://7te9fe.com1.z0.glb.clouddn.com/bgimg_5.jpg?imageView2/1/w/__width__/h/__height__
+    - //nskip.com/images/picsum-random-0.jpeg
+    - //nskip.com/images/picsum-random-1.jpeg
+    - //nskip.com/images/picsum-random-2.jpeg
+    - //nskip.com/images/picsum-random-3.jpeg
+    - //nskip.com/images/picsum-random-4.jpeg
+    - //nskip.com/images/picsum-random-5.jpeg
+    - //nskip.com/images/picsum-random-6.jpeg
+    - //nskip.com/images/picsum-random-7.jpeg
+    - //nskip.com/images/picsum-random-8.jpeg
+    - //nskip.com/images/picsum-random-9.jpeg
+    - //nskip.com/images/picsum-random-10.jpeg
+    - //nskip.com/images/picsum-random-11.jpeg
+    - //nskip.com/images/picsum-random-12.jpeg
+    - //nskip.com/images/picsum-random-13.jpeg
+    - //nskip.com/images/picsum-random-14.jpeg
+    - //nskip.com/images/picsum-random-15.jpeg
+    - //nskip.com/images/picsum-random-16.jpeg
+    - //nskip.com/images/picsum-random-17.jpeg
+    - //nskip.com/images/picsum-random-18.jpeg
+    - //nskip.com/images/picsum-random-19.jpeg
+    - //nskip.com/images/picsum-random-20.jpeg
+    - //nskip.com/images/picsum-random-21.jpeg
+    - //nskip.com/images/picsum-random-22.jpeg
+    - //nskip.com/images/picsum-random-23.jpeg
   

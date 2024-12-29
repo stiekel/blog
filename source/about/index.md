@@ -3,7 +3,7 @@ date: 2017-12-31 17:08:33
 
 ## 关于
 
-这个博客使用 [Hexo](https://hexo.io/) 构建，主题是 [hexo-theme-random](https://github.com/stiekel/hexo-theme-random)，托管在 [vercel](https://vercel.com/) 上。
+这个博客使用 [Hexo](https://hexo.io/) 构建，主题是 [hexo-theme-random](https://github.com/stiekel/hexo-theme-random)，托管在 [帽子云](https://maoziyun.com/) 上。
 
 我现在是一名程序员。前后端开发都了解一点。希望有一天能够做一个被很多人用的产品。除了技术。业余生活包括电影、看书、 FPS 游戏、音乐和骑车。你可以通过以下方式了解我：
 

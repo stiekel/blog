@@ -577,3 +577,73 @@ public static void main(String[]args)
 (4) void tuneAll(ArrayList<Instrument> e)
 (5) Music music=new Music()
 ```
+
+#### 201805-5
+
+以下 Java 代码实现一个简单绘图工具，绘制不同形状以及不同颜色的图形。部分接口、类及其关系如图 5－1 所示。
+
+<img src="/upfile/2025/05/programmer-2018005-5.png" height=200 />
+
+```java
+interface DrawCircle {     //绘制圆形
+      public     （1）    ； // void drawCircle (int radius,int x,int y)
+}
+
+class RedCircle implements DrawCircle {    //绘制红色圆形
+       public void drawCircle(int radius,int x, int y)  {
+             System.out.println("Drawing Circle[red,radius:" + radius + ",x:" + x + ",y:" +y+ "]");
+       }
+}
+
+class GreenCircle implements DrawCircle {    //绘制绿色圆形
+      public void drawCircle(int radius, int x, int y) {
+            System.out.println("Drawing Circle[green,radius:" +radius+ ",x: " +x+ ",y: " +y+ "]");
+      }
+}
+abstract class Shape {    //形状
+       protected      （2）   ; // DrawCircle drawCircle
+
+       public Shape(DrawCircle drawCircle) {
+             this.drawCircle = drawCircle;
+        }
+        public abstract void draw();
+}
+
+class Circle extends Shape {    //圆形
+       private int x,y,radius;
+
+       public Circle(int x,int y,int radius,DrawCircle drawCircle) {
+            （3）   ; // super(drawcircle)
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+       }
+
+       public void draw() {
+            drawCircle.     （4）    ; // drawCircle(radius,x,y)
+       }
+}
+
+public class DrawCircleMain {
+      public static void main(String[] args) {
+        // new RedCircle()
+        Shape redCircle＝new Circle( 100,100,10,      （5）      )；//绘制红色圆形
+        // new GreenCircle()
+        Shape greenCircle＝new Circle(200,200,10,      （6）     )；//绘制绿色圆形
+
+        redCircle.draw();
+        greenCircle.draw();
+     }
+}
+```
+
+答案
+
+```txt
+（1）void drawCircle (int radius,int x,int y)
+（2）DrawCircle drawCircle
+（3）super(drawcircle)
+（4）drawCircle(radius,x,y)
+（5）new RedCircle()
+（6）new GreenCircle()
+```

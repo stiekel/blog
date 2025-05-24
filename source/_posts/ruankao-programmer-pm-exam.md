@@ -81,21 +81,21 @@ tags:
 
 int main()
 {
-        int a,tmp,b=0;
-        scanf("%d",&a);
-        tmp=a<0?-a:a;
+    int a,tmp,b=0;
+    scanf("%d",&a);
+    tmp=a<0?-a:a;
 
-        while(tmp){
-                b=b*10+tmp%10;
-                tmp=tmp/10;
-        }
+    while(tmp){
+        b=b*10+tmp%10;
+        tmp=tmp/10;
+    }
 
-        if(a==b||-a==b)
-                   printf("Palindromic number.\n");
+    if(a==b||-a==b)
+        printf("Palindromic number.\n");
 
-        printf("a=%d b=%d\n",a,b);
+    printf("a=%d b=%d\n",a,b);
 
-        return 0;
+    return 0;
 }
 
 // 【C代码2】
@@ -107,19 +107,19 @@ int main()
     int points;
 
     for(grade='A';grade<'F';grade++){
-            switch(grade){
-                    case 'A':points=4;break;
-                    case 'B':points=3;
-                    case 'C':points=2;
-                    case 'D':points=1;break;
-                    case 'E':
-                    case 'W':points=0;
-            }
-            if(points>0)
-                    printf("Passed,point=%d\n",points);
-            else
-                    printf("Failed\n");
-        }
+      switch(grade){
+        case 'A':points=4;break;
+        case 'B':points=3;
+        case 'C':points=2;
+        case 'D':points=1;break;
+        case 'E':
+        case 'W':points=0;
+      }
+      if(points>0)
+        printf("Passed,point=%d\n",points);
+      else
+        printf("Failed\n");
+     }
     return 0;
 }
 ```
@@ -172,32 +172,32 @@ Failed
 #include<stdio.h>
 #define MAXQT 100000 //用电的最大量
 double proc(int qt)
-{              //计算并返回月用电量为qt时的电费
+{        //计算并返回月用电量为qt时的电费
     double fee=0.0;
-    if(       (1)      ) // qt <= 180
-            fee=qt*0.5;
-    else  if  (    (2)      ) // qt <= 360
-             fee=180*0.5+(qt-180)*0.55;
+    if(    (1)   ) // qt <= 180
+      fee=qt*0.5;
+    else  if  (    (2)   ) // qt <= 360
+       fee=180*0.5+(qt-180)*0.55;
     else
-             fee= (3) ; // 180 * 0.5 + (360-180) * 0.55 + ( qt - 360 ) * 0.7 或 0.7 * qt - 63
+       fee= (3) ; // 180 * 0.5 + (360-180) * 0.55 + ( qt - 360 ) * 0.7 或 0.7 * qt - 63
     return fee;
 }
 
 int main()
 {
-    int m ;              //住户数
-    int qt , minimun = MAXQT , maximum = 0 ;             //用电量，最小用电量，最大用电量
+    int m ;        //住户数
+    int qt , minimun = MAXQT , maximum = 0 ;       //用电量，最小用电量，最大用电量
     scanf( "%d",&m);
 
     while(m>0){
-        scanf( "%d" , &qt ) ;
-        if(qt<0 ‖ qt>MAXQT )   continue ;
-        printf( "%.21f\n ",   proc(qt) ) ;
-        if(     (4)    ) // minimum>qt
-            minimum=qt;
-        else if(     (5)       ) // maximum<qt
-                maximum=qt;
-         (6)     ; // m--
+     scanf( "%d" , &qt ) ;
+     if (qt<0 ‖ qt>MAXQT )   continue ;
+     printf( "%.21f\n ",   proc(qt) ) ;
+     if (  (4)    ) // minimum>qt
+      minimum=qt;
+     else if (  (5)    ) // maximum<qt
+       maximum=qt;
+      (6)  ; // m--
     }
 
     printf( "maximum=%d,minimum=%d\n ",maximum,minimum);
@@ -246,11 +246,11 @@ int main()
 ```c
 include <stdio.h>
 define NUMBER 100
-int isValid(const char s1);                  //若字符串s1仅包含英文字母则返回1，否则返回0
-char toLower(char ch);                       //将大写字母转换为小写字母
+int isValid(const char s1);         //若字符串s1仅包含英文字母则返回1，否则返回0
+char toLower(char ch);           //将大写字母转换为小写字母
 int usr_strcmp(char s1, char s2);    //比较字符串s1和s2，相等时返回0,
-                                                            //s1大则返回正整数，s1小则返回负整数
-void usr_strcpy(char s1,const char s2);     //字符串s2拷贝给s1
+                        //s1大则返回正整数，s1小则返回负整数
+void usr_strcpy(char s1,const char s2);  //字符串s2拷贝给s1
 
 int main()
 {
@@ -258,55 +258,55 @@ int main()
     char maxWord[32]="", minWord[32] ="";
     int numWord=0;
     while(numWord < NUMBER) {
-      // word
-         scanf("%s",    （1）    );                                 // 输入一个单词存入word
-         if(isValid(word))     {
-              if (0==numWord) {usr_strcpy(minWord,word);usr_strcpy(maxWord,word);}
-              numWord++;
-              // usr_strcmp(word, maxWord)
-              if(         （2）       >0)                              // 调用usr_strcmp比较单词
-                   usr_strcpy(maxWord, word);      // 用maxWord记下最大单词
-              else
-              // usr_strcmp(word, minWord)
-                   if(       （3）      <0)                     // 调用usr_strcmp比较单词
-                        usr_strcpy(minWord,word); // 用minWord记下最小单词
-            }
+   // word
+      scanf("%s",    （1）    );               // 输入一个单词存入word
+      if(isValid(word))  {
+        if (0==numWord) {usr_strcpy(minWord,word);usr_strcpy(maxWord,word);}
+        numWord++;
+        // usr_strcmp(word, maxWord)
+        if(      （2）    >0)            // 调用usr_strcmp比较单词
+          usr_strcpy(maxWord, word);   // 用maxWord记下最大单词
+        else
+        // usr_strcmp(word, minWord)
+          if(    （3）   <0)         // 调用usr_strcmp比较单词
+            usr_strcpy(minWord,word); // 用minWord记下最小单词
       }
-      printf("maxWord=%s   minWord=%s\n",maxWord,minWord);
-      return 0;
+   }
+   printf("maxWord=%s   minWord=%s\n",maxWord,minWord);
+   return 0;
 }
 int isValid(const chars)
 {
-     for(; s ; s++)
-         if(!(s>='a' && s<='z') && !(s>='A' && s<='Z'))
-             return 0;
-     return 1;
+  for(; s ; s++)
+      if(!(s>='a' && s<='z') && !(s>='A' && s<='Z'))
+       return 0;
+  return 1;
  }
 
 char toLower(char ch)
-{     //若ch为大写字母则返回其小写形式，否则直接返回原字符
-      if(ch>='A' && ch<='Z')
-                 ch=         （4）         +'a'; // ch-'A'
-      return ch;
+{  //若ch为大写字母则返回其小写形式，否则直接返回原字符
+   if(ch>='A' && ch<='Z')
+        ch=      （4）      +'a'; // ch-'A'
+   return ch;
 }
 
 int usr_strcmp(char s1,char s2)
 {    //按字典序比较两个英文单词，若s1表示的单词大，则返回正整数，
-     //若s1表示的单词小，则返回负整数；否则返回0
+  //若s1表示的单词小，则返回负整数；否则返回0
 
-     for(;    （5）    ;) { // s1 != '\0' && s2 != '\0' 或 s1 || s2 等价表示
-              if(toLower(s1)==toLower(s2))    {s1++,s2++;}
-              else
-                    break;
-      }
-     return(toLower(s1) - toLower(s2));
+  for(;    （5）    ;) { // s1 != '\0' && s2 != '\0' 或 s1 || s2 等价表示
+        if(toLower(s1)==toLower(s2))    {s1++,s2++;}
+        else
+        break;
+   }
+  return(toLower(s1) - toLower(s2));
 }
 
 void usr_strcpy(char s1,const char s2)
 {    //将s2表示的字符串复制给s1
-       for(;       （6）       ;) // s2 != '\0' 或 s2 等价表示
-            s1++= s2++;
-       s1='\0';
+    for(;    （6）    ;) // s2 != '\0' 或 s2 等价表示
+      s1++= s2++;
+    s1='\0';
 }
 ```
 
@@ -346,45 +346,43 @@ typedef int ElemType;
 // 链表的结点类型定义如下:
 
 typedef struct Node{
-                ElemType data;
-                struct Node  next;
-}Node ,LinkList;
+       ElemType data;
+       struct Node  next;
+} Node , LinkList;
 // 【C 代码】
 LinkList  GetListElemPtr(LinkList  L ，int  i)
 { // L是含头结点的单链表的头指针，在该单链表中查找第i个元素结点:
   //   若找到，则返回该元素结点的指针，否则返回NULL
-          LinkList  p;
-          int   k;      // 用于元素结点计数
+    LinkList  p;
+    int   k;   // 用于元素结点计数
 
-          if  (i<1  ∣∣ !L  ∣∣  !L->next)  return NULL;
+    if  (i<1  ∣∣ !L  ∣∣  !L->next)  return NULL;
 
-          k  =  1;   P  =  L->next;          // 令p指向第1个元素所在结点/
-          // k<i
-          while (p &&             （1）       ) {  // 查找第i个元素所在结点/
-                          （2）       ;  ++k; // p = p->next
-          }
-          return p;
+    k  =  1;   P  =  L->next;    // 令p指向第1个元素所在结点/
+    // k<i
+    while (p &&       （1）    ) {  // 查找第i个元素所在结点/
+           （2）    ;  ++k; // p = p->next
+    }
+    return p;
 }
 
 Status  DelListElem(LinkList  L ，int i ，ElemType  e)
 {   // 在含头结点的单链表L中，删除第i个元素，并由e带回其值/
+    LinkList  p，q;
+    // 令p指向第i个元素的前驱结点/
+    if (i==1)
+         （3）   ； // p=L
+    else
+       p = GetListElemPtr(L ，i-1);
 
-          LinkList  p，q;
-
-          // 令p指向第i个元素的前驱结点/
-          if (i==1)
-                     （3）      ； // p=L
-          else
-                p = GetListElemPtr(L ，i-1);
-
-          if (!p ∣∣ !p->next)       return ERROR; // 不存在第i个元素/
-          // p->next
-          q =      (4)     ；            // 令q指向待删除的结点/
-          p->next = q->next;     // 从链表中删除结点/
-          // *e = q->data
-                 (5)        ；              // 通过参数e带回被删除结点的数据*/
-          free(q);
-          return  SUCCESS;
+    if (!p ∣∣ !p->next)    return ERROR; // 不存在第i个元素/
+    // p->next
+    q =   (4)  ；      // 令q指向待删除的结点/
+    p->next = q->next;  // 从链表中删除结点/
+    // *e = q->data
+        (5)     ；        // 通过参数e带回被删除结点的数据*/
+    free(q);
+    return  SUCCESS;
 }
 ```
 
@@ -414,51 +412,51 @@ enum {ERROR, OK};
 typedef int KeyType;
 
 typedef struct    QNode{
-      KeyType   data;
-      Struct QNodenext;
+   KeyType   data;
+   Struct QNodenext;
 }QNode,LinkQueue;
 
 Typedef struct{
-      int  size;
-      Link:Queue rear;
+   int  size;
+   Link:Queue rear;
 } Queue;
 
 // 【C函数】
 
 int EnQueue(QueueQ,KeyType new_elem)
 {   //元素new_elem 入队列
-     QNodep;
-     p=(QNode)malloc(sizeof(QNode));
-     if（!p）
-        return ERROR;
+  QNodep;
+  p=(QNode)malloc(sizeof(QNode));
+  if（!p）
+     return ERROR;
     p->data=new_elem;
     if（Q->rear）{
-        p->next=Q->rear->next;
-        （   1   ）; // Q→rear→next=p
-     }
-     else
-         p->next=p;
-     ﹙  2  ﹚; // Q→rear=p
-     Q->size++;
+     p->next=Q->rear->next;
+     （   1   ）; // Q→rear→next=p
+  }
+  else
+      p->next=p;
+  ﹙  2  ﹚; // Q→rear=p
+  Q->size++;
     return OK;
 }
 
 int  DeQueue(QueueQ,KeyTypeelem)
 {   //出队列
-     QNodep;
-     If(0＝＝Q->size) //是空队列
-         Return ERROR；
+  QNodep;
+  If(0＝＝Q->size) //是空队列
+      Return ERROR；
     // Q→rear→next
-     p=（  3  ）;   //令p指向队头元素结点
-     *elem =p->data;
-     // p→next
-     Q->rear->next=（  4   ）;   //将队列元素结点从链表中去除
-     // Q→rear==p 或 Q→rear→next==p或p→next==p 或 Q→size==1
-     if（（  5  ））  //被删除的队头结点是队列中唯一结点
-        Q->rear=NULL; //变成空队列
-     free（p）;
-     Q->size--;
-     return OK;
+  p=（  3  ）;   //令p指向队头元素结点
+  *elem =p->data;
+  // p→next
+  Q->rear->next=（  4   ）;   //将队列元素结点从链表中去除
+  // Q→rear==p 或 Q→rear→next==p或p→next==p 或 Q→size==1
+  if（（  5  ））  //被删除的队头结点是队列中唯一结点
+     Q->rear=NULL; //变成空队列
+  free（p）;
+  Q->size--;
+  return OK;
 }
 ```
 
@@ -510,61 +508,61 @@ int  DeQueue(QueueQ,KeyTypeelem)
 
 以下 Java 代码实现一个简单乐器系统，音乐类（Music）可以使用各类乐器（Instrument）进行演奏和调音等操作。对部分乐器进行建模，其类图如图 5-1 所示，包括：乐器（Instrument）、打击乐器（Percussion）、弦乐器（Stringed）、管乐器（Wind）、木管乐器（Woodwind）、铜管乐器（Brass）。
 
-<img src="/upfile/2025/05/programmer-2018011-5.png.png" height=300 />
+<img src="/upfile/2025/05/programmer-2018011-5.png" height=300 />
 
 ```java
 import java.util.ArrayList;
 
-enum Note{               /*枚举各种音调*/
-MIDDLE_C,C_SHARP,B_FLAT;       //其它略
+enum Note{      /*枚举各种音调*/
+MIDDLE_C,C_SHARP,B_FLAT;  //其它略
 }
 
-abstract class Instrument{        /*乐器*/
-    // abstract void play(Note n)
-    （1）   ;               //play方法
-    abstract void adjust() ;         //adjust抽象方法
+abstract class Instrument{    /*乐器*/
+  // abstract void play(Note n)
+  （1）   ;      //play方法
+  abstract void adjust() ;  //adjust抽象方法
 }
 
 class Wind ( 2 )   { // extends Instrument
 
-    public void play(Note n){System.out.println( "Wind.play() "+n);}
-    public viod adjust(){System.out.println( "Wind.adjust() ");}
+  public void play(Note n){System.out.println( "Wind.play() "+n);}
+  public viod adjust(){System.out.println( "Wind.adjust() ");}
 }
 
 /*类Percussion 和Stringed实现代码；略*/
 
-class Brass     (3)      { // extends Wind
-    public void play(Note n){System.out.println( "Brass.play() "+n);}
-    public void adjust(){System.out.println( "Brass.adjust() ");}
+class Brass   (3)    { // extends Wind
+  public void play(Note n){System.out.println( "Brass.play() "+n);}
+  public void adjust(){System.out.println( "Brass.adjust() ");}
 }
 
 class Woodwind extends Wind {
-    public void play(Note n){System.out.println( "Woodwind.play() "+n);}
+  public void play(Note n){System.out.println( "Woodwind.play() "+n);}
 }
 
 public class Music {
 
-    void tune(Instrument i){i.play(Note.MIDDlE_C);}
+  void tune(Instrument i){i.play(Note.MIDDlE_C);}
 
-    void adjust(Instrument i){i.adjust();}
+  void adjust(Instrument i){i.adjust();}
 
-    void tuneAll(    ( 4 )    e)    { // ArrayList<Instrument>
-        for(int j=0;j<e.size():j++)    {
-            Instrument i=e.get(j);
-            adjust(i);
-            tune(i);
-            }
-    }
+  void tuneAll(  ( 4 )  e)  { // ArrayList<Instrument>
+    for(int j=0;j<e.size():j++)  {
+   Instrument i=e.get(j);
+   adjust(i);
+   tune(i);
+   }
+  }
 
 public static void main(String[]args)
 
-    {
-        ( 5 )  music=new Music() ; // Music
-        ArrayList<Instrument>orchestra=new ArrayList<>();
-        orchestra.add(new Wind());
-        orchestra.add(new Woodwind());
-        music.tuneAll(orchestra);
-    }
+  {
+    ( 5 )  music=new Music() ; // Music
+    ArrayList<Instrument>orchestra=new ArrayList<>();
+    orchestra.add(new Wind());
+    orchestra.add(new Woodwind());
+    music.tuneAll(orchestra);
+  }
 }
 ```
 
@@ -585,55 +583,55 @@ public static void main(String[]args)
 <img src="/upfile/2025/05/programmer-2018005-5.png" height=200 />
 
 ```java
-interface DrawCircle {     //绘制圆形
-      public     （1）    ； // void drawCircle (int radius,int x,int y)
+interface DrawCircle {  //绘制圆形
+   public  （1）    ； // void drawCircle (int radius,int x,int y)
 }
 
 class RedCircle implements DrawCircle {    //绘制红色圆形
-       public void drawCircle(int radius,int x, int y)  {
-             System.out.println("Drawing Circle[red,radius:" + radius + ",x:" + x + ",y:" +y+ "]");
-       }
+    public void drawCircle(int radius,int x, int y)  {
+       System.out.println("Drawing Circle[red,radius:" + radius + ",x:" + x + ",y:" +y+ "]");
+    }
 }
 
 class GreenCircle implements DrawCircle {    //绘制绿色圆形
-      public void drawCircle(int radius, int x, int y) {
-            System.out.println("Drawing Circle[green,radius:" +radius+ ",x: " +x+ ",y: " +y+ "]");
-      }
+   public void drawCircle(int radius, int x, int y) {
+      System.out.println("Drawing Circle[green,radius:" +radius+ ",x: " +x+ ",y: " +y+ "]");
+   }
 }
 abstract class Shape {    //形状
-       protected      （2）   ; // DrawCircle drawCircle
+    protected   （2）   ; // DrawCircle drawCircle
 
-       public Shape(DrawCircle drawCircle) {
-             this.drawCircle = drawCircle;
-        }
-        public abstract void draw();
+    public Shape(DrawCircle drawCircle) {
+       this.drawCircle = drawCircle;
+     }
+     public abstract void draw();
 }
 
 class Circle extends Shape {    //圆形
-       private int x,y,radius;
+    private int x,y,radius;
 
-       public Circle(int x,int y,int radius,DrawCircle drawCircle) {
-            （3）   ; // super(drawcircle)
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-       }
+    public Circle(int x,int y,int radius,DrawCircle drawCircle) {
+      （3）   ; // super(drawcircle)
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+    }
 
-       public void draw() {
-            drawCircle.     （4）    ; // drawCircle(radius,x,y)
-       }
+    public void draw() {
+      drawCircle.  （4）    ; // drawCircle(radius,x,y)
+    }
 }
 
 public class DrawCircleMain {
-      public static void main(String[] args) {
-        // new RedCircle()
-        Shape redCircle＝new Circle( 100,100,10,      （5）      )；//绘制红色圆形
-        // new GreenCircle()
-        Shape greenCircle＝new Circle(200,200,10,      （6）     )；//绘制绿色圆形
+   public static void main(String[] args) {
+     // new RedCircle()
+     Shape redCircle＝new Circle( 100,100,10,   （5）   )；//绘制红色圆形
+     // new GreenCircle()
+     Shape greenCircle＝new Circle(200,200,10,   （6）  )；//绘制绿色圆形
 
-        redCircle.draw();
-        greenCircle.draw();
-     }
+     redCircle.draw();
+     greenCircle.draw();
+  }
 }
 ```
 
